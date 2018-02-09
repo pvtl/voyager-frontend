@@ -23,15 +23,11 @@ After creating your new Laravel/Voyager application, include the _Voyager Fronte
 composer require pivotal/voyagerfrontend
 ```
 
-#### 2. Run The Installer
-
-To install _Voyager Frontend_, simply run
+#### 2. Run the Installer
 
 ```
 composer dump-autoload && php artisan voyagerfrontend:install
 ```
-
-_If you get the error: `Class VoyagerFrontendDatabaseSeeder does not exist` - don't stress, simply run `php artisan voyagerfrontend:install` again_
 
 #### 3. Build the front-end theme assets
 
@@ -39,11 +35,13 @@ _If you get the error: `Class VoyagerFrontendDatabaseSeeder does not exist` - do
 npm install && npm run dev
 ```
 
+_Any issues? See [the troubleshooting section](#Toubleshooting) below._
+
 ---
 
 ## Theme Development
 
-From the root directory, install the frontend depenedencies `npm install`
+When you're ready to start styling your frontend, you can use the following commands after making updates to SCSS and/or JS files:
 
 | Command | Description |
 | --- | --- |
@@ -59,6 +57,17 @@ You can test the Pivotal/Test package switching to the packages directory and ru
 
 ```
   cd packages/pivotal/test;
-
   composer run test
 ```
+
+---
+
+## Toubleshooting
+
+#### Error: `Class VoyagerFrontendDatabaseSeeder does not exist`
+
+Simply run `php artisan voyagerfrontend:install` again
+
+#### Error: `The command "npm i ..." failed.`
+
+Run `npm install` and then try `php artisan voyagerfrontend:install` again
