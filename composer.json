@@ -1,0 +1,52 @@
+{
+    "name": "pivotal/voyagerfrontend",
+    "description": "The Missing Front-end for The Missing Laravel Admin.",
+    "keywords": [
+        "laravel",
+        "voyager",
+        "frontend"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pivotal Agency",
+            "homepage": "http://pivotalagency.com.au",
+            "email": "tech@pivotalagency.com.au"
+        }
+    ],
+    "scripts": {
+      "test": "phpunit"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": "^5.4.0",
+        "laravel/framework": "~5.4.36|~5.5.0",
+        "tcg/voyager": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "orchestra/testbench": "^3.4",
+        "illuminated/testing-tools": "^0.5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pivotal\\VoyagerFrontend\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pivotal\\VoyagerFrontend\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pivotal\\VoyagerFrontend\\VoyagerFrontendServiceProvider"
+            ],
+            "aliases": {
+                "VoyagerFrontend": "Pivotal\\VoyagerFrontend\\Facade"
+            }
+        }
+    }
+}
