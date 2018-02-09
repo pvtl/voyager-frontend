@@ -53,6 +53,10 @@ class InstallCommand extends Command
      */
     public function handle(Filesystem $filesystem)
     {
+        $this->info('Move Laravel\'s default assets, to make way for ours');
+        $process = new Process('mv resources/assets resources/assets-' . time());
+        $process->setWorkingDirectory(base_path())->mustRun();
+
         $this->info('Publishing the Voyager assets, database, language, and config files');
         $this->call('vendor:publish', ['--provider' => VoyagerFrontendServiceProvider::class]);
 
