@@ -31,6 +31,8 @@ To install _Voyager Frontend_, simply run
 composer dump-autoload && php artisan voyagerfrontend:install
 ```
 
+_If you get the error: `Class VoyagerFrontendDatabaseSeeder does not exist` - don't stress, simply run `php artisan voyagerfrontend:install` again_
+
 #### 3. Build the front-end theme assets
 
 ```
