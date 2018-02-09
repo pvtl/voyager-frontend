@@ -13,4 +13,6 @@ Route::group(['prefix' => 'posts'], function () use ($controller) {
 /**
  * Pages module
  */
-Route::get('/{slug?}', $controller . '@getPageRoutes');
+if (!Request::is('admin')) {
+    Route::get('/{slug?}', $controller . '@getPageRoutes');
+}
