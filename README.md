@@ -41,6 +41,8 @@ _Any issues? See [the troubleshooting section](#Toubleshooting) below._
 
 ## Theme Development
 
+#### SCSS & JS
+
 When you're ready to start styling your frontend, you can use the following commands after making updates to SCSS and/or JS files:
 
 | Command | Description |
@@ -48,6 +50,27 @@ When you're ready to start styling your frontend, you can use the following comm
 | `npm run watch` | Watches your `/resources/assets` for any changes and builds immediately |
 | `npm run dev` | Builds SCSS/JS on demand |
 | `npm run prod` | Builds SCSS/JS on demand, but this time, outputs minified results |
+
+#### Overriding Views
+
+Let's say you want to update the layout of the frontend header:
+
+1. Create the directory `resources/views/vendor/voyagerfrontend`
+    - Any files you place in here will replace the default views that comes with this package
+1. Copy the respective file from `vendor/pivotal/voyagerfrontend/resources/views/` (in this case, the `partials/header.blade.php`) into the matching file structure and update
+
+So now you'll have:
+
+```
+    /resources
+        /views
+            /vendor
+                /voyagerfrontend
+                    /partials
+                        /header.blade.php
+```
+
+And any changes made to `header.blade.php` reflect automatically on the site.
 
 ---
 
