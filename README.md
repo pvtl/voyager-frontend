@@ -1,51 +1,47 @@
-# Voyager Front-end
+# Voyager Frontend
 
-The Missing Front-end for The Missing Laravel Admin.
+__The Missing Frontend for The Missing Laravel Admin.__
+
+This [Laravel](https://laravel.com/) package adds frontend views, routes and assets to a [Voyager](https://laravelvoyager.com/) project.
+
+---
+
+## Prerequisites
+
+- [Install Laravel](https://laravel.com/docs/installation)
+- [Install Voyager](https://github.com/the-control-group/voyager)
 
 ---
 
 ## Installation
 
-#### 1. Copy this repos files to `/packages/pivotal/voyagerfrontend`
+#### 1. Require the Package
 
-#### 2. Add the service provider to the `config/app.php` file in the providers array:
+After creating your new Laravel/Voyager application, include the _Voyager Frontend_ package with the following command:
 
-```php
-'providers' => [
-    // Laravel Framework Service Providers...
-    //...
-
-    // Package Service Providers
-    // ...
-    Pivotal\VoyagerFrontend\VoyagerFrontendServiceProvider::class,
-    // ...
-
-    // Application Service Providers
-    // ...
-],
+```
+composer require pivotal/voyagerfrontend
 ```
 
-#### 3. Add `"Pivotal\\VoyagerFrontend\\": "packages/pivotal/voyagerfrontend/src"` to the autoloader in `composer.json`
+#### 2. Run The Installer
 
-```json
-"autoload": {
-        "psr-4": {
-            "App\\": "app/",
-            "Pivotal\\VoyagerFrontend\\": "packages/pivotal/voyagerfrontend/src"
+To install _Voyager Frontend_, simply run
+
 ```
-
-
-#### 4. Run the package installer
-
-```bash
 composer dump-autoload && php artisan voyagerfrontend:install
+```
+
+#### 3. Build the front-end theme assets
+
+```
+npm install && npm run dev
 ```
 
 ---
 
 ## Theme Development
 
-From the root directory, install the front-end depenedencies `npm install`
+From the root directory, install the frontend depenedencies `npm install`
 
 | Command | Description |
 | --- | --- |
