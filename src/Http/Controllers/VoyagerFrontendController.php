@@ -1,6 +1,6 @@
 <?php
 
-namespace Pivotal\VoyagerFrontend\Http\Controllers;
+namespace Pvtl\VoyagerFrontend\Http\Controllers;
 
 use TCG\Voyager\Models\Page;
 use TCG\Voyager\Models\Post;
@@ -10,7 +10,7 @@ class VoyagerFrontendController extends BaseController
 {
     public function index()
     {
-        return view('voyagerfrontend::voyagerfrontend');
+        return view('voyager-frontend::voyager-frontend');
     }
 
     /**
@@ -19,7 +19,7 @@ class VoyagerFrontendController extends BaseController
     public function getAllPostsRoute()
     {
         $posts = Post::all();
-        return view('voyagerfrontend::modules/posts/posts', compact('posts'));
+        return view('voyager-frontend::modules/posts/posts', compact('posts'));
     }
 
     /**
@@ -30,7 +30,7 @@ class VoyagerFrontendController extends BaseController
     public function getPostRoutes($slug)
     {
         $post = Post::where('slug', '=', $slug)->firstOrFail();
-        return view('voyagerfrontend::modules/posts/post', compact('post'));
+        return view('voyager-frontend::modules/posts/post', compact('post'));
     }
 
     /**
@@ -41,6 +41,6 @@ class VoyagerFrontendController extends BaseController
     public function getPageRoutes($slug = 'home')
     {
         $page = Page::where('slug', '=', $slug)->firstOrFail();
-        return view('voyagerfrontend::modules/pages/default', compact('page'));
+        return view('voyager-frontend::modules/pages/default', compact('page'));
     }
 }

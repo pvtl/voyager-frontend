@@ -1,6 +1,6 @@
 <?php
 
-namespace Pivotal\VoyagerFrontend;
+namespace Pvtl\VoyagerFrontend;
 
 class VoyagerFrontend {
     public function routes()

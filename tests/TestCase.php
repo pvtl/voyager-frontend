@@ -1,6 +1,6 @@
 <?php
 
-namespace Pivotal\VoyagerFrontend\Test;
+namespace Pvtl\VoyagerFrontend\Test;
 
 use Illuminated\Testing\TestingTools;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -17,7 +17,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \Pivotal\VoyagerFrontend\TestServiceProvider::class,
+            \Pvtl\VoyagerFrontend\TestServiceProvider::class,
         ];
     }
 
@@ -29,7 +29,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageAliases($app)
 	{
 	    return [
-	        'Test' => 'Pivotal\VoyagerFrontend\facades\VoyagerFrontend',
+	        'Test' => 'Pvtl\VoyagerFrontend\facades\VoyagerFrontend',
 	    ];
 	}
 }

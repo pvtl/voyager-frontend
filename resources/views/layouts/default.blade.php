@@ -1,8 +1,8 @@
-@include('voyagerfrontend::partials.meta')
-@include('voyagerfrontend::partials.header')
+@include('voyager-frontend::partials.meta')
+@include('voyager-frontend::partials.header')
 
 <div class="container py-5">
     @yield('content')
 </div>
 
-@include('voyagerfrontend::partials.footer')
+@include('voyager-frontend::partials.footer')

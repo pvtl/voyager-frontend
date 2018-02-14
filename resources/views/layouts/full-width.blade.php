@@ -1,6 +1,6 @@
-@include('voyagerfrontend::partials.meta')
-@include('voyagerfrontend::partials.header')
+@include('voyager-frontend::partials.meta')
+@include('voyager-frontend::partials.header')
 
 @yield('content')
 
-@include('voyagerfrontend::partials.footer')
+@include('voyager-frontend::partials.footer')

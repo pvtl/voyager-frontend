@@ -1,8 +1,8 @@
 <?php
 
-namespace Pivotal\VoyagerFrontend\Test;
+namespace Pvtl\VoyagerFrontend\Test;
 
-use Pivotal\VoyagerFrontend\facades\VoyagerFrontend;
+use Pvtl\VoyagerFrontend\facades\VoyagerFrontend;
 
 class FacadeTest extends TestCase
 {

@@ -1,4 +1,4 @@
-@extends('voyagerfrontend::layouts.default')
+@extends('voyager-frontend::layouts.default')
 @section('meta_title', $page->title)
 @section('meta_description', $page->meta_description)
 

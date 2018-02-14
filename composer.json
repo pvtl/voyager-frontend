@@ -1,5 +1,5 @@
 {
-    "name": "pivotal/voyagerfrontend",
+    "name": "pvtl/voyager-frontend",
     "description": "The Missing Front-end for The Missing Laravel Admin.",
     "keywords": [
         "laravel",
@@ -31,21 +31,21 @@
     },
     "autoload": {
         "psr-4": {
-            "Pivotal\\VoyagerFrontend\\": "src/"
+            "Pvtl\\VoyagerFrontend\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Pivotal\\VoyagerFrontend\\Test\\": "tests"
+            "Pvtl\\VoyagerFrontend\\Test\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Pivotal\\VoyagerFrontend\\VoyagerFrontendServiceProvider"
+                "Pvtl\\VoyagerFrontend\\VoyagerFrontendServiceProvider"
             ],
             "aliases": {
-                "VoyagerFrontend": "Pivotal\\VoyagerFrontend\\Facade"
+                "VoyagerFrontend": "Pvtl\\VoyagerFrontend\\Facade"
             }
         }
     }

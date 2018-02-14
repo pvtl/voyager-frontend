@@ -1,6 +1,6 @@
 <?php
 
-namespace Pivotal\VoyagerFrontend\Test;
+namespace Pvtl\VoyagerFrontend\Test;
 
 use Artisan;
 use Monolog\Logger;

@@ -1,13 +1,13 @@
 <?php
 
-namespace Pivotal\VoyagerFrontend\Test;
+namespace Pvtl\VoyagerFrontend\Test;
 
 class ConfigTest extends TestCase
 {
     /** @test */
     function it_returns_true_if_the_right_title_text_is_returned()
     {
-        $this->assertEquals('Pivotal/VoyagerFrontend', config('test.title'));
+        $this->assertEquals('Pvtl/VoyagerFrontend', config('test.title'));
     }
 
     /** @test */
@@ -15,7 +15,7 @@ class ConfigTest extends TestCase
     {
     	$this->app['config']->set('test.title', 'Wrong title!');
 
-        $this->assertNotEquals('Pivotal/VoyagerFrontend', config('test.title'));
+        $this->assertNotEquals('Pvtl/VoyagerFrontend', config('test.title'));
     }
 
     /** @test */

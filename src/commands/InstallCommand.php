@@ -1,13 +1,13 @@
 <?php
 
-namespace Pivotal\VoyagerFrontend\Commands;
+namespace Pvtl\VoyagerFrontend\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Intervention\Image\ImageServiceProviderLaravel5;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Process\Process;
-use Pivotal\VoyagerFrontend\VoyagerFrontendServiceProvider;
+use Pvtl\VoyagerFrontend\VoyagerFrontendServiceProvider;
 
 class InstallCommand extends Command
 {
@@ -16,7 +16,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $name = 'voyagerfrontend:install';
+    protected $name = 'voyager-frontend:install';
 
     /**
      * The console command description.

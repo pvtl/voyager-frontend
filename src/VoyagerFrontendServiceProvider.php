@@ -1,8 +1,8 @@
 <?php
-namespace Pivotal\VoyagerFrontend;
+namespace Pvtl\VoyagerFrontend;
 
 use Illuminate\Support\ServiceProvider;
-use Pivotal\VoyagerFrontend\Commands\VoyagerFrontendCommand;
+use Pvtl\VoyagerFrontend\Commands\VoyagerFrontendCommand;
 
 class VoyagerFrontendServiceProvider extends ServiceProvider
 {
@@ -26,9 +26,9 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         // Front-end views can be used like:
-        //  - @include('voyagerfrontend::partials.meta') OR
-        //  - view('voyagerfrontend::modules/posts/post');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyagerfrontend');
+        //  - @include('voyager-frontend::partials.meta') OR
+        //  - view('voyager-frontend::modules/posts/post');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyager-frontend');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -44,8 +44,8 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom( __DIR__.'/config/voyager-frontend.php', 'voyagerfrontend');
+        $this->mergeConfigFrom( __DIR__.'/config/voyager-frontend.php', 'voyager-frontend');
 
-        $this->app->alias(VoyagerFrontend::class, 'voyagerfrontend');
+        $this->app->alias(VoyagerFrontend::class, 'voyager-frontend');
     }
 }

@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'title'   => 'Pivotal/VoyagerFrontend',
+    'title'   => 'Pvtl/VoyagerFrontend',
 ];

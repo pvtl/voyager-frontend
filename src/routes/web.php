@@ -1,6 +1,6 @@
 <?php
 
-$controller = 'Pivotal\VoyagerFrontend\Http\Controllers\VoyagerFrontendController';
+$controller = 'Pvtl\VoyagerFrontend\Http\Controllers\VoyagerFrontendController';
 
 /**
  * Posts module
