@@ -14,20 +14,6 @@
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-.flex-equal>* {
-    -ms-flex: 1;
-    -webkit-box-flex: 1;
-    flex: 1;
-}
-
-@media (min-width: 768px) {
-    .flex-md-equal>* {
-        -ms-flex: 1;
-        -webkit-box-flex: 1;
-        flex: 1;
-    }
-}
-
 .overflow-hidden {
     overflow: hidden;
 }

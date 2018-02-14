@@ -31,6 +31,8 @@ composer dump-autoload && php artisan voyager-frontend:install
 
 #### 3. Build the front-end theme assets
 
+Copy this repo's `webpack.mix.js` to your new project's root directory, then run:
+
 ```
 npm install && npm run dev
 ```

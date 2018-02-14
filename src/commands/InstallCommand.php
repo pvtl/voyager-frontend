@@ -57,16 +57,21 @@ class InstallCommand extends Command
         $process = new Process('mv resources/assets resources/assets-' . time());
         $process->setWorkingDirectory(base_path())->mustRun();
 
-        $this->info('Publishing the Voyager assets, database, language, and config files');
+        $this->info('Publishing the Voyager assets, database, and config files');
         $this->call('vendor:publish', ['--provider' => VoyagerFrontendServiceProvider::class]);
+
+        $this->info('Updating Root package.json to include dependencies');
+        $process = new Process('npm i foundation-sites motion-ui jquery --save-dev && npm uninstall bootstrap bootstrap-sass --save-dev');
+        $process->setWorkingDirectory(base_path())->mustRun();
+
+        $this->info('Remove default welcome page');
+        (new Filesystem)->delete(
+            resource_path('views/welcome.blade.php')
+        );
 
         $this->info('Dumping the autoloaded files and reloading all new files');
         $composer = $this->findComposer();
         $process = new Process($composer.' dump-autoload');
-        $process->setWorkingDirectory(base_path())->mustRun();
-
-        $this->info('Updating Root package.json to include dependencies');
-        $process = new Process('npm i bootstrap popper.js jquery --save-dev');
         $process->setWorkingDirectory(base_path())->mustRun();
 
         $this->info('Migrating the database tables into your application');

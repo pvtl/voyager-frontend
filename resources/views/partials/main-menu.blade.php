@@ -1,3 +1,5 @@
-@foreach($items as $menu_item)
-    <a class="py-2 d-none d-md-inline-block" href="{{ $menu_item->link() }}">{{ $menu_item->title }}</a><
-@endforeach
+<ul class="menu">
+    @foreach($items as $menu_item)
+        <li><a href="{{ $menu_item->link() }}">{{ $menu_item->title }}</a></li>
+    @endforeach
+</ul>
