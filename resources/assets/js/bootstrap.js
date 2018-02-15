@@ -1,15 +1,16 @@
-
 window._ = require('lodash');
 
 /**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
+ * We'll load jQuery and the Foundation plugin/s which provides support
+ * for JavaScript based Foundation features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
 
 try {
     window.$ = window.jQuery = require('jquery');
-} catch (e) {}
+    require('foundation-sites/dist/js/foundation');
+    $(document).foundation();
+} catch (e) { }
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -51,3 +52,4 @@ if (token) {
 //     cluster: 'mt1',
 //     encrypted: true
 // });
+
