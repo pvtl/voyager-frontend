@@ -1,57 +1,45 @@
 @extends('voyager-frontend::layouts.default')
 
 @section('content')
-    <div class="grid-container">
-        <div class="grid-x">
-            <div class="form-title text-center">
-                Login
-            </div>
+    <form class="login-form" method="POST" action="{{ route('login') }}">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-y">
+                <div class="medium-6 medium-offset-3 cell email">
+                    <h4 class="text-center">Login</h4>
 
-            <form class="login-form" method="POST" action="{{ route('login') }}">
-
-                {{ csrf_field() }}
-
-                <div class="email">
-                    <label for="email">E-Mail Address</label>
-
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required autofocus>
+                    {{ csrf_field() }}
 
                     @if (!empty($errors) && $errors->has('email'))
-                        <span class="help-text" id="emailHelpText">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
+                        <div class="callout small alert text-center" id="emailHelpText">
+                            <p>{{ $errors->first('email') }}</p>
+                        </div>
                     @endif
-                </div>
 
-                <div class="password">
-                    <label for="password">Password</label>
-
-                    <input id="password" type="password" name="password" aria-describedby="passwordHelpText" required>
+                    <label for="email">
+                        E-Mail Address
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required autofocus>
+                    </label>
 
                     @if (!empty($errors) && $errors->has('password'))
-                        <span class="help-text" id="passwordHelpText">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
+                        <div class="callout small alert text-center" id="passwordHelpText">
+                            <p>{{ $errors->first('password') }}</strong>
+                        </div>
                     @endif
-                </div>
 
-                <div class="checkbox">
+                    <label for="password">
+                        Password
+                        <input id="password" type="password" name="password" aria-describedby="passwordHelpText" required>
+                    </label>
+
                     <label>
                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                     </label>
-                </div>
 
-                <div class="button-plus-link">
-                    <button type="submit" class="button">
-                        Login
-                    </button>
+                    <button type="submit" class="button expanded">Login</button>
 
-                    <a href="{{ route('password.request') }}">
-                        &nbsp;
-                        Forgot Your Password?
-                    </a>
+                    <p class="text-center"><a href="{{ route('password.request') }}">Forgot Your Password?</a></p>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </form>
 @endsection

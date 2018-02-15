@@ -1,68 +1,59 @@
 @extends('voyager-frontend::layouts.default')
 
 @section('content')
-    <div class="grid-container">
-        <div class="grid-x">
-            <div class="status_message">
-                @if (session('status'))
-                    <div class="callout">
-                        {{ session('status') }}
+    <form class="password-reset-form" method="POST" action="{{ route('password.request') }}">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-y">
+                <div class="medium-6 medium-offset-3 cell email">
+                    <div class="status_message">
+                        @if (session('status'))
+                            <div class="callout">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                     </div>
-                @endif
-            </div>
+                
+                    <h4 class="text-center">Reset Password</h4>
 
-            <div class="form-title text-center">
-                Reset Password
-            </div>
+                    {{ csrf_field() }}
 
-            <form class="password-reset-form" method="POST" action="{{ route('password.request') }}">
-
-                {{ csrf_field() }}
-
-                <input type="hidden" name="token" value="{{ $token }}">
-
-                <div class="email">
-                    <label for="email">E-Mail Address</label>
-
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required autofocus>
+                    <input type="hidden" name="token" value="{{ $token }}">
 
                     @if (!empty($errors) && $errors->has('email'))
-                        <span class="help-text" id="emailHelpText">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
+                        <div class="callout small alert text-center" id="emailHelpText">
+                            <p>{{ $errors->first('email') }}</p>
+                        </div>
                     @endif
-                </div>
 
-                <div class="password">
-                    <label for="password">Password</label>
-
-                    <input id="password" type="password" name="password" aria-describedby="passwordHelpText" required>
+                    <label for="email">
+                        E-Mail Address
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required autofocus>
+                    </label>
 
                     @if (!empty($errors) && $errors->has('password'))
-                        <span class="help-text" id="passwordHelpText">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
+                        <div class="callout small alert text-center" id="passwordHelpText">
+                            <p>{{ $errors->first('password') }}</p>
+                        </div>
                     @endif
-                </div>
 
-                <div class="password">
-                    <label for="password-confirm">Confirm Password</label>
-
-                    <input id="password-confirm" type="password" name="password_confirmation" aria-describedby="passwordConfirmHelpText" required>
+                    <label for="password">
+                        Password
+                        <input id="password" type="password" name="password" aria-describedby="passwordHelpText" required>
+                    </label>
 
                     @if (!empty($errors) && $errors->has('password'))
-                        <span class="help-text" id="passwordConfirmHelpText">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
+                        <div class="callout small alert text-center" id="passwordConfirmHelpText">
+                            <p>{{ $errors->first('password') }}</p>
+                        </div>
                     @endif
-                </div>
 
-                <div class="reset-button">
-                    <button type="submit" class="button">
-                        Reset Password
-                    </button>
-                </div>
-            </form>
+                    <label for="password-confirm">
+                        Confirm Password
+                        <input id="password-confirm" type="password" name="password_confirmation" aria-describedby="passwordConfirmHelpText" required>
+                    </label>
+
+                <button type="submit" class="button expanded">Reset Password</button>
+            </div>
         </div>
-    </div>
+    </form>
 @endsection

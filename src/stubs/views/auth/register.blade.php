@@ -1,63 +1,55 @@
 @extends('voyager-frontend::layouts.default')
 
 @section('content')
-    <div class="grid-container">
-        <div class="grid-x">
-            <div class="form-title text-center">
-                Register
-            </div>
+    <form class="register-form" method="POST" action="{{ route('register') }}">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-y">
+                <div class="medium-6 medium-offset-3 cell email">
+                    <h4 class="text-center">Register</h4>
 
-            <form class="register-form" method="POST" action="{{ route('register') }}">
-
-                {{ csrf_field() }}
-
-                <div class="name">
-                    <label for="email">Name</label>
-
-                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" aria-describedby="nameHelpText" required autofocus>
+                    {{ csrf_field() }}
 
                     @if (!empty($errors) && $errors->has('name'))
-                        <span class="help-text" id="nameHelpText">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
+                        <div class="callout small alert text-center" id="nameHelpText">
+                            <p>{{ $errors->first('name') }}</strong>
+                        </div>
                     @endif
-                </div>
 
-                <div class="email">
-                    <label for="email">E-Mail Address</label>
-
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required>
+                    <label for="email">
+                        Name
+                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" aria-describedby="nameHelpText" required autofocus>
+                    </label>
 
                     @if (!empty($errors) && $errors->has('email'))
-                        <span class="help-text" id="emailHelpText">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
+                        <div class="callout small alert text-center" id="emailHelpText">
+                            <p>{{ $errors->first('email') }}</p>
+                        </div>
                     @endif
-                </div>
 
-                <div class="password">
-                    <label for="password">Password</label>
-
-                    <input id="password" type="password" name="password" aria-describedby="passwordHelpText" required>
+                    <label for="email">
+                        E-Mail Address
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required>
+                    </label>
 
                     @if (!empty($errors) && $errors->has('password'))
-                        <span class="help-text" id="passwordHelpText">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
+                        <div class="callout small alert text-center" id="passwordHelpText">
+                            <p>{{ $errors->first('password') }}</strong>
+                        </div>
                     @endif
-                </div>
 
-                <div class="password-confirm">
-                    <label for="password-confirm">Confirm Password</label>
-                    <input id="password-confirm" type="password" name="password_confirmation" required>
-                </div>
+                    <label for="password">
+                        Password
+                        <input id="password" type="password" name="password" aria-describedby="passwordHelpText" required>
+                    </label>
 
-                <div class="register_button">
-                    <button type="submit" class="button">
-                        Register
-                    </button>
+                    <label for="password-confirm">
+                        Confirm Password
+                        <input id="password-confirm" type="password" name="password_confirmation" required>
+                    </label>
+
+                    <button type="submit" class="button expanded">Register</button>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </form>
 @endsection

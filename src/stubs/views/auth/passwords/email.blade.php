@@ -1,42 +1,36 @@
 @extends('voyager-frontend::layouts.default')
 
 @section('content')
-    <div class="grid-container">
-        <div class="grid-x">
-            <div class="status_message">
-                @if (session('status'))
-                    <div class="callout">
-                        {{ session('status') }}
+    <form class="forgot-password-form" method="POST" action="{{ route('password.email') }}">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-y">
+                <div class="medium-6 medium-offset-3 cell email">
+                    <div class="status_message">
+                        @if (session('status'))
+                            <div class="callout">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                     </div>
-                @endif
-            </div>
+                
+                    <h4 class="text-center">Reset Password</h4>
 
-            <div class="form-title text-center">
-                Reset Password
-            </div>
-
-            <form class="forgot-password-form" method="POST" action="{{ route('password.email') }}">
-
-                {{ csrf_field() }}
-
-                <div class="email">
-                    <label for="email">E-Mail Address</label>
-
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required autofocus>
+                    {{ csrf_field() }}
 
                     @if (!empty($errors) && $errors->has('email'))
-                        <span class="help-text" id="emailHelpText">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
+                        <div class="callout small alert text-center" id="emailHelpText">
+                            <p>{{ $errors->first('email') }}</p>
+                        </div>
                     @endif
-                </div>
 
-                <div class="send-button">
-                    <button type="submit" class="button">
-                        Send Password Reset Link
-                    </button>
+                    <label for="email">
+                        E-Mail Address
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required autofocus>
+                    </label>
+
+                    <button type="submit" class="button expanded">Send Password Reset Link</button>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </form>
 @endsection
