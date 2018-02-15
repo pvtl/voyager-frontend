@@ -1,6 +1,8 @@
 <?php
 namespace Pvtl\VoyagerFrontend;
 
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Pvtl\VoyagerFrontend\Commands\VoyagerFrontendCommand;
 
@@ -21,6 +23,11 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
             __DIR__.'/../resources/assets' => base_path('resources/assets'),
             __DIR__.'/database/seeds' => base_path('database/seeds'),
         ]);
+
+        // Provide user data to all views
+        View::composer('*', function($view) {
+            $view->with('currentUser', \Auth::user());
+        });
 
         // Migrations
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');

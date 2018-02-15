@@ -53,6 +53,11 @@ class InstallCommand extends Command
      */
     public function handle(Filesystem $filesystem)
     {
+        $this->info('Copying authentication views to main project');
+        (new Filesystem)->copyDirectory(
+            __DIR__.'/../stubs/views', resource_path('views')
+        );
+
         $this->info('Move Laravel\'s default assets, to make way for ours');
         $process = new Process('mv resources/assets resources/assets-' . time());
         $process->setWorkingDirectory(base_path())->mustRun();

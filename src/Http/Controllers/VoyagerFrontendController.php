@@ -8,6 +8,11 @@ use Illuminate\Routing\Controller as BaseController;
 
 class VoyagerFrontendController extends BaseController
 {
+    /**
+     * Registers views to be used as 'voyager-frontend'
+     *
+     * @return void
+     */
     public function index()
     {
         return view('voyager-frontend::voyager-frontend');
@@ -15,6 +20,8 @@ class VoyagerFrontendController extends BaseController
 
     /**
      * Route: Gets all posts and passes data to a view
+     * 
+    * @return void
      */
     public function getAllPostsRoute()
     {
@@ -26,6 +33,7 @@ class VoyagerFrontendController extends BaseController
      * Route: Gets a single posts and passes data to a view
      * 
      * @param str $slug The page slug
+     * @return void
      */
     public function getPostRoutes($slug)
     {
@@ -36,7 +44,8 @@ class VoyagerFrontendController extends BaseController
     /**
      * Route: Gets a single page and passes data to a view
      * 
-    * @param str $slug The page slug
+     * @param str $slug The page slug
+     * @return void
      */
     public function getPageRoutes($slug = 'home')
     {

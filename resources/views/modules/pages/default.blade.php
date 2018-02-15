@@ -3,7 +3,7 @@
 @section('meta_description', $page->meta_description)
 
 @section('content')
-		<!-- Intro (block) -->
+    <!-- Intro (block) -->
     <!-- ================================================================== -->
     <div class="callout large">
         <div class="grid-container column text-center">
