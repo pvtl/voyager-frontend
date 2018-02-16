@@ -1,0 +1,44 @@
+/*
+ * The image/text block
+ */
+
+.block-image-text {
+  border-radius: $card-border-radius;
+  box-shadow: $card-shadow;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  
+  &:last-child {
+    margin-bottom: $card-margin-bottom;
+  }
+
+  .block-image-text-img {
+    align-self: center;
+    flex: 1 0 100%;
+
+    img {
+      width: 100%;
+    }
+
+    @include breakpoint(medium) {
+      flex: 1 0 50%;
+    }
+  }
+
+  .block-image-text-content {
+    padding: 1rem;
+    flex: 1 0 100%;
+    align-self: stretch;
+    background: $card-background;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    @include breakpoint(medium) {
+      flex: 1 0 50%;
+      padding: 2rem;
+    }
+  }
+}

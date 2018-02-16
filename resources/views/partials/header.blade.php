@@ -1,32 +1,46 @@
-<div class="top-bar">
-    <div class="top-bar-left">
-        <ul class="menu">
-            <li class="menu-text">
-                {{ setting('site.title') }}
-            </li>
-            {{ menu('primary', 'voyager-frontend::partials.main-menu') }}
-        </ul>
-    </div>
-    <div class="top-bar-right">
-        <ul class="menu">
-            <li><a href="{{ route('login') }}">Login</a></li>
-            <li><a href="{{ route('register') }}">Register</a></li>
-            <ul class="dropdown menu" data-dropdown-menu>
-                <li>
-                    <a href="#">My Account</a>
-                    <ul class="menu">
-                        <li>
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
+<div class="off-canvas position-right" id="offCanvas" data-off-canvas data-transition="push">
+    <a href="#" class="close-button off-canvas-menu-icon-close" data-close="offCanvas">
+        <span aria-hidden="true">&times;</span>
+    </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </ul>
-    </div>
+    <ul class="vertical menu">
+        {{ menu('primary', 'voyager-frontend::partials.menu-left') }}
+    </ul>
+
+    <hr />
+
+    <ul class="vertical menu">
+        @include('voyager-frontend::partials.menu-right')
+    </ul>
+
+    <hr />
+
+    <ul class="menu social-icons align-center">
+        @include('voyager-frontend::partials.social')
+    </ul>
 </div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <a href="#" class="off-canvas-menu-icon float-right hide-for-medium" data-open="offCanvas">
+                <i class="fas fa-bars"></i> <span>Menu</span>
+            </a>
+
+            <div class="header-logo float-left">
+                <a href="{{ url('/') }}">
+                    <img src="{{ url('/') }}/images/logo.png" alt="{{ setting('site.title') }}" title="{{ setting('site.title') }}" />
+                </a>
+            </div> <!-- /.header-logo -->
+
+            <ul class="menu show-for-medium">
+                {{ menu('primary', 'voyager-frontend::partials.menu-left') }}
+            </ul> <!-- /.menu -->
+        </div> <!-- /.top-bar-left -->
+
+        <div class="top-bar-right show-for-medium">
+            <ul class="menu">
+                @include('voyager-frontend::partials.menu-right')
+            </ul> <!-- /.menu -->
+        </div> <!-- /.top-bar-right -->
+    </div> <!-- /.top-bar -->

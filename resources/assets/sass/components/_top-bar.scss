@@ -1,0 +1,21 @@
+/*
+ * Site Header (Foundation's Top-Bar)
+ */
+.top-bar {
+  border-bottom: 1px solid $light-gray;
+
+  .header-logo {
+    max-width: 112px;
+    margin-right: 1rem;
+  }
+
+  .top-bar-right {
+    a {
+      color: #525252;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}

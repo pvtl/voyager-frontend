@@ -41,14 +41,23 @@
 @include foundation-tooltip;
 @include foundation-top-bar;
 @include foundation-visibility-classes;
-// @include foundation-float-classes;
+@include foundation-float-classes;
 @include foundation-flex-classes;
-// @include foundation-prototype-classes;
+@include foundation-prototype-classes;
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
 // Theme
 @import "utilities";
-@import "partials/header";
-@import "partials/footer";
+
+@import "blocks/image-text";
+
+@import "components/global";
+@import "components/card";
+@import "components/callout";
+@import "components/footer";
+@import "components/menu";
+@import "components/off-canvas";
+@import "components/page-title";
+@import "components/top-bar";
 @import "layouts/home";

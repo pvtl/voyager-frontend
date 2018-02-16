@@ -1,0 +1,23 @@
+/*
+ * Page Title
+ */
+
+.page-title {
+    padding-top: 2.55rem;
+    padding-bottom: 2.55rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background:
+      linear-gradient(rgba($primary-color, 0.9), rgba($primary-color, 0.6)),
+      url(https://images.unsplash.com/photo-1492546643178-96d64f3fd824?auto=format&fit=crop&w=1051&q=25);
+
+    @include breakpoint(medium) {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    * {
+      color: #ffffff;
+    }
+}

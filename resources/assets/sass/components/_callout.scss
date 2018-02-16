@@ -1,0 +1,19 @@
+/*
+ * Foundation's Callouts
+ */
+
+.callout {
+  &.extra-large {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  &.background-image {
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.7)),
+      url(https://images.unsplash.com/photo-1506701234424-ef06760d8c8e?auto=format&fit=crop&w=900&q=50);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}

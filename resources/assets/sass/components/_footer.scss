@@ -1,0 +1,43 @@
+/*
+ * Site Footer
+ */
+// Top Footer - with sign up and socials
+footer.top-footer {
+  background: $primary-color;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+
+  .social-icons a, h6 {
+    color: #ffffff;
+  }
+
+  .menu.social-icons {
+    @include breakpoint(medium) {
+      justify-content: flex-end;
+    }
+
+    a {
+      padding: 0.7rem 0 0.7rem 1rem;
+    }
+  }
+
+  .input-group {
+    margin-bottom: 0;
+  }
+}
+
+// Bottom footer with copyright
+footer.bottom-footer {
+  background: #FAFAFA;
+
+  ul.menu {
+    ul {
+        display: none;
+    }
+  }
+
+  .copyright {
+      color: $dark-gray;
+      font-size: $small-font-size;
+  }
+}
