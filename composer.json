@@ -15,7 +15,10 @@
         }
     ],
     "scripts": {
-      "test": "phpunit"
+        "test": "phpunit",
+        "post-install-cmd": [
+            "php artisan voyager-frontend:install"
+        ]
     },
     "minimum-stability": "stable",
     "require": {
