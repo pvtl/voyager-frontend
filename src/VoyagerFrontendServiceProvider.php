@@ -15,7 +15,10 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Pages and Posts Routes
+        // Pull default web routes
+        $this->loadRoutesFrom(base_path('/routes/web.php'));
+        
+        // Then add our Pages and Posts Routes
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
 
         // Defines which files to copy the root project

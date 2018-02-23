@@ -19,7 +19,9 @@ Route::group(['prefix' => 'posts'], function () use ($controller) {
 
 /**
  * Pages module
+ * - Don't include this route when the VoyagerPageBlocks package is installed
+ *   (it takes care of this route for us)
  */
-if (!Request::is('admin')) {
+if (!class_exists('Pvtl\VoyagerPageBlocks\PageBlocksServiceProvider')) {
     Route::get('/{slug?}', $controller . '@getPageRoutes');
 }
