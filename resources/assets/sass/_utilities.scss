@@ -17,33 +17,3 @@
 .overflow-hidden {
   overflow: hidden;
 }
-
-// Spacers
-.vertical-space,
-.vertical-space-1,
-.vertical-space-2,
-.vertical-space-3,
-.vertical-space-4,
-.vertical-space-5,
-.vertical-space-6,
-.vertical-space-7,
-.vertical-space-8,
-.vertical-space-9,
-.vertical-space-10
-{
-  display: block;
-  float: left;
-  width: 100%;
-}
-
-.vertical-space,
-.vertical-space-1 { height: 1rem; }
-.vertical-space-2 { height: 2rem; }
-.vertical-space-3 { height: 3rem; }
-.vertical-space-4 { height: 4rem; }
-.vertical-space-5 { height: 5rem; }
-.vertical-space-6 { height: 6rem; }
-.vertical-space-7 { height: 7rem; }
-.vertical-space-8 { height: 8rem; }
-.vertical-space-9 { height: 9rem; }
-.vertical-space-10 { height: 1rem; }

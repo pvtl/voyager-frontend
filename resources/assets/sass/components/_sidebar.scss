@@ -1,11 +1,10 @@
 /*
  * Sidebar
  */
-
 .sidebar {
-    ul.vertical.menu {
-        li {
-            border-bottom: 1px solid $light-gray;
-        }
+  ul.vertical.menu {
+    li {
+      border-bottom: 1px solid $light-gray;
     }
+  }
 }

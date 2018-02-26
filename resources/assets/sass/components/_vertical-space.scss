@@ -1,0 +1,101 @@
+/*
+ * Vertical Spacing for Foundation
+ */
+.vspace,
+.vspace-1,
+.vspace-2,
+.vspace-3,
+.vspace-4,
+.vspace-5,
+.vspace-6,
+.vspace-7,
+.vspace-8,
+.vspace-9,
+.vspace-10
+{
+  display: block;
+  float: none;
+  width: 100%;
+}
+
+.vspace,
+.vspace-1 { height: 1rem; }
+.vspace-2 { height: 2rem; }
+.vspace-3 { height: 3rem; }
+.vspace-4 { height: 4rem; }
+.vspace-5 { height: 5rem; }
+.vspace-6 { height: 6rem; }
+.vspace-7 { height: 7rem; }
+.vspace-8 { height: 8rem; }
+.vspace-9 { height: 9rem; }
+.vspace-10 { height: 10rem; }
+
+@include breakpoint(small) {
+  .vspace-small,
+  .vspace-small-1 { height: 1rem; }
+  .vspace-small-2 { height: 2rem; }
+  .vspace-small-3 { height: 3rem; }
+  .vspace-small-4 { height: 4rem; }
+  .vspace-small-5 { height: 5rem; }
+  .vspace-small-6 { height: 6rem; }
+  .vspace-small-7 { height: 7rem; }
+  .vspace-small-8 { height: 8rem; }
+  .vspace-small-9 { height: 9rem; }
+  .vspace-small-10 { height: 10rem; }
+}
+
+@include breakpoint(medium) {
+  .vspace-medium,
+  .vspace-medium-1 { height: 1rem; }
+  .vspace-medium-2 { height: 2rem; }
+  .vspace-medium-3 { height: 3rem; }
+  .vspace-medium-4 { height: 4rem; }
+  .vspace-medium-5 { height: 5rem; }
+  .vspace-medium-6 { height: 6rem; }
+  .vspace-medium-7 { height: 7rem; }
+  .vspace-medium-8 { height: 8rem; }
+  .vspace-medium-9 { height: 9rem; }
+  .vspace-medium-10 { height: 10rem; }
+}
+
+@include breakpoint(large) {
+  .vspace-large,
+  .vspace-large-1 { height: 1rem; }
+  .vspace-large-2 { height: 2rem; }
+  .vspace-large-3 { height: 3rem; }
+  .vspace-large-4 { height: 4rem; }
+  .vspace-large-5 { height: 5rem; }
+  .vspace-large-6 { height: 6rem; }
+  .vspace-large-7 { height: 7rem; }
+  .vspace-large-8 { height: 8rem; }
+  .vspace-large-9 { height: 9rem; }
+  .vspace-large-10 { height: 10rem; }
+}
+
+@include breakpoint(xlarge) {
+  .vspace-xlarge,
+  .vspace-xlarge-1 { height: 1rem; }
+  .vspace-xlarge-2 { height: 2rem; }
+  .vspace-xlarge-3 { height: 3rem; }
+  .vspace-xlarge-4 { height: 4rem; }
+  .vspace-xlarge-5 { height: 5rem; }
+  .vspace-xlarge-6 { height: 6rem; }
+  .vspace-xlarge-7 { height: 7rem; }
+  .vspace-xlarge-8 { height: 8rem; }
+  .vspace-xlarge-9 { height: 9rem; }
+  .vspace-xlarge-10 { height: 10rem; }
+}
+
+@include breakpoint(xxlarge) {
+  .vspace-xxlarge,
+  .vspace-xxlarge-1 { height: 1rem; }
+  .vspace-xxlarge-2 { height: 2rem; }
+  .vspace-xxlarge-3 { height: 3rem; }
+  .vspace-xxlarge-4 { height: 4rem; }
+  .vspace-xxlarge-5 { height: 5rem; }
+  .vspace-xxlarge-6 { height: 6rem; }
+  .vspace-xxlarge-7 { height: 7rem; }
+  .vspace-xxlarge-8 { height: 8rem; }
+  .vspace-xxlarge-9 { height: 9rem; }
+  .vspace-xxlarge-10 { height: 10rem; }
+}
