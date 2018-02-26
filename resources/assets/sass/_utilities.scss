@@ -2,18 +2,24 @@
  * Extra utilities
  */
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
+// Borders
+.border-top { border-top: 1px solid $medium-gray; }
+.border-bottom { border-bottom: 1px solid $medium-gray; }
+.border-left { border-left: 1px solid $medium-gray; }
+.border-right { border-right: 1px solid $medium-gray; }
 
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
+// Standard Box Shadow
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  box-shadow: $card-shadow;
 }
 
+// Overflow
 .overflow-hidden {
   overflow: hidden;
 }
+
+// Background Colors
+.background-color-lightgray { background-color: $light-gray }
+.background-color-mediumgray { background-color: $medium-gray }
+.background-color-primary { background-color: $primary-color }
+.background-color-secondary { background-color: $secondary-color }

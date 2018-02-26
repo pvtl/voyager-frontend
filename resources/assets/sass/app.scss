@@ -50,8 +50,10 @@
 // Theme
 @import "utilities";
 
-@import "blocks/image-text";
+// Blocks
+@import "blocks/cards-one-column";
 
+// Components
 @import "components/global";
 @import "components/card";
 @import "components/callout";
@@ -61,4 +63,6 @@
 @import "components/page-title";
 @import "components/top-bar";
 @import "components/vertical-space";
+
+// Layouts
 @import "layouts/home";

@@ -1,3 +1,19 @@
 /*
  * Foundation's Cards
  */
+.card {
+  & > a {
+    background: $primary-color;
+    overflow: hidden;
+
+    & > img {
+      opacity: 1;
+      transition: all ease 0.3s;
+
+      &:hover {
+        opacity: 0.7;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
