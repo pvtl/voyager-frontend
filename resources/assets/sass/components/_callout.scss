@@ -9,11 +9,25 @@
   }
 
   &.background-image {
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.7)),
-      url(https://images.unsplash.com/photo-1506701234424-ef06760d8c8e?auto=format&fit=crop&w=900&q=50);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    position: relative;
+
+    &:before {
+      background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.7));
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    & > * {
+      z-index: 1;
+      position: relative;
+    }
   }
 }
