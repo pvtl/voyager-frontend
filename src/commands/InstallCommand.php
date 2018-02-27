@@ -53,14 +53,31 @@ class InstallCommand extends Command
      */
     public function handle(Filesystem $filesystem)
     {
+        // Clean Up
+        $this->info('Deleting Laravel\'s default assets, to make way for ours');
+        (new Filesystem)->deleteDirectory(resource_path('assets', true));
+
+        $this->info('Remove default welcome page');
+        (new Filesystem)->delete(resource_path('views/welcome.blade.php'));
+
+        $this->info('Remove default web route');
+        $routes_contents = (new Filesystem)->get(base_path('routes/web.php'));
+        if (false !== strpos($routes_contents, "return view('welcome')")) {
+            $routes_contents = str_replace("\n\nRoute::get('/', function () {\n    return view('welcome');\n});", '', $routes_contents);
+            (new Filesystem)->put(base_path('routes/web.php'), $routes_contents);
+        }
+
+
+        // Use our files
         $this->info('Copying authentication views to main project');
         (new Filesystem)->copyDirectory(
             __DIR__.'/../stubs/views', resource_path('views')
         );
 
-        $this->info('Move Laravel\'s default assets, to make way for ours');
-        $process = new Process('mv resources/assets resources/assets-' . time());
-        $process->setWorkingDirectory(base_path())->mustRun();
+        $this->info('Copying our webpack.mix.js to the project root');
+        (new Filesystem)->copy(
+            __DIR__.'/../../webpack.mix.js', resource_path('../webpack.mix.js')
+        );
 
         $this->info('Publishing the Voyager assets, database, and config files');
         $this->call('vendor:publish', ['--provider' => VoyagerFrontendServiceProvider::class]);
@@ -69,18 +86,15 @@ class InstallCommand extends Command
         $process = new Process('npm i foundation-sites motion-ui jquery --save-dev && npm uninstall bootstrap bootstrap-sass --save-dev');
         $process->setWorkingDirectory(base_path())->mustRun();
 
-        $this->info('Remove default welcome page');
-        (new Filesystem)->delete(
-            resource_path('views/welcome.blade.php')
-        );
-
         $this->info('Dumping the autoloaded files and reloading all new files');
         $composer = $this->findComposer();
         $process = new Process($composer.' dump-autoload');
         $process->setWorkingDirectory(base_path())->mustRun();
 
-        $this->info('Migrating the database tables into your application');
-        $this->call('migrate');
+
+        // Database
+        // $this->info('Migrating the database tables into your application');
+        // $this->call('migrate');
 
         $this->info('Seeding data into the database');
         $this->call('db:seed', ['--class' => 'VoyagerFrontendDatabaseSeeder']);
