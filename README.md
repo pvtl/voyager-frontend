@@ -4,10 +4,14 @@ __The Missing Frontend for The Missing Laravel Admin.__
 
 This [Laravel](https://laravel.com/) package adds frontend views, routes and assets to a [Voyager](https://laravelvoyager.com/) project.
 
+It comes with a basic structure for frontend layouts (eg. header, footer, etc) and theme assets using the [Foundation](https://foundation.zurb.com) framework.
+
 ---
 
 ## Prerequisites
 
+- Node & NPM Installed
+- Composer Installed
 - [Install Laravel](https://laravel.com/docs/installation)
 - [Install Voyager](https://github.com/the-control-group/voyager)
 
@@ -15,29 +19,18 @@ This [Laravel](https://laravel.com/) package adds frontend views, routes and ass
 
 ## Installation
 
-#### 1. Require the Package
-
-After creating your new Laravel/Voyager application, include the _Voyager Frontend_ package with the following command:
-
-```
+```bash
+# 1. Require this Package in your fresh Laravel/Voyager project
 composer require pvtl/voyager-frontend
-```
 
-#### 2. Run the Installer
-
-```
+# 2. Run the Installer
 composer dump-autoload && php artisan voyager-frontend:install
-```
 
-#### 3. Build the front-end theme assets
-
-Copy this repo's `webpack.mix.js` to your new project's root directory, then run:
-
-```
+# 3. Build the front-end theme assets
 npm install && npm run dev
 ```
 
-_Any issues? See [the troubleshooting section](#Toubleshooting) below._
+_Any issues? See [the troubleshooting section](#toubleshooting) below._
 
 ---
 
