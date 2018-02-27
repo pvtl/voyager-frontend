@@ -12,7 +12,7 @@ Route::group(['middleware' => ['web'], 'namespace'=>'App\Http\Controllers'], fun
 /**
  * Posts module
  */
-Route::group(['prefix' => 'posts'], function () use ($controller) {
+Route::group(['prefix' => 'posts', 'middleware' => ['web']], function () use ($controller) {
     Route::get('/', $controller . '@getAllPostsRoute');
     Route::get('/{slug}', $controller . '@getPostRoutes');
 });
@@ -23,5 +23,5 @@ Route::group(['prefix' => 'posts'], function () use ($controller) {
  *   (it takes care of this route for us)
  */
 if (!class_exists('Pvtl\VoyagerPageBlocks\PageBlocksServiceProvider')) {
-    Route::get('/{slug?}', $controller . '@getPageRoutes');
+    Route::get('/{slug?}', $controller . '@getPageRoutes')->middleware('web');;
 }
