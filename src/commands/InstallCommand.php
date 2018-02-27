@@ -84,11 +84,13 @@ class InstallCommand extends Command
 
         $this->info('Updating Root package.json to include dependencies');
         $process = new Process('npm i foundation-sites motion-ui jquery --save-dev && npm uninstall bootstrap bootstrap-sass --save-dev');
+        $process->setTimeout(null); //Setting timeout to null to prevent installation from stopping at a certain point in time
         $process->setWorkingDirectory(base_path())->mustRun();
 
         $this->info('Dumping the autoloaded files and reloading all new files');
         $composer = $this->findComposer();
         $process = new Process($composer.' dump-autoload');
+        $process->setTimeout(null); //Setting timeout to null to prevent installation from stopping at a certain point in time
         $process->setWorkingDirectory(base_path())->mustRun();
 
 
