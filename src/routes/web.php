@@ -23,5 +23,5 @@ Route::group(['prefix' => 'posts', 'middleware' => ['web']], function () use ($c
  *   (it takes care of this route for us)
  */
 if (!class_exists('Pvtl\VoyagerPageBlocks\PageBlocksServiceProvider')) {
-    Route::get('/{slug?}', $controller . '@getPageRoutes')->middleware('web');;
+    Route::get('/{slug?}', $controller . '@getPageRoutes')->middleware('web');
 }
