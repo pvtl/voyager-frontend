@@ -1,10 +1,12 @@
 <?php
 namespace Pvtl\VoyagerFrontend;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Pvtl\VoyagerFrontend\Commands\VoyagerFrontendCommand;
+use Pvtl\VoyagerFrontend\Http\Middleware\VoyagerBreadcrumbs;
 
 class VoyagerFrontendServiceProvider extends ServiceProvider
 {
@@ -13,11 +15,11 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Router $router)
     {
         // Pull default web routes
         $this->loadRoutesFrom(base_path('/routes/web.php'));
-        
+
         // Then add our Pages and Posts Routes
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
 
@@ -39,6 +41,11 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         //  - @include('voyager-frontend::partials.meta') OR
         //  - view('voyager-frontend::modules/posts/post');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyager-frontend');
+
+        // Middleware (hacky override to get a globally registered Middleware)
+        $this->app->singleton('Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode', function ($app) {
+           return new VoyagerBreadcrumbs($app);
+        });
 
         if ($this->app->runningInConsole()) {
             $this->commands([
