@@ -16,7 +16,7 @@
     <hr />
 
     <ul class="menu social-icons align-center">
-        @include('voyager-frontend::partials.social')
+        {{ menu('social', 'voyager-frontend::partials.social') }}
     </ul>
 </div>
 

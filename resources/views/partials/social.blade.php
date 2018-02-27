@@ -1,5 +1,7 @@
-<li><a href="#"><i class="fab fa-facebook-square fa-2x"></i></a></li>
-<li><a href="#"><i class="fab fa-instagram fa-2x"></i></a></li>
-<li><a href="#"><i class="fab fa-twitter-square fa-2x"></i></a></li>
-<li><a href="#"><i class="fab fa-linkedin fa-2x"></i></a></li>
-<li><a href="#"><i class="fab fa-google-plus-square fa-2x"></i></a></li>
+@foreach($items as $menu_item)
+    <li>
+        <a href="{{ $menu_item->link() }}">
+            <i class="fab {{ $menu_item->icon_class }} fa-2x"></i>
+        </a>
+    </li>
+@endforeach

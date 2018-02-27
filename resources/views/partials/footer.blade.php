@@ -16,7 +16,7 @@
                     <div class="cell medium-6 medium-offset-2 text-center medium-text-right">
                         <h6>Connect with us</h6>
                         <ul class="menu social-icons align-center">
-                            @include('voyager-frontend::partials.social')
+                            {{ menu('social', 'voyager-frontend::partials.social') }}
                         </ul>
                     </div> <!-- /.cell -->
                 </div> <!-- /.grid -->
@@ -38,8 +38,8 @@
         </footer>
     </div> <!-- /.off-canvas-content -->
 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="{{ url('/') }}/js/app.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </body>
 </html>
