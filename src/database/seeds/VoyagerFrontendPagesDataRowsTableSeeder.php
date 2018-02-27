@@ -20,7 +20,22 @@ class VoyagerFrontendPagesDataRowsTableSeeder extends Seeder
                 'meta_description' => 'This is the meta description',
                 'meta_keywords'    => 'keyword1, keyword2, keyword3',
                 'status'           => 'ACTIVE',
-                'template'         => 'home',
+            ])->save();
+        }
+
+        // Create an About Page
+        $page = $this->findPage('about');
+        if (!$page->exists) {
+            $page->fill([
+                'title'            => 'About',
+                'author_id'        => 0,
+                'excerpt'          => 'This is the excerpt for the Lorem Ipsum Page',
+                'body'             => '<p>This is the body of the lorem ipsum page</p>',
+                'image'            => 'posts/post2.jpg',
+                'slug'             => 'about',
+                'meta_description' => 'This is the meta description for about',
+                'meta_keywords'    => 'keyword1, keyword2, keyword3',
+                'status'           => 'ACTIVE',
             ])->save();
         }
     }
