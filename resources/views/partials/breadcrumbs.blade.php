@@ -1,9 +1,20 @@
 @if (Session::has('breadcrumbs'))
-    @foreach (Session::get('breadcrumbs') as $key => $crumb)
-        @if ($key > 0 && $key < count(Session::get('breadcrumbs')))
-            <span class="breadcrumb-separator">&nbsp;>&nbsp;</span>
-        @endif
+    <div class="grid-container">
+        <div class="vspace-1"></div>
 
-        <a class="breadcrumb" href="{{ $crumb['link'] }}">{{ ucwords($crumb['text']) }}</a>
-    @endforeach
+        <nav aria-label="You are here:" role="navigation">
+            <ul class="breadcrumbs">
+                @foreach (Session::get('breadcrumbs') as $key => $crumb)
+                    <li>
+                        <a class="breadcrumb" href="{{ $crumb['link'] }}">
+                            @if (($key + 1) === count(Session::get('breadcrumbs')))
+                                <span class="show-for-sr">Current: </span>
+                            @endif
+                            {{ ucwords($crumb['text']) }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </nav>
+    </div>
 @endif
