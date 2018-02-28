@@ -2,6 +2,12 @@
  * Foundation's Cards
  */
 .card {
+  transition: transform ease 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
   & > a {
     background: $primary-color;
     overflow: hidden;

@@ -54,8 +54,18 @@
     background-position: center;
     position: relative;
 
+    p, h1, h2, h3, h4, h5 {
+      color: #fff;
+    }
+
+    .button {
+      box-shadow: 0 5px 9px -3px rgba(0,0,0,0.2);
+      border: 1px solid rgba(0,0,0,0.2) !important;
+    }
+
     &.fade-background:before {
-      background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.7));
+      // background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.7));
+      background: linear-gradient(150deg, rgba(#53f, 0.8) 15%, rgba(#05d5ff, 0.75) 70%, rgba(#a6ffcb,0.6) 94%);;
       content: '';
       position: absolute;
       top: 0;
