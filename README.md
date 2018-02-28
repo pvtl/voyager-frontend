@@ -1,10 +1,14 @@
 # Voyager Frontend
 
+![Voyager Frontend Screenshot](/readme-intro.jpg)
+
 __The Missing Frontend for The Missing Laravel Admin.__
 
 This [Laravel](https://laravel.com/) package adds frontend views, routes and assets to a [Voyager](https://laravelvoyager.com/) project.
 
 It comes with a basic structure for frontend layouts (eg. header, footer, etc) and theme assets using the [Foundation](https://foundation.zurb.com) framework.
+
+Built by [Pivotal Agency](https://pivotal.agency/).
 
 ---
 
@@ -27,7 +31,7 @@ composer require pvtl/voyager-frontend
 composer dump-autoload && php artisan voyager-frontend:install
 
 # 3. Build the front-end theme assets
-npm install && npm run dev
+npm run dev
 ```
 
 _Any issues? See [the troubleshooting section](#toubleshooting) below._
