@@ -3,6 +3,8 @@
 
 <main class="main-content">
     <div class="grid-container">
+        @include('voyager-frontend::partials.breadcrumbs')
+
         <div class="grid-x grid-padding-x grid-padding-y">
             <div class="cell small-12 medium-9">
                 @yield('content')
