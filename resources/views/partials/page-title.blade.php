@@ -7,4 +7,3 @@
     </div> <!-- /.grid-container -->
 </div> <!-- /.page-title -->
 
-@include('voyager-frontend::partials.breadcrumbs')
