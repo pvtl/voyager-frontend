@@ -42,11 +42,6 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         //  - view('voyager-frontend::modules/posts/post');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyager-frontend');
 
-        // Middleware (hacky override to get a globally registered Middleware)
-        $this->app->singleton('Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode', function ($app) {
-           return new VoyagerBreadcrumbs($app);
-        });
-
         if ($this->app->runningInConsole()) {
             $this->commands([
                 commands\InstallCommand::class
