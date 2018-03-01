@@ -1,12 +1,8 @@
 <?php
 namespace Pvtl\VoyagerFrontend;
 
-use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
-use Pvtl\VoyagerFrontend\Commands\VoyagerFrontendCommand;
-use Pvtl\VoyagerFrontend\Http\Middleware\VoyagerBreadcrumbs;
 
 class VoyagerFrontendServiceProvider extends ServiceProvider
 {
@@ -15,7 +11,7 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router)
+    public function boot()
     {
         // Pull default web routes
         $this->loadRoutesFrom(base_path('/routes/web.php'));
