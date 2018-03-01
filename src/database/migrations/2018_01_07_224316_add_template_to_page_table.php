@@ -13,9 +13,9 @@ class AddTemplateToPageTable extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->text('template')->nullable();
-        });
+        // Schema::table('pages', function (Blueprint $table) {
+        //     $table->text('template')->nullable();
+        // });
     }
 
     /**
@@ -25,8 +25,8 @@ class AddTemplateToPageTable extends Migration
      */
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->dropColumn('template');
-        });
+        // Schema::table('pages', function (Blueprint $table) {
+        //     $table->dropColumn('template');
+        // });
     }
 }
