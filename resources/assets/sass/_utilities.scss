@@ -23,3 +23,22 @@
 .background-color-mediumgray { background-color: $medium-gray }
 .background-color-primary { background-color: $primary-color }
 .background-color-secondary { background-color: $secondary-color }
+
+// Avatar
+.avatar {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    display: inline-block;
+
+    img {
+        display: block;
+        margin: auto;
+        height: auto;
+        max-height: 100%;
+        width: auto;
+        max-width: none;
+        object-fit: cover;
+    }
+}
