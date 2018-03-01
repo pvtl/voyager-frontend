@@ -1,10 +1,9 @@
 @include('voyager-frontend::partials.meta')
 @include('voyager-frontend::partials.header')
+@include('voyager-frontend::partials.breadcrumbs')
 
 <main class="main-content">
     <div class="grid-container">
-        @include('voyager-frontend::partials.breadcrumbs')
-
         <div class="grid-x grid-padding-x grid-padding-y">
             <div class="cell small-12 medium-9">
                 @yield('content')
