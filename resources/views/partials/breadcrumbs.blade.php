@@ -1,23 +1,4 @@
-@php
-    $httpPath = Request::segments();
-
-    $breadcrumbs = array_map(function ($key, $crumb) use ($httpPath) {
-        $crumbPath = join('/', array_slice($httpPath, 0, $key + 1));
-        $crumbLink = env('APP_URL') . '/' . $crumbPath;
-
-        return [
-            'link' => $crumbLink,
-            'text' => str_replace('-', ' ', $crumb),
-        ];
-    }, array_keys($httpPath), $httpPath);
-
-    array_unshift($breadcrumbs, [
-        'link' => '/',
-        'text' => 'Home',
-    ]);
-@endphp
-
-@if (count($breadcrumbs) > 1)
+@if (isset($breadcrumbs) && count($breadcrumbs) > 1)
     <div class="grid-container">
         <div class="vspace-1"></div>
 
