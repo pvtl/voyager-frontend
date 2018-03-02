@@ -4,19 +4,36 @@
 
 // Remove the focus element
 *, *:focus {
-  outline: none !important; 
+  outline: none !important;
 }
 
-// Increase default y-padding
-.grid-padding-y {
-  > .cell {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+// Page Fade-In/Out effect
+body,
+.fadeIn {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+    animation-delay: 0.75s;
+    animation-fill-mode: forwards;
+}
 
-    @include breakpoint(medium) {
-      padding-top: 3rem;
-      padding-bottom: 3rem;
-    }
+.fadeOut {
+    animation-name: fadeOut;
+    animation-duration: 0.2s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+}
 
-  }
+.no-cssanimations {
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }

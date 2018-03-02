@@ -7,9 +7,10 @@ window._ = require('lodash');
  */
 
 try {
+    require('./vendor/modernizr.min');
     window.$ = window.jQuery = require('jquery');
     require('foundation-sites/dist/js/foundation');
-    $(document).foundation();
+    window.sr = require('scrollreveal/dist/scrollreveal.min')();
 } catch (e) { }
 
 /**
@@ -19,7 +20,6 @@ try {
  */
 
 window.axios = require('axios');
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**

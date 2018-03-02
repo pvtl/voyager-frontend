@@ -1,0 +1,15 @@
+/*
+ * All blocks
+ */
+.page-block {
+    &.page-block-space-top {
+        padding-top: 2rem;
+    }
+    &.page-block-space-bottom {
+        padding-bottom: 2rem;
+    }
+    &.page-block-space-both {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}

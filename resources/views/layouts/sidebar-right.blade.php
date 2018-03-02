@@ -4,7 +4,8 @@
 
 <main class="main-content">
     <div class="grid-container">
-        <div class="grid-x grid-padding-x grid-padding-y">
+        <div class="grid-x grid-padding-x">
+            <div class="vspace-2"></div>
             <div class="cell small-12 medium-9">
                 @yield('content')
             </div> <!-- /.cell -->
@@ -29,6 +30,8 @@
                 </div> <!-- /.card -->
             </div> <!-- /.cell -->
         </div> <!-- /.grid -->
+
+        <div class="vspace-2"></div>
     </div> <!-- /.container -->
 </main>
 

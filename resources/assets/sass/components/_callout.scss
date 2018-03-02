@@ -3,46 +3,48 @@
  */
 
 .callout {
+  margin-bottom: 0;
+
   // Sizes
   &.callout-size-0 {
     padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
 
     @include breakpoint(medium) {
       padding-top: 2rem;
-      padding-bottom: 2rem;
+      padding-bottom: 1.5rem;
     }
   }
   &.callout-size-1 {
     padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
 
     @include breakpoint(medium) {
       padding-top: 5rem;
-      padding-bottom: 5rem;
+      padding-bottom: 4.5rem;
     }
   }
   &.callout-size-2 {
     padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 4.5rem;
 
     @include breakpoint(medium) {
       padding-top: 10rem;
-      padding-bottom: 10rem;
+      padding-bottom: 9.5rem;
     }
   }
   &.callout-size-3 {
     padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-bottom: 6.5rem;
 
     @include breakpoint(medium) {
       padding-top: 12rem;
-      padding-bottom: 12rem;
+      padding-bottom: 11.5rem;
     }
 
      @include breakpoint(large) {
          padding-top: 15rem;
-         padding-bottom: 15rem;
+         padding-bottom: 14.5rem;
      }
 
   }
@@ -84,8 +86,8 @@
 }
 
 .cell {
-    & > .background-image,
-    & > .background-image:before {
+    & .background-image,
+    & .background-image:before {
         border-radius: $callout-radius;
     }
 }
