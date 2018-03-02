@@ -9,18 +9,6 @@ use Illuminate\Routing\Controller as BaseController;
 
 class VoyagerFrontendController extends BaseController
 {
-    protected $breadcrumbs;
-
-    /**
-     * VoyagerFrontendController constructor.
-     *
-     * @param Request $request
-     */
-    public function __construct(Request $request)
-    {
-        $this->breadcrumbs = $this->getBreadcrumbs($request);
-    }
-
     /**
      * Registers views to be used as 'voyager-frontend'
      *
@@ -43,7 +31,6 @@ class VoyagerFrontendController extends BaseController
 
         return view('voyager-frontend::modules/posts/posts', [
             'posts' => $posts,
-            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 
@@ -61,7 +48,6 @@ class VoyagerFrontendController extends BaseController
 
         return view('voyager-frontend::modules/posts/post', [
             'post' => $post,
-            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 
@@ -79,7 +65,6 @@ class VoyagerFrontendController extends BaseController
 
         return view('voyager-frontend::modules/pages/default', [
             'page' => $page,
-            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 
@@ -90,7 +75,7 @@ class VoyagerFrontendController extends BaseController
      *
      * @return array
      */
-    public function getBreadcrumbs(Request $request)
+    public static function getBreadcrumbs(Request $request)
     {
         $httpPath = $request->segments();
 

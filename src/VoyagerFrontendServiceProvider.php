@@ -3,15 +3,16 @@ namespace Pvtl\VoyagerFrontend;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Request;
+use Pvtl\VoyagerFrontend\Http\Controllers\VoyagerFrontendController;
 
 class VoyagerFrontendServiceProvider extends ServiceProvider
 {
+
     /**
-     * Bootstrap the application services.
-     *
-     * @return void
+     * @param Request $request
      */
-    public function boot()
+    public function boot(Request $request)
     {
         // Pull default web routes
         $this->loadRoutesFrom(base_path('/routes/web.php'));
@@ -26,8 +27,9 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         ]);
 
         // Provide user data to all views
-        View::composer('*', function($view) {
+        View::composer('*', function($view) use ($request) {
             $view->with('currentUser', \Auth::user());
+            $view->with('breadcrumbs', VoyagerFrontendController::getBreadcrumbs($request));
         });
 
         // Migrations
