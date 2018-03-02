@@ -1,0 +1,34 @@
+.image-row-block {
+    h2 {
+        display: inline;
+        position: relative;
+        padding: 0px;
+        margin: 0px;
+        overflow: visible;
+    }
+
+    h2::before, h2::after {
+        content: '';
+        position: absolute;
+        z-index: 5;
+        top: 50%;
+        display: block;
+        height: 2px;
+        background: $light-gray;
+        margin-top: -1px;
+        vertical-align: middle;
+        width: 5000px;
+    }
+
+    h2::before {
+        right: 100%;
+        margin-right: 40px;
+        margin-left: 0px;
+    }
+
+    h2::after {
+        left: 100%;
+        margin-left: 40px;
+        margin-right: 0px;
+    }
+}
