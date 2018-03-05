@@ -19,7 +19,6 @@ class VoyagerFrontendController extends BaseController
         return view('voyager-frontend::voyager-frontend');
     }
 
-
     /**
      * Route: Gets all posts and passes data to a view
      *
@@ -34,6 +33,19 @@ class VoyagerFrontendController extends BaseController
         ]);
     }
 
+    /**
+     * Gets recent posts and passes data to a view
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function recentBlogPosts($numPosts = 3)
+    {
+        $posts = Post::limit($numPosts)->orderBy('created_at', 'desc')->get();
+
+        return view('voyager-frontend::modules/posts/recent-posts', [
+            'recentPosts' => $posts,
+        ]);
+    }
 
     /**
      * Route: Gets a single posts and passes data to a view
