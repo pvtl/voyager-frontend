@@ -1,7 +1,6 @@
 @include('voyager-frontend::partials.meta')
 @include('voyager-frontend::partials.header')
 @include('voyager-frontend::partials.page-title')
-@include('voyager-frontend::partials.breadcrumbs')
 
 <main class="main-content">
     <div class="grid-container">
