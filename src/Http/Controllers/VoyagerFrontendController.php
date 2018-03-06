@@ -2,13 +2,15 @@
 
 namespace Pvtl\VoyagerFrontend\Http\Controllers;
 
-use Illuminate\Http\Request;
 use TCG\Voyager\Models\Page;
 use TCG\Voyager\Models\Post;
+use Pvtl\VoyagerFrontend\Traits\Breadcrumbs;
 use Illuminate\Routing\Controller as BaseController;
 
 class VoyagerFrontendController extends BaseController
 {
+    use Breadcrumbs;
+
     /**
      * Registers views to be used as 'voyager-frontend'
      *
@@ -63,7 +65,6 @@ class VoyagerFrontendController extends BaseController
         ]);
     }
 
-
     /**
      * Route: Gets a single page and passes data to a view
      *
@@ -78,34 +79,5 @@ class VoyagerFrontendController extends BaseController
         return view('voyager-frontend::modules/pages/default', [
             'page' => $page,
         ]);
-    }
-
-    /**
-     * Defines an array of breadcrumbs from the Request
-     *
-     * @param Request $request
-     *
-     * @return array
-     */
-    public static function getBreadcrumbs(Request $request)
-    {
-        $httpPath = $request->segments();
-
-        $breadcrumbs = array_map(function ($key, $crumb) use ($httpPath) {
-            $crumbPath = join('/', array_slice($httpPath, 0, $key + 1));
-            $crumbLink = env('APP_URL') . '/' . $crumbPath;
-
-            return [
-                'link' => $crumbLink,
-                'text' => str_replace('-', ' ', $crumb),
-            ];
-        }, array_keys($httpPath), $httpPath);
-
-        array_unshift($breadcrumbs, [
-            'link' => '/',
-            'text' => 'Home',
-        ]);
-
-        return $breadcrumbs;
     }
 }
