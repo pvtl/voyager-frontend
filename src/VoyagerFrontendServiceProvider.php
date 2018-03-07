@@ -4,7 +4,7 @@ namespace Pvtl\VoyagerFrontend;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Request;
-use Pvtl\VoyagerFrontend\Http\Controllers\VoyagerFrontendController;
+use Pvtl\VoyagerFrontend\Http\Controllers\PageController;
 
 class VoyagerFrontendServiceProvider extends ServiceProvider
 {
@@ -29,7 +29,7 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         // Provide user data to all views
         View::composer('*', function($view) use ($request) {
             $view->with('currentUser', \Auth::user());
-            $view->with('breadcrumbs', VoyagerFrontendController::getBreadcrumbs($request));
+            $view->with('breadcrumbs', PageController::getBreadcrumbs($request));
         });
 
         // Migrations
