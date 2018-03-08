@@ -2,6 +2,7 @@
 
 $postController = 'Pvtl\VoyagerFrontend\Http\Controllers\PostController';
 $pageController = 'Pvtl\VoyagerFrontend\Http\Controllers\PageController';
+$searchController = 'Pvtl\VoyagerFrontend\Http\Controllers\SearchController';
 
 /**
  * Authentication
@@ -14,8 +15,8 @@ Route::group(['middleware' => ['web'], 'namespace'=>'App\Http\Controllers'], fun
  * Posts module
  */
 Route::group(['prefix' => 'posts', 'middleware' => ['web']], function () use ($postController) {
-    Route::get('/', $postController . '@getPosts');
-    Route::get('/{slug}', $postController . '@getPost');
+    Route::get('/', "$postController @getPosts");
+    Route::get('/{slug}', "$postController@getPost");
 });
 
 /**
@@ -24,5 +25,10 @@ Route::group(['prefix' => 'posts', 'middleware' => ['web']], function () use ($p
  *   (it takes care of this route for us)
  */
 if (!class_exists('Pvtl\VoyagerPageBlocks\PageBlocksServiceProvider')) {
-    Route::get('/{slug?}', $pageController . '@getPage')->middleware('web');
+    Route::get('/{slug?}', "$pageController@getPage")->middleware('web');
 }
+
+/**
+ * Let's get some search going
+ */
+Route::get('/search', "$searchController@index");

@@ -38,6 +38,22 @@ class VoyagerFrontendPagesDataRowsTableSeeder extends Seeder
                 'status'           => 'ACTIVE',
             ])->save();
         }
+
+        // Create a Search Page
+        $page = $this->findPage('search');
+        if (!$page->exists) {
+            $page->fill([
+                'title'            => 'Search',
+                'author_id'        => 0,
+                'excerpt'          => 'This is the excerpt for the Lorem Ipsum Page',
+                'body'             => '<p><br /></p><h3 class="text-center">This is the body of the lorem ipsum page</h3><p class="text-center">This is the body of the lorem ipsum page</p><p><br /></p>',
+                'image'            => '',
+                'slug'             => 'search',
+                'meta_description' => 'This is the meta description for search',
+                'meta_keywords'    => 'keyword1, keyword2, keyword3',
+                'status'           => 'ACTIVE',
+            ])->save();
+        }
     }
 
     protected function findPage($slug)
