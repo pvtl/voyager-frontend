@@ -7,30 +7,35 @@
 		@include('voyager-frontend::partials.page-title')
 
 		<div class="vspace-2"></div>
-
-		<div class="grid-container">
-				<div class="cell small-12">
+		@if ($featuredPost)
+				<div class="grid-container">
 						<div class="grid-x grid-padding-x">
-								@foreach($posts as $post)
-										<div class="cell small-12 medium-4">
-												<div class="card">
-														<a href="/posts/{{ $post->slug }}">
-																<img src="{{ Voyager::image( $post->image ) }}" style="width:100%">
-														</a>
-														<div class="card-section">
-																<span class="label secondary">
-																		{{ $post->created_at->format('M. jS Y') }}
-																</span>
-																<a href="/posts/{{ $post->slug }}">
-																		<h4>{{ $post->title }}</h4>
-																</a>
-														</div> <!-- /.card-section -->
-												</div> <!-- /.card -->
-										</div> <!-- /.cell -->
-								@endforeach
-						</div> <!-- /.grid -->
-				</div> <!-- /.cell -->
-		</div> <!-- /.grid-container -->
+								<div class="cell small-12">
+										<div class="block-image-text">
+												@if (!empty($featuredPost->image))
+														<a href="/posts/{{ $featuredPost->slug }}" class="block-image-text-img">
+																<img src="{{ Voyager::image( $featuredPost->image ) }}">
+														</a> <!-- /.block-image-text-img -->
+												@endif
 
-		<div class="vspace-1"></div>
+												<div class="block-image-text-content">
+														@if (!empty($featuredPost->title))
+																<h4>{!! $featuredPost->title or '' !!}</h4>
+														@endif
+														
+														@if (!empty($featuredPost->excerpt))
+																<p>{!! $featuredPost->excerpt or '' !!}</p>
+														@endif
+
+														<a href="/posts/{{ $featuredPost->slug }}" class="button round">
+																Read Post
+														</a>
+												</div> <!-- /.block-image-text-content -->
+										</div> <!-- /.block-image-text -->
+								</div> <!-- /.cell -->
+						</div> <!-- /.grid-x -->
+				</div> <!-- /.grid-container -->
+		@endif
+
+		@include('voyager-frontend::modules.posts.posts-grid')
 @endsection

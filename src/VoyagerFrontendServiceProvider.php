@@ -1,16 +1,21 @@
 <?php
 namespace Pvtl\VoyagerFrontend;
 
+use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Http\Request;
 use Pvtl\VoyagerFrontend\Http\Controllers\PageController;
 
 class VoyagerFrontendServiceProvider extends ServiceProvider
 {
 
     /**
+     * Bootstrap the application services
+     *
      * @param Request $request
+     *
+     * @return void
      */
     public function boot(Request $request)
     {
@@ -27,7 +32,7 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         ]);
 
         // Provide user data to all views
-        View::composer('*', function($view) use ($request) {
+        View::composer('*', function ($view) use ($request) {
             $view->with('currentUser', \Auth::user());
             $view->with('breadcrumbs', PageController::getBreadcrumbs($request));
         });
@@ -39,6 +44,9 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         //  - @include('voyager-frontend::partials.meta') OR
         //  - view('voyager-frontend::modules/posts/post');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyager-frontend');
+
+        // Use our own paginator view
+        Paginator::defaultView('voyager-frontend::partials.pagination');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -54,7 +62,7 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom( __DIR__.'/config/voyager-frontend.php', 'voyager-frontend');
+        $this->mergeConfigFrom(__DIR__.'/config/voyager-frontend.php', 'voyager-frontend');
 
         $this->app->alias(VoyagerFrontend::class, 'voyager-frontend');
     }

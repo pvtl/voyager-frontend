@@ -14,5 +14,6 @@ class VoyagerFrontendDatabaseSeeder extends Seeder
     {
         $this->call('VoyagerFrontendPagesDataRowsTableSeeder');
         $this->call('VoyagerFrontendMenuDataRowsTableSeeder');
+        $this->call('VoyagerFrontendPostsDataRowsTableSeeder');
     }
 }

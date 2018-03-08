@@ -1,6 +1,6 @@
 <?php
 
-$postsController = 'Pvtl\VoyagerFrontend\Http\Controllers\PostController';
+$postController = 'Pvtl\VoyagerFrontend\Http\Controllers\PostController';
 $pageController = 'Pvtl\VoyagerFrontend\Http\Controllers\PageController';
 
 /**
@@ -13,9 +13,9 @@ Route::group(['middleware' => ['web'], 'namespace'=>'App\Http\Controllers'], fun
 /**
  * Posts module
  */
-Route::group(['prefix' => 'posts', 'middleware' => ['web']], function () use ($postsController) {
-    Route::get('/', $postsController . '@getPosts');
-    Route::get('/{slug}', $postsController . '@getPost');
+Route::group(['prefix' => 'posts', 'middleware' => ['web']], function () use ($postController) {
+    Route::get('/', $postController . '@getPosts');
+    Route::get('/{slug}', $postController . '@getPost');
 });
 
 /**

@@ -35,11 +35,46 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
         $menu = Menu::where('name', 'social')->firstOrFail();
 
         // Fill out that menu
-        $this->createMenuItem($menu->id, 'Facebook', 'https://www.facebook.com/wearepvtl', 1, '_blank', 'fa-facebook-square');
-        $this->createMenuItem($menu->id, 'Twitter', 'https://twitter.com/wearepvtl', 2, '_blank', 'fa-twitter-square');
-        $this->createMenuItem($menu->id, 'Instagram', 'https://www.instagram.com/wearepvtl/', 3, '_blank', 'fa-instagram');
-        $this->createMenuItem($menu->id, 'Google+', 'https://plus.google.com/100970850483584616344', 4, '_blank', 'fa-google-plus-square');
-        $this->createMenuItem($menu->id, 'LinkedIn', 'https://www.linkedin.com/company/pivotal-agency', 5, '_blank', 'fa-linkedin');
+        $this->createMenuItem(
+            $menu->id,
+            'Facebook',
+            'https://www.facebook.com/wearepvtl',
+            1,
+            '_blank',
+            'fa-facebook-square',
+        );
+        $this->createMenuItem(
+            $menu->id,
+            'Twitter',
+            'https://twitter.com/wearepvtl',
+            2,
+            '_blank',
+            'fa-twitter-square',
+        );
+        $this->createMenuItem(
+            $menu->id,
+            'Instagram',
+            'https://www.instagram.com/wearepvtl/',
+            3,
+            '_blank',
+            'fa-instagram',
+        );
+        $this->createMenuItem(
+            $menu->id,
+            'Google+',
+            'https://plus.google.com/100970850483584616344',
+            4,
+            '_blank',
+            'fa-google-plus-square',
+        );
+        $this->createMenuItem(
+            $menu->id,
+            'LinkedIn',
+            'https://www.linkedin.com/company/pivotal-agency',
+            5,
+            '_blank',
+            'fa-linkedin',
+        );
     }
 
     protected function createMenuItem($menuId, $title, $url, $order, $target = '_self', $icon = '')
