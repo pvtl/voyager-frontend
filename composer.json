@@ -16,8 +16,12 @@
     ],
     "scripts": {
         "test": "phpunit",
-        "post-install-cmd": [
+        "post-package-install": [
+            "php artisan vendor:publish --provider=\"Laravel\\Scout\\ScoutServiceProvider\"",
             "php artisan voyager-frontend:install"
+        ],
+        "post-package-update": [
+            "php artisan vendor:publish --provider=\"Laravel\\Scout\\ScoutServiceProvider\""
         ]
     },
     "minimum-stability": "stable",
@@ -25,7 +29,9 @@
         "php": ">=7.0",
         "illuminate/support": "^5.4.0",
         "laravel/framework": "~5.4.36|~5.5.0",
-        "tcg/voyager": "^1.0"
+        "tcg/voyager": "^1.0",
+        "laravel/scout": "^4.0",
+        "teamtnt/laravel-scout-tntsearch-driver": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",

@@ -64,6 +64,9 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/config/voyager-frontend.php', 'voyager-frontend');
 
+        // Merge our Scout config over
+        $this->mergeConfigFrom(__DIR__.'/config/scout.php', 'scout');
+
         $this->app->alias(VoyagerFrontend::class, 'voyager-frontend');
     }
 }
