@@ -17,11 +17,10 @@
     "scripts": {
         "test": "phpunit",
         "post-package-install": [
-            "php artisan vendor:publish --provider=\"Laravel\\Scout\\ScoutServiceProvider\"",
             "php artisan voyager-frontend:install"
         ],
-        "post-package-update": [
-            "php artisan vendor:publish --provider=\"Laravel\\Scout\\ScoutServiceProvider\""
+        "post-autoload-dump": [
+            "php artisan vendor:publish --provider=Laravel\\Scout\\ScoutServiceProvider"
         ]
     },
     "minimum-stability": "stable",
