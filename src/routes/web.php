@@ -7,7 +7,7 @@ $searchController = 'Pvtl\VoyagerFrontend\Http\Controllers\SearchController';
 /**
  * Authentication
  */
-Route::group(['middleware' => ['web'], 'namespace'=>'App\Http\Controllers'], function () {
+Route::group(['middleware' => ['web'], 'namespace' => 'App\Http\Controllers'], function () {
     Auth::routes();
 });
 
@@ -15,7 +15,7 @@ Route::group(['middleware' => ['web'], 'namespace'=>'App\Http\Controllers'], fun
  * Posts module
  */
 Route::group(['prefix' => 'posts', 'middleware' => ['web']], function () use ($postController) {
-    Route::get('/', "$postController @getPosts");
+    Route::get('/', "$postController@getPosts");
     Route::get('/{slug}', "$postController@getPost");
 });
 

@@ -2,15 +2,12 @@
 
 namespace Pvtl\VoyagerFrontend\Http\Controllers;
 
-use TCG\Voyager\Models\Post;
-use Laravel\Scout\Searchable;
+use Pvtl\VoyagerFrontend\Post;
 use Illuminate\Support\Carbon;
 use Illuminate\Routing\Controller as BaseController;
 
 class PostController extends BaseController
 {
-    use Searchable;
-
     /**
      * Route: Gets all posts and passes data to a view
      *

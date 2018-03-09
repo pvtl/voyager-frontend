@@ -2,14 +2,13 @@
 
 namespace Pvtl\VoyagerFrontend\Http\Controllers;
 
-use TCG\Voyager\Models\Page;
-use Laravel\Scout\Searchable;
+use Pvtl\VoyagerFrontend\Page;
 use Pvtl\VoyagerFrontend\Traits\Breadcrumbs;
 use Illuminate\Routing\Controller as BaseController;
 
 class PageController extends BaseController
 {
-    use Breadcrumbs, Searchable;
+    use Breadcrumbs;
 
     /**
      * Route: Gets a single page and passes data to a view
