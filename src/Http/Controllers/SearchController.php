@@ -21,15 +21,25 @@ class SearchController extends BaseController
 
     public function index(Request $request)
     {
-        $searchString = $request->input('q');
+        $searchString = $request->input('search');
 
-        // perform Model::search('string')->get(); on multiple Models?
         $searchResults = array_map(function ($model) use ($searchString) {
-            $model::search($searchString)->paginate(10);
+            $result = $model::search($searchString)->take(5)->get();
+
+            $modelPath = explode('\\', strtolower($model) . 's');
+            $result->name = end($modelPath);
+
+            return $result;
         }, $this->searchableModels);
 
-        dd('here');
+        return view('voyager-frontend::modules.search.search', [
+            'resultCollections' => $searchResults,
+        ]);
+    }
 
-        // return search blade view
+    // need to write cron to import searchable models and store index
+    public function getSearchableModels()
+    {
+        return $this->searchableModels;
     }
 }
