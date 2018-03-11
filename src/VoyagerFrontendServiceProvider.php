@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Console\Scheduling\Schedule;
+use Pvtl\VoyagerFrontend\Commands\GenerateSitemap;
 use Pvtl\VoyagerFrontend\Http\Controllers\PageController;
 
 class VoyagerFrontendServiceProvider extends ServiceProvider
@@ -53,6 +55,13 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
                 commands\InstallCommand::class
             ]);
         }
+
+        // Schedule our commands
+        $this->app->booted(function () {
+            $sitemapCommand = $this->app->make(Schedule::class);
+            $sitemapCommand->command('sitemap:generate')->daily();
+        });
+
     }
 
     /**
@@ -66,6 +75,11 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
 
         // Merge our Scout config over
         $this->mergeConfigFrom(__DIR__.'/config/scout.php', 'scout');
+
+        // Register our commands
+        $this->commands([
+            GenerateSitemap::class,
+        ]);
 
         $this->app->alias(VoyagerFrontend::class, 'voyager-frontend');
     }
