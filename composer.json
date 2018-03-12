@@ -51,7 +51,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Pvtl\\VoyagerFrontend\\VoyagerFrontendServiceProvider"
+                "Pvtl\\VoyagerFrontend\\Providers\\VoyagerFrontendServiceProvider"
             ],
             "aliases": {
                 "VoyagerFrontend": "Pvtl\\VoyagerFrontend\\Facade"

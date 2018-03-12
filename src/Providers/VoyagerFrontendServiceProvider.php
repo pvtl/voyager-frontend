@@ -1,11 +1,13 @@
 <?php
-namespace Pvtl\VoyagerFrontend;
+
+namespace Pvtl\VoyagerFrontend\Providers;
 
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Console\Scheduling\Schedule;
+use Pvtl\VoyagerFrontend\Commands;
 use Pvtl\VoyagerFrontend\Commands\GenerateSitemap;
 use Pvtl\VoyagerFrontend\Http\Controllers\PageController;
 
@@ -25,12 +27,12 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(base_path('/routes/web.php'));
 
         // Then add our Pages and Posts Routes
-        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         // Defines which files to copy the root project
         $this->publishes([
-            __DIR__.'/../resources/assets' => base_path('resources/assets'),
-            __DIR__.'/database/seeds' => base_path('database/seeds'),
+            __DIR__ . '/../../resources/assets' => base_path('resources/assets'),
+            __DIR__ . '/../database/seeds' => base_path('database/seeds'),
         ]);
 
         // Provide user data to all views
@@ -40,12 +42,12 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         });
 
         // Migrations
-        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         // Front-end views can be used like:
         //  - @include('voyager-frontend::partials.meta') OR
         //  - view('voyager-frontend::modules/posts/post');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyager-frontend');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'voyager-frontend');
 
         // Use our own paginator view
         Paginator::defaultView('voyager-frontend::partials.pagination');
@@ -71,10 +73,10 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/config/voyager-frontend.php', 'voyager-frontend');
+        $this->mergeConfigFrom(__DIR__ . '/../config/voyager-frontend.php', 'voyager-frontend');
 
         // Merge our Scout config over
-        $this->mergeConfigFrom(__DIR__.'/config/scout.php', 'scout');
+        $this->mergeConfigFrom(__DIR__ . '/../config/scout.php', 'scout');
 
         // Register our commands
         $this->commands([
