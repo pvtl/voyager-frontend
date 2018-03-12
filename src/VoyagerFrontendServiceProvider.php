@@ -52,7 +52,7 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                commands\InstallCommand::class
+                Commands\InstallCommand::class
             ]);
         }
 
