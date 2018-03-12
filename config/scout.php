@@ -20,5 +20,10 @@ return [
         ],
         'asYouType' => false,
         'searchBoolean' => env('TNTSEARCH_BOOLEAN', false),
+
+        'searchableModels' => [
+            '\Pvtl\VoyagerFrontend\Page',
+            '\Pvtl\VoyagerFrontend\Post',
+        ],
     ],
 ];

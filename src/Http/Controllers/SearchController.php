@@ -2,8 +2,6 @@
 
 namespace Pvtl\VoyagerFrontend\Http\Controllers;
 
-use Pvtl\VoyagerFrontend\Page;
-use Pvtl\VoyagerFrontend\Post;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -13,15 +11,18 @@ class SearchController extends BaseController
 
     public function __construct()
     {
-        $this->searchableModels = [
-            Page::class,
-            Post::class,
-        ];
+        $this->searchableModels = self::getSearchableModels();
     }
 
     public function index(Request $request)
     {
         $searchString = $request->input('search');
+
+        if (empty($this->searchableModels) || is_null($this->searchableModels)) {
+            return view('voyager-frontend::modules.search.search', [
+                'resultCollections' => [],
+            ]);
+        }
 
         $searchResults = array_map(function ($model) use ($searchString) {
             $result = $model::search($searchString)->take(5)->get();
@@ -37,9 +38,12 @@ class SearchController extends BaseController
         ]);
     }
 
-    // need to write cron to import searchable models and store index
-    public function getSearchableModels()
+    /**
+     * Retrieves an array of searchable models from our config
+     * @return array
+     */
+    public static function getSearchableModels()
     {
-        return $this->searchableModels;
+        return config('scout.tntsearch.searchableModels');
     }
 }

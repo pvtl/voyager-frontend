@@ -11,7 +11,7 @@ class Page extends \TCG\Voyager\Models\Page
     public $asYouType = false;
 
     /**
-     * Get the indexable data array for the model.
+     * Get the indexed data array for the model.
      *
      * @return array
      */

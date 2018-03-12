@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Console\Scheduling\Schedule;
 use Pvtl\VoyagerFrontend\Commands;
-use Pvtl\VoyagerFrontend\Commands\GenerateSitemap;
 use Pvtl\VoyagerFrontend\Http\Controllers\PageController;
 
 class VoyagerFrontendServiceProvider extends ServiceProvider
@@ -48,7 +47,8 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
 
         // Register our commands
         $this->commands([
-            GenerateSitemap::class,
+            Commands\GenerateSitemap::class,
+            Commands\GenerateSearchIndices::class,
         ]);
 
         $this->app->alias(VoyagerFrontend::class, 'voyager-frontend');
@@ -122,7 +122,9 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         // Schedule our commands
         $this->app->booted(function () {
             $sitemapCommand = $this->app->make(Schedule::class);
+
             $sitemapCommand->command('sitemap:generate')->daily();
+            $sitemapCommand->command('search-indices:generate')->daily();
         });
     }
 }
