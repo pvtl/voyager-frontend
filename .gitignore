@@ -1,7 +1,6 @@
 /vendor
 /node_modules
 !.gitignore
-/vendor
 /.idea
 /.vagrant
 npm-debug.log
