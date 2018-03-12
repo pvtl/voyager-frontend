@@ -53,9 +53,6 @@
         "test": "phpunit",
         "post-package-install": [
             "php artisan voyager-frontend:install"
-        ],
-        "post-autoload-dump": [
-            "php artisan vendor:publish --provider=Laravel\\Scout\\ScoutServiceProvider"
         ]
     }
 }
