@@ -41,7 +41,7 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
             'https://www.facebook.com/wearepvtl',
             1,
             '_blank',
-            'fa-facebook-square',
+            'fa-facebook-square'
         );
         $this->createMenuItem(
             $menu->id,
@@ -49,7 +49,7 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
             'https://twitter.com/wearepvtl',
             2,
             '_blank',
-            'fa-twitter-square',
+            'fa-twitter-square'
         );
         $this->createMenuItem(
             $menu->id,
@@ -57,7 +57,7 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
             'https://www.instagram.com/wearepvtl/',
             3,
             '_blank',
-            'fa-instagram',
+            'fa-instagram'
         );
         $this->createMenuItem(
             $menu->id,
@@ -65,7 +65,7 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
             'https://plus.google.com/100970850483584616344',
             4,
             '_blank',
-            'fa-google-plus-square',
+            'fa-google-plus-square'
         );
         $this->createMenuItem(
             $menu->id,
@@ -73,7 +73,7 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
             'https://www.linkedin.com/company/pivotal-agency',
             5,
             '_blank',
-            'fa-linkedin',
+            'fa-linkedin'
         );
     }
 
