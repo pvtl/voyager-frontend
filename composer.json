@@ -53,6 +53,10 @@
         "test": "phpunit",
         "post-package-install": [
             "@php artisan voyager-frontend:install"
+        ],
+        "post-autoload-dump": [
+            "@php artisan vendor:publish --provider=Laravel\\Scout\\ScoutServiceProvider",
+            "@php artisan vendor:publish --provider=Spatie\\Sitemap\\SitemapServiceProvider --tag=config"
         ]
     }
 }
