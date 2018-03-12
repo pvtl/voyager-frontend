@@ -24,7 +24,7 @@ Route::group(['prefix' => 'posts', 'middleware' => ['web']], function () use ($p
  * - Don't include this route when the VoyagerPageBlocks package is installed
  *   (it takes care of this route for us)
  */
-if (!class_exists('Pvtl\VoyagerPageBlocks\PageBlocksServiceProvider')) {
+if (!class_exists('Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider')) {
     Route::get('/{slug?}', "$pageController@getPage")->middleware('web');
 }
 
