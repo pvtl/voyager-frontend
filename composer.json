@@ -14,15 +14,6 @@
             "email": "tech@pivotalagency.com.au"
         }
     ],
-    "scripts": {
-        "test": "phpunit",
-        "post-package-install": [
-            "php artisan voyager-frontend:install"
-        ],
-        "post-autoload-dump": [
-            "php artisan vendor:publish --provider=Laravel\\Scout\\ScoutServiceProvider"
-        ]
-    },
     "minimum-stability": "stable",
     "require": {
         "php": ">=7.0",
@@ -57,5 +48,14 @@
                 "VoyagerFrontend": "Pvtl\\VoyagerFrontend\\Facade"
             }
         }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "post-package-install": [
+            "php artisan voyager-frontend:install"
+        ],
+        "post-autoload-dump": [
+            "php artisan vendor:publish --provider=Laravel\\Scout\\ScoutServiceProvider"
+        ]
     }
 }
