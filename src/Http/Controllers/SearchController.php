@@ -39,11 +39,24 @@ class SearchController extends BaseController
     }
 
     /**
-     * Retrieves an array of searchable models from our config
+     * Filters our duplicates and retrieves an array of
+     * searchable models from our configuration file
      * @return array
      */
     public static function getSearchableModels()
     {
-        return config('scout.tntsearch.searchableModels');
+        $searchableModels = [];
+
+        foreach (config('scout.tntsearch.searchableModels') as $model) {
+            $modelName = substr($model, strrpos($model, '\\') + 1);
+
+            if (count(preg_grep("/$modelName/", $searchableModels)) > 0) {
+                continue;
+            }
+
+            $searchableModels[] = $model;
+        }
+
+        return $searchableModels;
     }
 }
