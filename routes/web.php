@@ -40,4 +40,4 @@ if (!class_exists('Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider'))
 /**
  * Let's get some search going
  */
-Route::post('/search', "$searchController@index");
+Route::get('/search', "$searchController@index");

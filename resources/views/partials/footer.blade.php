@@ -34,10 +34,9 @@
                         <p class="copyright text-center">&copy; {{ setting('site.title') }} @php echo date('Y'); @endphp. All rights reserved.</p>
 
                         <div class="small-12 medium-6 large-4">
-                            <form id="search-form" action="search" method="POST">
-                                {{ csrf_field() }}
+                            <form id="search-form" action="/search" method="GET">
                                 <div class="input-group">
-                                    <input class="input-group-field" name="search" type="search" placeholder="I'm looking for..."/>
+                                    <input class="input-group-field" name="search" type="search" value="{{ \Request::get('search') }}" placeholder="I'm looking for..."/>
                                     <div class="input-group-button">
                                         <input type="submit" class="button dark" value="Search">
                                     </div>
