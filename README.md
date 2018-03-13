@@ -73,6 +73,50 @@ And any changes made to `header.blade.php` reflect automatically on the site.
 
 ---
 
+## Search
+
+#### Generating Indices
+This module contains a scheduled job to regenerate indices which will run automatically once you setup jobs for Laravel. If you need to test and re-generate search indices you can manually run the command `php artisan search-indices:generate`.
+
+#### Configuring Search
+By default this module includes "searching" Pages and Posts, you can however extend and define your own "Searchable" Models to include in your search results by attaching the "Searchable" trait to your Model - [check out the Laravel Scout documentation](https://laravel.com/docs/5.5/scout).
+
+```php
+class Page extends Model
+{
+    use Searchable;
+
+    public $asYouType = false;
+
+    /**
+     * Get the indexed data array for the model.
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        // customise the searchable array
+        
+        return $array
+    }
+}
+```
+
+Then you'll be able to hook into the search config and _merge_ your "Searchable" Models in with the config key (preferably using a Servie Provider): `scout.tntsearch.searchableModels`.
+```php
+$this->mergeConfigFrom(self::PACKAGE_DIR . 'path/to/config/scout.php', 'scout.tntsearch.searchableModels');
+```
+
+Your configuration file should contain values similar to this modules scout.php configuration:
+```php
+<?php
+
+return [
+    '\My\Searchable\Models\Namespace',
+];
+```
+
 ## Testing
 
 You can test the Pvtl/Test package switching to the packages directory and running tests via composer scripts:
