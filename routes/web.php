@@ -1,5 +1,6 @@
 <?php
 
+$accountController = 'Pvtl\VoyagerFrontend\Http\Controllers\AccountController';
 $postController = 'Pvtl\VoyagerFrontend\Http\Controllers\PostController';
 $pageController = 'Pvtl\VoyagerFrontend\Http\Controllers\PageController';
 $searchController = 'Pvtl\VoyagerFrontend\Http\Controllers\SearchController';
@@ -7,9 +8,17 @@ $searchController = 'Pvtl\VoyagerFrontend\Http\Controllers\SearchController';
 /**
  * Authentication
  */
-Route::group(['middleware' => ['web'], 'namespace' => 'App\Http\Controllers'], function () {
-    Auth::routes();
+Route::group(['middleware' => ['web']], function () use ($accountController) {
+    Route::group(['namespace' => 'App\Http\Controllers'], function () {
+        Auth::routes();
+    });
+
+    Route::group(['middleware' => 'auth', 'as' => 'voyager-frontend.account',], function () use ($accountController) {
+        Route::get('/account', "$accountController@index");
+        Route::post('/account', "$accountController@updateAccount");
+    });
 });
+
 
 /**
  * Posts module

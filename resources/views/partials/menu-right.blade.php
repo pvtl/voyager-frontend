@@ -9,6 +9,9 @@
         <a href="#">My Account</a>
         <ul class="menu">
             <li>
+                <a href="{{ route('voyager-frontend.account') }}">
+                    Update Account
+                </a>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     Logout
                 </a>
