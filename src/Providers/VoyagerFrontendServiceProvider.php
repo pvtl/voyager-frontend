@@ -5,8 +5,11 @@ namespace Pvtl\VoyagerFrontend\Providers;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Console\Scheduling\Schedule;
+use Laravel\Scout\Console\ImportCommand;
 use Pvtl\VoyagerFrontend\Commands;
 use Pvtl\VoyagerFrontend\Http\Controllers\PageController;
 
@@ -26,6 +29,7 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
      */
     public function boot(Request $request)
     {
+        $this->strapEvents();
         $this->strapRoutes();
         $this->strapPublishers();
         $this->strapViews($request);
@@ -45,13 +49,18 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         // Merge our Scout config over
         $this->mergeConfigFrom(self::PACKAGE_DIR . 'config/scout.php', 'scout');
 
-        // Register our commands
-        $this->commands([
-            Commands\GenerateSitemap::class,
-            Commands\GenerateSearchIndices::class,
-        ]);
-
         $this->app->alias(VoyagerFrontend::class, 'voyager-frontend');
+    }
+
+    /**
+     * Bootstrap our Events
+     */
+    protected function strapEvents()
+    {
+        // When an Eloquent Model is updated, re-generate our indices (could get intense)
+        Event::listen(['eloquent.saved: *', 'eloquent.deleted: *'], function() {
+            Artisan::call("search-indices:generate");
+        });
     }
 
     /**
@@ -118,6 +127,13 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
                 Commands\InstallCommand::class
             ]);
         }
+
+        // Register our commands
+        $this->commands([
+            Commands\GenerateSitemap::class,
+            Commands\GenerateSearchIndices::class,
+            ImportCommand::class,
+        ]);
 
         // Schedule our commands
         $this->app->booted(function () {
