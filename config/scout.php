@@ -18,7 +18,7 @@ return [
             'max_expansions' => 50,
             'distance' => 2
         ],
-        'asYouType' => false,
+        'asYouType' => env('TNTSEARCH_AS_YOU_TYPE', false),
         'searchBoolean' => env('TNTSEARCH_BOOLEAN', false),
 
         'searchableModels' => [
