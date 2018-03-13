@@ -16,7 +16,7 @@ class SearchController extends BaseController
 
     public function index(Request $request)
     {
-        $searchString = $request->input('search');
+        $searchString = $request->input('keywords');
 
         if (empty($this->searchableModels) || is_null($this->searchableModels)) {
             return view('voyager-frontend::modules.search.search', [
