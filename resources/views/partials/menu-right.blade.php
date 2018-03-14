@@ -1,3 +1,5 @@
+<li class="hide-for-small-only"><a href="#" data-toggle-search-trigger><i class="fas fa-search"></i></a></li>
+
 @if (Auth::guest())
     <li><a href="{{ route('login') }}">Login</a></li>
     <li><a href="{{ route('register') }}">Register</a></li>

@@ -32,17 +32,6 @@
                         </ul>
 
                         <p class="copyright text-center">&copy; {{ setting('site.title') }} @php echo date('Y'); @endphp. All rights reserved.</p>
-
-                        <div class="small-12 medium-6 large-4">
-                            <form id="search-form" action="/search" method="GET">
-                                <div class="input-group">
-                                    <input class="input-group-field" name="keywords" type="search" value="{{ \Request::get('keywords') }}" placeholder="I'm looking for..."/>
-                                    <div class="input-group-button">
-                                        <input type="submit" class="button dark" value="Search">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
                     </div> <!-- /.cell -->
                 </div> <!-- /.grid -->
             </div> <!-- /.grid-container -->

@@ -21,10 +21,24 @@
 </div>
 
 <div class="off-canvas-content" data-off-canvas-content>
+    <div class="header-site-search" data-toggle-search>
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell medium-8 medium-offset-2">
+                    @include('voyager-frontend::partials.search-box')
+                </div> <!-- /.cell -->
+            </div> <!-- /.grid -->
+        </div> <!-- /.container -->
+    </div> <!-- /.header-site-search -->
+
     <div class="top-bar">
         <div class="top-bar-left">
             <a href="#" class="off-canvas-menu-icon float-right hide-for-medium" data-open="offCanvas">
                 <i class="fas fa-bars"></i> <span>Menu</span>
+            </a>
+
+            <a href="#" class="search-icon-mobile float-right hide-for-medium" data-toggle-search-trigger>
+                <i class="fas fa-search"></i>
             </a>
 
             <div class="header-logo float-left">

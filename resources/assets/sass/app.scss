@@ -1,6 +1,6 @@
-@import 'settings';
-@import '~foundation-sites/scss/foundation';
-@import '~motion-ui/src/motion-ui';
+@import "settings";
+@import "~foundation-sites/scss/foundation";
+@import "~motion-ui/src/motion-ui";
 
 @include foundation-global-styles;
 //@include foundation-grid;
@@ -54,6 +54,7 @@
 @import "blocks/blocks";
 @import "blocks/cards-one-column";
 @import "blocks/image-row";
+@import "blocks/search-results";
 @import "blocks/testimonial";
 
 // Components
