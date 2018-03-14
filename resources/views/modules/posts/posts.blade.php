@@ -13,7 +13,7 @@
 								<div class="cell small-12">
 										<div class="block-image-text">
 												@if (!empty($featuredPost->image))
-														<a href="/posts/{{ $featuredPost->slug }}" class="block-image-text-img">
+														<a href="/{{ $featuredPost->slug }}" class="block-image-text-img">
 																<img src="{{ Voyager::image( $featuredPost->image ) }}">
 														</a> <!-- /.block-image-text-img -->
 												@endif
@@ -27,7 +27,7 @@
 																<p>{!! $featuredPost->excerpt or '' !!}</p>
 														@endif
 
-														<a href="/posts/{{ $featuredPost->slug }}" class="button round">
+														<a href="/{{ $featuredPost->slug }}" class="button round">
 																Read Post
 														</a>
 												</div> <!-- /.block-image-text-content -->

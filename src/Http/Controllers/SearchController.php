@@ -19,21 +19,19 @@ class SearchController extends BaseController
         $searchString = $request->input('keywords');
 
         if (empty($this->searchableModels) || is_null($this->searchableModels)) {
-            return view('voyager-frontend::modules.search.search', [
+            return view('voyager-frontend::modules.search.listing', [
                 'resultCollections' => [],
             ]);
         }
 
-        $searchResults = array_map(function ($model) use ($searchString) {
+        foreach ($this->searchableModels as $model) {
             $result = $model::search($searchString)->take(5)->get();
+            $modelPath = explode('\\', strtolower($model));
 
-            $modelPath = explode('\\', strtolower($model) . 's');
-            $result->name = end($modelPath);
+            $searchResults[end($modelPath)] = $result;
+        }
 
-            return $result;
-        }, $this->searchableModels);
-
-        return view('voyager-frontend::modules.search.search', [
+        return view('voyager-frontend::modules.search.listing', [
             'resultCollections' => $searchResults,
         ]);
     }

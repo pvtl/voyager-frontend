@@ -18,9 +18,19 @@ class Post extends \TCG\Voyager\Models\Post
     public function toSearchableArray()
     {
         $array = $this->toArray();
-
-        // Customize array...
-
         return $array;
+    }
+
+    /**
+     * Update the post slug
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getSlugAttribute($value)
+    {
+        if (!empty($value)) {
+            return 'posts/' . $value;
+        }
     }
 }
