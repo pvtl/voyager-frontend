@@ -14,10 +14,19 @@ class BladeCompiler
      *
      * @return string
      */
-    public static function getHtmlFromString($value, array $args = array())
+    public static function getHtmlFromString($value = '', array $args = array())
     {
+        // Prevent tags like @php, @foreach etc from being compiled by blade
+        $value = str_replace('@', '&#64;', $value);
+
+        // Always escape user-gen content
+        $value = str_replace('{!!', '{{', $value);
+        $value = str_replace('!!}', '}}', $value);
+
+        // Get Blade to compile the string into PHP
         $generated = Blade::compileString($value);
 
+        // Execute the blade generated PHP
         ob_start() and extract($args, EXTR_SKIP);
 
         // We'll include the view contents for parsing within a catcher

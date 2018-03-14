@@ -20,11 +20,11 @@
 
 												<div class="block-image-text-content">
 														@if (!empty($featuredPost->title))
-																<h4>{!! $featuredPost->title or '' !!}</h4>
+																<h4>{{ $featuredPost->title or '' }}</h4>
 														@endif
 														
 														@if (!empty($featuredPost->excerpt))
-																<p>{!! $featuredPost->excerpt or '' !!}</p>
+																<p>{{ $featuredPost->excerpt or '' }}</p>
 														@endif
 
 														<a href="/{{ $featuredPost->slug }}" class="button round">
