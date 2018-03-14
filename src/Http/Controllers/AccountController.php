@@ -58,7 +58,7 @@ class AccountController extends BaseController
         $user->name = $request->input('name');
         $user->email = $request->input('email');
 
-        if ($user->password !== null) {
+        if ($request->input('password') !== null) {
             $user->password = bcrypt($request->input('password'));
         }
 
