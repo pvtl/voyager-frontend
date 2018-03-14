@@ -3,6 +3,7 @@
 namespace Pvtl\VoyagerFrontend;
 
 use Laravel\Scout\Searchable;
+use Pvtl\VoyagerFrontend\Helpers\BladeCompiler;
 
 class Page extends \TCG\Voyager\Models\Page
 {
@@ -18,5 +19,18 @@ class Page extends \TCG\Voyager\Models\Page
     public function toSearchableArray()
     {
         return $this->toArray();
+    }
+
+    /**
+     * Update the post body
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getBodyAttribute($value)
+    {
+        if (!empty($value)) {
+            return BladeCompiler::getHtmlFromString($value);
+        }
     }
 }
