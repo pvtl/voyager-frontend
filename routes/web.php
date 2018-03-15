@@ -13,7 +13,7 @@ Route::group(['middleware' => ['web']], function () use ($accountController) {
         Auth::routes();
     });
 
-    Route::group(['middleware' => 'auth', 'as' => 'voyager-frontend.account',], function () use ($accountController) {
+    Route::group(['middleware' => 'auth', 'as' => 'voyager-frontend.account'], function () use ($accountController) {
         Route::get('/account', "$accountController@index");
         Route::post('/account', "$accountController@updateAccount");
     });

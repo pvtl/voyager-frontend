@@ -1,0 +1,1 @@
+@include('voyager-frontend::modules.errors.404')
