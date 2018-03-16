@@ -28,6 +28,13 @@ class SearchController extends BaseController
             $result = $model::search($searchString)->take(5)->get();
             $modelPath = explode('\\', strtolower($model));
 
+            // Add Model Slug Prefix
+            foreach ($result as $item) {
+                if (!empty($item->slug) && !empty($model::$slugPrefix)) {
+                    $item->slug = $model::$slugPrefix . $item->slug;
+                }
+            }
+
             $searchResults[end($modelPath)] = $result;
         }
 

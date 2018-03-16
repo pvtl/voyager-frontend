@@ -11,6 +11,8 @@ class Post extends \TCG\Voyager\Models\Post
 
     public $asYouType = false;
 
+    public static $slugPrefix = 'posts/';
+
     /**
      * Get the indexed data array for the model.
      *
@@ -32,19 +34,6 @@ class Post extends \TCG\Voyager\Models\Post
     {
         if (!empty($value)) {
             return BladeCompiler::getHtmlFromString($value);
-        }
-    }
-
-    /**
-     * Update the post slug
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getSlugAttribute($value)
-    {
-        if (!empty($value)) {
-            return 'posts/' . $value;
         }
     }
 }
