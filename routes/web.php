@@ -30,12 +30,8 @@ Route::group(['prefix' => 'posts', 'middleware' => ['web']], function () use ($p
 
 /**
  * Pages module
- * - Don't include this route when the VoyagerPageBlocks package is installed
- *   (it takes care of this route for us)
  */
-if (!class_exists('Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider')) {
-    Route::get('/{slug?}', "$pageController@getPage")->middleware('web');
-}
+Route::get('/{slug?}', "$pageController@getPage")->middleware('web');
 
 /**
  * Let's get some search going
