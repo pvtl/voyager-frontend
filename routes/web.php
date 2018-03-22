@@ -1,9 +1,9 @@
 <?php
 
-$accountController = 'Pvtl\VoyagerFrontend\Http\Controllers\AccountController';
-$postController = 'Pvtl\VoyagerFrontend\Http\Controllers\PostController';
-$pageController = 'Pvtl\VoyagerFrontend\Http\Controllers\PageController';
-$searchController = 'Pvtl\VoyagerFrontend\Http\Controllers\SearchController';
+$accountController = '\Pvtl\VoyagerFrontend\Http\Controllers\AccountController';
+$postController = '\Pvtl\VoyagerFrontend\Http\Controllers\PostController';
+$pageController = '\Pvtl\VoyagerFrontend\Http\Controllers\PageController';
+$searchController = '\Pvtl\VoyagerFrontend\Http\Controllers\SearchController';
 
 /**
  * Authentication
