@@ -26,6 +26,7 @@ class Page extends \TCG\Voyager\Models\Page
      *
      * @param  string  $value
      * @return string
+     * @throws \Exception
      */
     public function getBodyAttribute($value)
     {
