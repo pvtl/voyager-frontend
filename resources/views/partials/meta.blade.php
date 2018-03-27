@@ -34,5 +34,9 @@
 						gtag('config', '{{ setting('site.google_analytics_tracking_id') }}');
 				</script>
 		@endif
+
+        @if (setting('admin.google_recaptcha_site_key') && setting('admin.google_recaptcha_secret_key'))
+            <script src='https://www.google.com/recaptcha/api.js'></script>
+        @endif
 </head>
 <body>
