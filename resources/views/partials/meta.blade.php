@@ -35,21 +35,17 @@
 				</script>
 		@endif
 
-        @if (setting('admin.google_recaptcha_site_key') && setting('admin.google_recaptcha_secret_key'))
+        @if (setting('admin.google_recaptcha_site_key'))
+            <script src='https://www.google.com/recaptcha/api.js' async defer></script>
             <script>
-                var form = '';
-
-                function setForm(form) {
-                    form = form;
+                function setFormId(formId) {
+                    window.formId = formId;
                 }
 
                 function onSubmit(token) {
-                    console.log(form);
-                    document.getElementById(form).submit();
+                    document.getElementById(window.formId).submit();
                 }
             </script>
-
-            <script src='https://www.google.com/recaptcha/api.js' async defer></script>
-        @endif
+     @endif
 </head>
 <body>
