@@ -11,8 +11,6 @@ class Post extends \TCG\Voyager\Models\Post
 
     public $asYouType = false;
 
-    public static $slugPrefix = 'posts/';
-
     /**
      * Get the indexed data array for the model.
      *

@@ -30,8 +30,17 @@ class SearchController extends BaseController
 
             // Add Model Slug Prefix
             foreach ($result as $item) {
-                if (!empty($item->slug) && !empty($model::$slugPrefix)) {
-                    $item->slug = $model::$slugPrefix . $item->slug;
+                // Skip pages
+                if ($item->getTable() === 'pages') {
+                    continue;
+                }
+
+                $dataType = \TCG\Voyager\Models\DataType::
+                    where('name', $item->getTable())
+                    ->first();
+
+                if (!empty($item->slug) && !empty($dataType->slug)) {
+                    $item->slug = $dataType->slug . '/' . $item->slug;
                 }
             }
 
