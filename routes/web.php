@@ -1,7 +1,6 @@
 <?php
 
 $accountController = '\Pvtl\VoyagerFrontend\Http\Controllers\AccountController';
-$postController = '\Pvtl\VoyagerFrontend\Http\Controllers\PostController';
 $pageController = '\Pvtl\VoyagerFrontend\Http\Controllers\PageController';
 $searchController = '\Pvtl\VoyagerFrontend\Http\Controllers\SearchController';
 
@@ -23,9 +22,14 @@ Route::group(['middleware' => ['web']], function () use ($accountController) {
 /**
  * Posts module
  */
-Route::group(['prefix' => 'posts', 'middleware' => ['web']], function () use ($postController) {
-    Route::get('/', "$postController@getPosts");
-    Route::get('/{slug}', "$postController@getPost");
+Route::group([
+    'as' => 'voyager-frontend.posts.',
+    'prefix' => 'posts',
+    'middleware' => ['web'],
+    'namespace' => '\Pvtl\VoyagerFrontend\Http\Controllers'
+], function () {
+    Route::get('/', ['uses' => 'PostController@getPosts', 'as' => 'list']);
+    Route::get('{slug}', ['uses' => 'PostController@getPost', 'as' => 'post']);
 });
 
 /**

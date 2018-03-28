@@ -4,38 +4,38 @@
 @section('page_title', 'Blog Posts')
 
 @section('content')
-		@include('voyager-frontend::partials.page-title')
+    @include('voyager-frontend::partials.page-title')
 
-		<div class="vspace-2"></div>
-		@if ($featuredPost)
-				<div class="grid-container">
-						<div class="grid-x grid-padding-x">
-								<div class="cell small-12">
-										<div class="block-image-text">
-												@if (!empty($featuredPost->image))
-														<a href="/{{ Pvtl\VoyagerFrontend\Post::$slugPrefix . $featuredPost->slug }}" class="block-image-text-img">
-																<img src="{{ Voyager::image( $featuredPost->image ) }}">
-														</a> <!-- /.block-image-text-img -->
-												@endif
+    <div class="vspace-2"></div>
+    @if ($featuredPost)
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x">
+                <div class="cell small-12">
+                    <div class="block-image-text">
+                        @if (!empty($featuredPost->image))
+                            <a href="{{ route('voyager-frontend.posts.post', ['slug' => $featuredPost->slug]) }}" class="block-image-text-img">
+                                <img src="{{ Voyager::image( $featuredPost->image ) }}">
+                            </a> <!-- /.block-image-text-img -->
+                        @endif
 
-												<div class="block-image-text-content">
-														@if (!empty($featuredPost->title))
-																<h4>{{ $featuredPost->title or '' }}</h4>
-														@endif
-														
-														@if (!empty($featuredPost->excerpt))
-																<p>{{ $featuredPost->excerpt or '' }}</p>
-														@endif
+                        <div class="block-image-text-content">
+                            @if (!empty($featuredPost->title))
+                                    <h4>{{ $featuredPost->title or '' }}</h4>
+                            @endif
 
-														<a href="/{{ Pvtl\VoyagerFrontend\Post::$slugPrefix . $featuredPost->slug }}" class="button round">
-																Read Post
-														</a>
-												</div> <!-- /.block-image-text-content -->
-										</div> <!-- /.block-image-text -->
-								</div> <!-- /.cell -->
-						</div> <!-- /.grid-x -->
-				</div> <!-- /.grid-container -->
-		@endif
+                            @if (!empty($featuredPost->excerpt))
+                                    <p>{{ $featuredPost->excerpt or '' }}</p>
+                            @endif
 
-		@include('voyager-frontend::modules.posts.posts-grid')
+                            <a href="{{ route('voyager-frontend.posts.post', ['slug' => $featuredPost->slug]) }}" class="button round">
+                                    Read Post
+                            </a>
+                        </div> <!-- /.block-image-text-content -->
+                    </div> <!-- /.block-image-text -->
+                </div> <!-- /.cell -->
+            </div> <!-- /.grid-x -->
+        </div> <!-- /.grid-container -->
+    @endif
+
+    @include('voyager-frontend::modules.posts.posts-grid')
 @endsection

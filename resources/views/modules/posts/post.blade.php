@@ -5,26 +5,26 @@
 @section('page_subtitle', 'Posted // ' . $post->created_at->format('jS M. Y'))
 
 @section('content')
-		@include('voyager-frontend::partials.page-title')
+    @include('voyager-frontend::partials.page-title')
 
-		<div class="vspace-2"></div>
+    <div class="vspace-2"></div>
 
-		<div class="grid-container">
-				<div class="grid-x">
-						<div class="cell small-12">
-								{!! $post->body !!}
+    <div class="grid-container">
+        <div class="grid-x">
+            <div class="cell small-12">
+                {!! $post->body !!}
 
-								@if ($relatedPosts)
-									<div class="vspace-1"></div>
-									<hr />
+                @if ($relatedPosts)
+                    <div class="vspace-1"></div>
+                    <hr />
 
-									<h2 class="text-center">Related Posts</h2>
-								@endif
-						</div> <!-- /.cell -->
-				</div> <!-- /.grid -->
-		</div> <!-- /.grid-container -->
+                    <h2 class="text-center">Related Posts</h2>
+                @endif
+            </div> <!-- /.cell -->
+        </div> <!-- /.grid -->
+    </div> <!-- /.grid-container -->
 
-		@include('voyager-frontend::modules.posts.posts-grid', ['posts' => $relatedPosts])
+    @include('voyager-frontend::modules.posts.posts-grid', ['posts' => $relatedPosts])
 
-		<div class="vspace-2"></div>
+    <div class="vspace-2"></div>
 @endsection
