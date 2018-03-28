@@ -32,6 +32,13 @@ Route::group([
 });
 
 /**
+ * Let's get some search going
+ */
+Route::get('/search', "$searchController@index")
+    ->middleware(['web'])
+    ->name('voyager-frontend.search');
+
+/**
  * Pages module
  * - Don't include this route when the VoyagerPageBlocks package is installed
  *   (it takes care of this route for us)
@@ -54,8 +61,3 @@ if (!class_exists('\Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider')
             ->where('slug', '.+');
     }
 }
-
-/**
- * Let's get some search going
- */
-Route::get('/search', "$searchController@index");
