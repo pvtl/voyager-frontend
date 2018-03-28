@@ -39,14 +39,19 @@ Route::group([
  *   slugs to avoid overriding everything.
  */
 if (!class_exists('\Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider')) {
-    $dataTypes = \TCG\Voyager\Models\DataType::all();
-    $excludedRoutes = array();
-    foreach ($dataTypes as $dataTypes) {
-        array_push($excludedRoutes, $dataTypes->slug, $dataTypes->slug . '/*');
-    }
+    $excludedRoutes = Cache::remember('pages/routes/excluded', 30, function () {
+        $dataTypes = \TCG\Voyager\Models\DataType::all();
+        $excludedRoutes = array();
+        foreach ($dataTypes as $dataTypes) {
+            array_push($excludedRoutes, $dataTypes->slug, $dataTypes->slug . '/*');
+        }
+        return $excludedRoutes;
+    });
 
     if (!Request::is($excludedRoutes)) {
-        Route::get('/{slug?}', "$pageController@getPage")->middleware('web')->where('slug', '.+');
+        Route::get('/{slug?}', "$pageController@getPage")
+            ->middleware('web')
+            ->where('slug', '.+');
     }
 }
 
