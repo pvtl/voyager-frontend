@@ -34,5 +34,22 @@
 						gtag('config', '{{ setting('site.google_analytics_tracking_id') }}');
 				</script>
 		@endif
+
+        @if (setting('admin.google_recaptcha_site_key') && setting('admin.google_recaptcha_secret_key'))
+            <script>
+                var form = '';
+
+                function setForm(form) {
+                    form = form;
+                }
+
+                function onSubmit(token) {
+                    console.log(form);
+                    document.getElementById(form).submit();
+                }
+            </script>
+
+            <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+        @endif
 </head>
 <body>
