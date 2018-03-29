@@ -39,6 +39,12 @@ Route::get('/search', "$searchController@index")
     ->name('voyager-frontend.search');
 
 /**
+ * Image Resize'n
+ */
+Route::get('/image-resize', '\Pvtl\VoyagerFrontend\Http\Controllers\ImageResizeController@resize')
+    ->name('voyager-frontend.image-resize');
+
+/**
  * Pages module
  * - Don't include this route when the VoyagerPageBlocks package is installed
  *   (it takes care of this route for us)
