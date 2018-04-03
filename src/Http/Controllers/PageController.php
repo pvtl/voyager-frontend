@@ -19,6 +19,10 @@ class PageController extends BaseController
      */
     public function getPage($slug = 'home')
     {
+        if ($slug === '/') {
+            $slug = 'home';
+        }
+
         $page = Page::where('slug', '=', $slug)->firstOrFail();
 
         return view('voyager-frontend::modules/pages/default', [

@@ -1,7 +1,6 @@
 <?php
 
 $accountController = '\Pvtl\VoyagerFrontend\Http\Controllers\AccountController';
-$pageController = '\Pvtl\VoyagerFrontend\Http\Controllers\PageController';
 $searchController = '\Pvtl\VoyagerFrontend\Http\Controllers\SearchController';
 
 /**
@@ -37,27 +36,3 @@ Route::group([
 Route::get('/search', "$searchController@index")
     ->middleware(['web'])
     ->name('voyager-frontend.search');
-
-/**
- * Pages module
- * - Don't include this route when the VoyagerPageBlocks package is installed
- *   (it takes care of this route for us)
- * - The following is a "catch-all" route, so we need to exclude any (DB) registered
- *   slugs to avoid overriding everything.
- */
-if (!class_exists('\Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider')) {
-    $excludedRoutes = Cache::remember('pages/routes/excluded', 30, function () {
-        $dataTypes = \TCG\Voyager\Models\DataType::all();
-        $excludedRoutes = array();
-        foreach ($dataTypes as $dataTypes) {
-            array_push($excludedRoutes, $dataTypes->slug, $dataTypes->slug . '/*');
-        }
-        return $excludedRoutes;
-    });
-
-    if (!Request::is($excludedRoutes)) {
-        Route::get('/{slug?}', "$pageController@getPage")
-            ->middleware('web')
-            ->where('slug', '.+');
-    }
-}

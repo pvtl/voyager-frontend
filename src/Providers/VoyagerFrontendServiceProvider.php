@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use Laravel\Scout\Console\ImportCommand;
 use Pvtl\VoyagerFrontend\Commands;
+use Pvtl\VoyagerFrontend\Exceptions\Handler;
 use Pvtl\VoyagerFrontend\Http\Controllers\PageController;
 
 class VoyagerFrontendServiceProvider extends ServiceProvider
@@ -36,6 +38,7 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         $this->strapHelpers();
         $this->strapMigrations();
         $this->strapCommands();
+        $this->strapBindings();
     }
 
     /**
@@ -151,5 +154,13 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
             $sitemapCommand->command('sitemap:generate')->daily();
             $sitemapCommand->command('search-indices:generate')->daily();
         });
+    }
+
+    /**
+     * Bootstrap our Bindings
+     */
+    protected function strapBindings()
+    {
+        $this->app->bind(ExceptionHandler::class, Handler::class);
     }
 }
