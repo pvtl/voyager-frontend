@@ -8,14 +8,14 @@
                     <div class="cell small-12 medium-4 large-3">
                         <div class="card">
                             <a href="{{ route('voyager-frontend.posts.post', ['slug' => $post->slug]) }}">
-                                <img src="{{ Voyager::image( $post->image ) }}" style="width:100%">
+                                <img src="{{ imageUrl($post->image, 260, 175) }}" style="width:100%">
                             </a>
                             <div class="card-section">
                                 <span class="label secondary">
-                                        {{ $post->created_at->format('M. jS Y') }}
+                                    {{ $post->created_at->format('M. jS Y') }}
                                 </span>
                                 <a href="{{ route('voyager-frontend.posts.post', ['slug' => $post->slug]) }}">
-                                        <h4>{{ $post->title }}</h4>
+                                    <h4>{{ $post->title }}</h4>
                                 </a>
                                 @if ($post->excerpt)
                                     <p>{{ str_limit($post->excerpt, 50, '&hellip;') }}</p>

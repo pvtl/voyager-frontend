@@ -1,6 +1,6 @@
 <div
     class="page-title"
-    @if (View::hasSection('page_banner')) style="background-image: url(/storage/@yield('page_banner'))" @endif
+    @if (View::hasSection('page_banner')) style="background-image: url(@yield('page_banner'))" @endif
 >
     <div class="grid-container">
         <h1>@yield('page_title')</h1>

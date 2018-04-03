@@ -14,7 +14,7 @@
                     <div class="block-image-text">
                         @if (!empty($featuredPost->image))
                             <a href="{{ route('voyager-frontend.posts.post', ['slug' => $featuredPost->slug]) }}" class="block-image-text-img">
-                                <img src="{{ Voyager::image( $featuredPost->image ) }}">
+                                <img src="{{ imageUrl($featuredPost->image, 585, 390) }}">
                             </a> <!-- /.block-image-text-img -->
                         @endif
 

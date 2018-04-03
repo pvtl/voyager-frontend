@@ -33,6 +33,7 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         $this->strapRoutes();
         $this->strapPublishers();
         $this->strapViews($request);
+        $this->strapHelpers();
         $this->strapMigrations();
         $this->strapCommands();
     }
@@ -106,6 +107,14 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
 
         // Use our own paginator view
         Paginator::defaultView('voyager-frontend::partials.pagination');
+    }
+
+    /**
+     * Load helpers.
+     */
+    protected function strapHelpers()
+    {
+        require_once self::PACKAGE_DIR . '/src/Helpers/ImageResize.php';
     }
 
     /**
