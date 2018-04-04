@@ -38,7 +38,6 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         $this->strapHelpers();
         $this->strapMigrations();
         $this->strapCommands();
-        $this->strapBindings();
     }
 
     /**
@@ -157,13 +156,5 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
             $schedule->command('sitemap:generate')->dailyAt('13:15');
             $schedule->command('search-indices:generate')->dailyAt('13:30');
         });
-    }
-
-    /**
-     * Bootstrap our Bindings
-     */
-    protected function strapBindings()
-    {
-        $this->app->bind(ExceptionHandler::class, Handler::class);
     }
 }
