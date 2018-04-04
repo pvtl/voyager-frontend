@@ -4,6 +4,7 @@ namespace Pvtl\VoyagerFrontend\Traits;
 
 use Illuminate\Http\Request;
 use TCG\Voyager\Models\MenuItem;
+use Illuminate\Support\Facades\Cache;
 
 trait Breadcrumbs
 {
@@ -16,15 +17,16 @@ trait Breadcrumbs
     public static function getBreadcrumbs(Request $request)
     {
         $httpPath = $request->segments();
+        $menuItems = self::getMenuItems('url');
 
-        $breadcrumbs = array_map(function ($key, $crumb) use ($httpPath) {
+        $breadcrumbs = array_map(function ($key, $crumb) use ($httpPath, $menuItems) {
             $crumbPath = join('/', array_slice($httpPath, 0, $key + 1));
             $crumbLink = '/' . $crumbPath;
 
-            if ($crumbText = MenuItem::where('url', $crumbLink)->first()) {
+            if (in_array($crumbLink, $menuItems)) {
                 return [
                     'link' => $crumbLink,
-                    'text' => $crumbText->title,
+                    'text' => $menuItems[$crumbLink]->title,
                 ];
             }
 
@@ -34,13 +36,14 @@ trait Breadcrumbs
             ];
         }, array_keys($httpPath), $httpPath);
 
-        if ($menuItem = MenuItem::where('url', '/' . $request->path())->first()) {
+        $path = '/' . $request->path();
+        if (in_array($path, $menuItems)) {
             $crumbs[] = [
-                'link' => $menuItem->url,
-                'text' => $menuItem->title,
+                'link' => $menuItems[$path]->url,
+                'text' => $menuItems[$path]->title,
             ];
 
-            $breadcrumbs = Breadcrumbs::getNavigationalBreadcrumbs($menuItem->parent_id, $crumbs);
+            $breadcrumbs = Breadcrumbs::getNavigationalBreadcrumbs($menuItems[$path]->parent_id, $crumbs);
         }
 
         array_unshift($breadcrumbs, [
@@ -60,17 +63,40 @@ trait Breadcrumbs
      */
     public static function getNavigationalBreadcrumbs($parentId, $crumbs = [])
     {
-        if ($menuItem = MenuItem::where('id', $parentId)->first()) {
+        $menuItems = self::getMenuItems('id');
+
+        if (in_array($parentId, $menuItems)) {
             array_unshift($crumbs, [
-                'link' => $menuItem->url,
-                'text' => $menuItem->title,
+                'link' => $menuItems[$parentId]->url,
+                'text' => $menuItems[$parentId]->title,
             ]);
 
-            if (!is_null($menuItem->parent_id)) {
-                $crumbs = Breadcrumbs::getNavigationalBreadcrumbs($menuItem->parent_id, $crumbs);
+            if (!is_null($menuItems[$parentId]->parent_id)) {
+                $crumbs = Breadcrumbs::getNavigationalBreadcrumbs($menuItems[$parentId]->parent_id, $crumbs);
             }
         }
 
         return $crumbs;
+    }
+
+    /**
+     * Build an indexed list of MenuItem(s) by $key
+     *
+     * @param $key
+     * @return array
+     */
+    public static function getMenuItems($key)
+    {
+        $menuItems = [];
+
+        $storedMenuItems = Cache::remember('', 10, function () {
+            return MenuItem::all();
+        });
+
+        foreach ($storedMenuItems as $menuItem) {
+            $menuItems[$menuItem->{$key}] = $menuItem;
+        }
+
+        return $menuItems;
     }
 }
