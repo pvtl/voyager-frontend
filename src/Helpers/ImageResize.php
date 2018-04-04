@@ -53,7 +53,6 @@ function imageUrl($imagePath = '', $width = null, $height = null, $config = arra
 
         // Shall we crop or resize?
         if ($crop) {
-
             $resizedImage->fit((int)$width, (int)$height, function ($constraint) {
                 $constraint->upsize();
             });
