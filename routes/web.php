@@ -1,5 +1,8 @@
 <?php
 
+use Pvtl\VoyagerFrontend\Page;
+use Illuminate\Support\Facades\Request;
+
 $accountController = '\Pvtl\VoyagerFrontend\Http\Controllers\AccountController';
 $searchController = '\Pvtl\VoyagerFrontend\Http\Controllers\SearchController';
 
@@ -47,3 +50,18 @@ Route::group([
 Route::get('/search', "$searchController@index")
     ->middleware(['web'])
     ->name('voyager-frontend.search');
+
+/**
+ * Pages catch-all route
+ */
+if (Page::where('slug', '=', Request::path())->exists()) {
+    if (class_exists('\Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider')) {
+        $pageController = '\Pvtl\VoyagerPageBlocks\Http\Controllers\PageController';
+    } else {
+        $pageController = '\Pvtl\VoyagerFrontend\Http\Controllers\PageController';
+    }
+
+    Route::get('/{slug?}', "$pageController@getPage")
+        ->middleware('web')
+        ->where('slug', '.+');
+}
