@@ -7,22 +7,37 @@
 
 @if (!Auth::guest())
     <ul class="dropdown menu" data-dropdown-menu>
-    <li>
-        <a href="#">My Account</a>
-        <ul class="menu">
-            <li>
-                <a href="{{ route('voyager-frontend.account') }}">
-                    Update Account
-                </a>
-                <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
+        <li>
+            <a href="#">My Account</a>
+            <ul class="menu">
+                <li>
+                    <a href="{{ route('voyager-frontend.account') }}">
+                        Update Account
+                    </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-            </li>
-        </ul> <!-- /.menu -->
-    </li>
+                    @if (Session::has('original_user.id'))
+                        <a href="#"
+                           onclick="event.preventDefault();document.getElementById('impersonate-form').submit();">
+                            Switch back to {{ Session::get('original_user.name') }}
+                        </a>
+
+                        <form id="impersonate-form"
+                              action="{{ route('voyager-frontend.account.impersonate', Session::get('original_user.id')) }}"
+                              method="POST"
+                              style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    @else
+                        <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    @endif
+                </li>
+            </ul> <!-- /.menu -->
+        </li>
     </ul> <!-- /.dropdown -->
 @endif

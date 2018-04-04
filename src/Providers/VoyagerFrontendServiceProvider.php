@@ -107,6 +107,7 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         //  - @include('voyager-frontend::partials.meta') OR
         //  - view('voyager-frontend::modules/posts/post');
         $this->loadViewsFrom(self::PACKAGE_DIR . 'resources/views', 'voyager-frontend');
+        $this->loadViewsFrom(self::PACKAGE_DIR . 'resources/views/vendor/voyager', 'voyager');
 
         // Use our own paginator view
         Paginator::defaultView('voyager-frontend::partials.pagination');

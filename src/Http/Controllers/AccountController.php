@@ -4,6 +4,7 @@ namespace Pvtl\VoyagerFrontend\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -12,7 +13,7 @@ class AccountController extends BaseController
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -40,7 +41,7 @@ class AccountController extends BaseController
     {
         $user = Auth::user();
 
-        return view('voyager-frontend::modules/auth/account', [ 'user' => $user ]);
+        return view('voyager-frontend::modules/auth/account', ['user' => $user]);
     }
 
     /**
@@ -63,12 +64,38 @@ class AccountController extends BaseController
         }
 
         $user->save();
-        
+
         return redirect()
             ->route('voyager-frontend.account')
             ->with([
                 'message' => __('Account Updated'),
                 'alert-type' => 'success',
             ]);
+    }
+
+    /**
+     * Impersonate a user as an administrator
+     *
+     * @param $userId
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function impersonateUser($userId)
+    {
+        if (Session::has('original_user.id') && $userId == Session::get('original_user.id')) {
+            // Login as the original user and destroy session
+            Session::forget('original_user.name');
+            Auth::loginUsingId(Session::pull('original_user.id'));
+
+            return redirect()->route('voyager.users.index');
+        } else {
+            // Store our current 'admin' id to switch back to
+            Session::put('original_user.name', Auth::user()->name);
+            Session::put('original_user.id', Auth::id());
+
+            // Impersonate the requested user
+            Auth::loginUsingId($userId);
+
+            return redirect()->route('voyager-frontend.account');
+        }
     }
 }
