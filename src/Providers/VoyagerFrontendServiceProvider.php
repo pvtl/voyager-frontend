@@ -3,16 +3,16 @@
 namespace Pvtl\VoyagerFrontend\Providers;
 
 use Illuminate\Http\Request;
+use Pvtl\VoyagerFrontend\Commands;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Console\Scheduling\Schedule;
-use Illuminate\Contracts\Debug\ExceptionHandler;
 use Laravel\Scout\Console\ImportCommand;
-use Pvtl\VoyagerFrontend\Commands;
+use Illuminate\Console\Scheduling\Schedule;
 use Pvtl\VoyagerFrontend\Exceptions\Handler;
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use Pvtl\VoyagerFrontend\Http\Controllers\PageController;
 
 class VoyagerFrontendServiceProvider extends ServiceProvider
@@ -62,7 +62,7 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
     protected function strapEvents()
     {
         // When an Eloquent Model is updated, re-generate our indices (could get intense)
-        Event::listen(['eloquent.saved: *', 'eloquent.deleted: *'], function() {
+        Event::listen(['eloquent.saved: *', 'eloquent.deleted: *'], function () {
             Artisan::call("search-indices:generate");
         });
     }
@@ -136,23 +136,25 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                Commands\InstallCommand::class
+                Commands\InstallCommand::class,
+                Commands\ThumbnailsClean::class
             ]);
         }
 
         // Register our commands
         $this->commands([
-            Commands\GenerateSitemap::class,
-            Commands\GenerateSearchIndices::class,
             ImportCommand::class,
+            Commands\GenerateSitemap::class,
+            Commands\GenerateSearchIndices::class
         ]);
 
         // Schedule our commands
         $this->app->booted(function () {
-            $sitemapCommand = $this->app->make(Schedule::class);
+            $schedule = $this->app->make(Schedule::class);
 
-            $sitemapCommand->command('sitemap:generate')->daily();
-            $sitemapCommand->command('search-indices:generate')->daily();
+            $schedule->command('voyager-frontend:clean-thumbnails')->dailyAt('13:00');
+            $schedule->command('sitemap:generate')->dailyAt('13:15');
+            $schedule->command('search-indices:generate')->dailyAt('13:30');
         });
     }
 
