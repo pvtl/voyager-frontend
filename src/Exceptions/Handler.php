@@ -21,7 +21,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
         // We only want to look at 404s
-        if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+        if ($e instanceof NotFoundHttpException) {
             // Use Page Blocks if it exists - otherwise use standard pages
             if (class_exists('\Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider')) {
                 $controller = new \Pvtl\VoyagerPageBlocks\Http\Controllers\PageController();
