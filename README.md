@@ -36,6 +36,14 @@ npm run dev
 
 _Any issues? See [the troubleshooting section](#toubleshooting) below._
 
+### 'Got Cron'?
+
+This is a just a reminder to setup the standard Laravel cron on your server. The Voyager Frontend package has a few scheduled tasks, so relies on the cron running.
+
+```
+* * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1
+```
+
 ---
 
 ## Theme Development
