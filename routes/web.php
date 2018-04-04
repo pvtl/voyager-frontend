@@ -54,7 +54,9 @@ Route::get('/search', "$searchController@index")
 /**
  * Pages catch-all route
  */
-if (Page::where('slug', '=', Request::path())->exists()) {
+$slug = Request::path() === '/' ? 'home' : Request::path();
+
+if (Page::where('slug', '=', $slug)->exists()) {
     if (class_exists('\Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider')) {
         $pageController = '\Pvtl\VoyagerPageBlocks\Http\Controllers\PageController';
     } else {
