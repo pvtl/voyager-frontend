@@ -15,7 +15,6 @@ class Handler extends ExceptionHandler
      * - otherwise continue rendering the exception as normal
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \Exception $exception
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
