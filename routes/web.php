@@ -54,16 +54,4 @@ Route::get('/search', "$searchController@index")
 /**
  * Pages catch-all route
  */
-$slug = Request::path() === '/' ? 'home' : Request::path();
-
-if (Page::where('slug', '=', $slug)->exists()) {
-    if (class_exists('\Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider')) {
-        $pageController = '\Pvtl\VoyagerPageBlocks\Http\Controllers\PageController';
-    } else {
-        $pageController = '\Pvtl\VoyagerFrontend\Http\Controllers\PageController';
-    }
-
-    Route::get('/{slug?}', "$pageController@getPage")
-        ->middleware('web')
-        ->where('slug', '.+');
-}
+\Pvtl\VoyagerFrontend\Helpers\Routes::registerPageRoutes();
