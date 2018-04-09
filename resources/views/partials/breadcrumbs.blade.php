@@ -8,13 +8,9 @@
                     @foreach ($breadcrumbs as $key => $crumb)
                         <li>
                             @if (($key + 1) === count($breadcrumbs))
-                                <span class="breadcrumb">
-                                    {{ $crumb['text'] }}
-                                </span>
+                                <span class="breadcrumb">{{ $crumb['text'] }}</span>
                             @else
-                                <a class="breadcrumb" href="{{ $crumb['link'] }}">
-                                    {{ $crumb['text'] }}
-                                </a>
+                                <a class="breadcrumb" href="{{ $crumb['link'] }}">{{ $crumb['text'] }}</a>
                             @endif
                         </li>
                     @endforeach
