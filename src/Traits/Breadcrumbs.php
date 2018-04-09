@@ -47,7 +47,7 @@ trait Breadcrumbs
         }
 
         array_unshift($breadcrumbs, [
-            'link' => '/',
+            'link' => env('APP_URL'),
             'text' => 'Home',
         ]);
 
