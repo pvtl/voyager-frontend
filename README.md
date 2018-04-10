@@ -81,6 +81,23 @@ And any changes made to `header.blade.php` reflect automatically on the site.
 
 ---
 
+## Thumbnails / Image Resizing
+
+This package comes with an automatic image resize function. When you reference an image in your front-end blade templates, simply call something like:
+
+```html
+{{ imageUrl($pathToImage, $width, $height, $config = ['crop' => false, 'quality' => 100] ) ?: '/default.png' }}
+
+<!-- For example (where $blockData->image = 'blocks/3hkkskd8.jpg'): -->
+<img src="{{ imageUrl($blockData->image, 300) ?: '/default.png' }}" />
+```
+
+### "CDN" your images
+
+The function will output an absolute URL, where the hostname will be `APP_URL` - however you can add a `ASSET_URL` variable to your `.env` file to use a different hostname.
+
+---
+
 ## Search
 
 #### Generating Indices
