@@ -14,18 +14,19 @@ class Routes
      */
     public static function registerPageRoutes()
     {
-        $pages = Cache::remember('models.pages', 30, function () {
-          return Page::all();
+        // Which Page Controller shall we use to display the page? Page Blocks or standard page?
+        $pageController = class_exists('\Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider')
+            ? '\Pvtl\VoyagerPageBlocks\Http\Controllers\PageController'
+            : '\Pvtl\VoyagerFrontend\Http\Controllers\PageController';
+
+        // Get all page slugs (note it's cached for 5mins)
+        $pages = Cache::remember('page/slugs', 5, function () {
+            return Page::all('slug');
         });
-
-        $pageController = '\Pvtl\VoyagerFrontend\Http\Controllers\PageController';
-
-        if (class_exists('\Pvtl\VoyagerPageBlocks\Providers\PageBlocksServiceProvider')) {
-            $pageController = '\Pvtl\VoyagerPageBlocks\Http\Controllers\PageController';
-        }
 
         $slug = Request::path() === '/' ? 'home' : Request::path();
 
+        // When the current URI is known to be a page slug, let it be a route
         if ($pages->contains('slug', $slug)) {
             Route::get('/{slug?}', "$pageController@getPage")
                 ->middleware('web')
