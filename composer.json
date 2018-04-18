@@ -17,9 +17,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=7.0",
-        "illuminate/support": "^5.4.0",
-        "laravel/framework": "~5.4.36|~5.5.0",
         "tcg/voyager": "^1.0",
+        "pvtl/voyager-pages": "^1.0",
         "spatie/laravel-sitemap": "3.3.1",
         "laravel/scout": "^4.0",
         "teamtnt/laravel-scout-tntsearch-driver": "^3.0"
