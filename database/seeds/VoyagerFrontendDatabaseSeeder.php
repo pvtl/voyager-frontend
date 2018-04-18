@@ -1,9 +1,13 @@
 <?php
 
+use TCG\Voyager\Traits\Seedable;
 use Illuminate\Database\Seeder;
 
 class VoyagerFrontendDatabaseSeeder extends Seeder
 {
+    use Seedable;
+
+    protected $seedersPath = __DIR__.'/';
 
     /**
      * Run the database seeds.
@@ -12,8 +16,8 @@ class VoyagerFrontendDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call('VoyagerFrontendPagesDataRowsTableSeeder');
-        $this->call('VoyagerFrontendMenuDataRowsTableSeeder');
-        $this->call('VoyagerFrontendPostsDataRowsTableSeeder');
+        $this->seed('VoyagerFrontendPagesTableSeeder');
+        $this->seed('VoyagerFrontendPostsDataRowsTableSeeder');
+        $this->seed('VoyagerFrontendMenuDataRowsTableSeeder');
     }
 }

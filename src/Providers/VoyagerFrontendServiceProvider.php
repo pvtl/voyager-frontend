@@ -86,7 +86,6 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         // Defines which files to copy the root project
         $this->publishes([
             self::PACKAGE_DIR . 'resources/assets' => base_path('resources/assets'),
-            self::PACKAGE_DIR . 'database/seeds' => base_path('database/seeds'),
         ]);
     }
 

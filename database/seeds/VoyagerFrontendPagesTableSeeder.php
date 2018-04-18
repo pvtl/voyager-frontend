@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use TCG\Voyager\Models\Page;
 
-class VoyagerFrontendPagesDataRowsTableSeeder extends Seeder
+class VoyagerFrontendPagesTableSeeder extends Seeder
 {
     public function run()
     {
