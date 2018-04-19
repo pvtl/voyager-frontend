@@ -14,7 +14,7 @@ class AddFieldsToPostTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->text('tags')->nullable()->default('');
+            $table->text('tags')->default('');
             $table->timestamp('published_date')->default('')->useCurrent = true;
         });
     }
