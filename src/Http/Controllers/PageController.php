@@ -4,9 +4,8 @@ namespace Pvtl\VoyagerFrontend\Http\Controllers;
 
 use Pvtl\VoyagerFrontend\Page;
 use Pvtl\VoyagerFrontend\Traits\Breadcrumbs;
-use Illuminate\Routing\Controller as BaseController;
 
-class PageController extends BaseController
+class PageController extends \Pvtl\VoyagerPages\Http\Controllers\PageController
 {
     use Breadcrumbs;
 

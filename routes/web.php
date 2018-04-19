@@ -50,8 +50,3 @@ Route::group([
 Route::get('/search', "$searchController@index")
     ->middleware(['web'])
     ->name('voyager-frontend.search');
-
-/**
- * Pages catch-all route
- */
-\Pvtl\VoyagerFrontend\Helpers\Routes::registerPageRoutes();

@@ -5,7 +5,7 @@ namespace Pvtl\VoyagerFrontend;
 use Laravel\Scout\Searchable;
 use Pvtl\VoyagerFrontend\Helpers\BladeCompiler;
 
-class Page extends \TCG\Voyager\Models\Page
+class Page extends \Pvtl\VoyagerPages\Page
 {
     use Searchable;
 
