@@ -31,6 +31,16 @@ Route::group(['middleware' => ['web']], function () use ($accountController) {
     });
 });
 
+Route::group([
+    'as' => 'voyager-frontend.pages.',
+    'prefix' => 'admin/pages/',
+    'middleware' => ['web', 'admin.user'],
+    'namespace' => '\Pvtl\VoyagerFrontend\Http\Controllers'
+], function () {
+    Route::post('layout/{id}', ['uses' => "PageController@changeLayout", 'as' => 'layout']);
+});
+
+
 /**
  * Posts module
  */
