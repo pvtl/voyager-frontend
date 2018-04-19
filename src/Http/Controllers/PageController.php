@@ -14,6 +14,23 @@ class PageController extends \Pvtl\VoyagerPages\Http\Controllers\PageController
     protected $viewPath = 'voyager-frontend::modules.pages.default';
 
     /**
+     * Add the layout to the returned page
+     *
+     * @param string $slug
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getPage($slug = 'home')
+    {
+        $view = parent::getPage($slug);
+        $page = Page::findOrFail((int)$view->page->id);
+
+        $view->layout = $page->layout;
+        
+        return $view;
+    }
+
+    /**
      * POST B(R)EAD - Read data.
      *
      * @param \Illuminate\Http\Request $request
