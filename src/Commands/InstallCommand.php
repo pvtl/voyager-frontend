@@ -86,7 +86,12 @@ class InstallCommand extends Command
         $this->call('vendor:publish', ['--provider' => VoyagerFrontendServiceProvider::class]);
 
         $this->info('Updating Root package.json to include dependencies');
-        $process = new Process('npm i foundation-sites scrollreveal motion-ui jquery --save-dev && npm uninstall bootstrap bootstrap-sass --save-dev');
+
+        $process = new Process('
+            npm i foundation-sites scrollreveal motion-ui jquery --save-dev &&
+            npm uninstall bootstrap bootstrap-sass --save-dev &&
+            npm run dev
+        ');
         $process->setTimeout(null); // Setting timeout to null to prevent installation from stopping at a certain point in time
         $process->setWorkingDirectory(base_path())->mustRun();
 
