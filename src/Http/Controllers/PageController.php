@@ -7,4 +7,6 @@ use Pvtl\VoyagerFrontend\Traits\Breadcrumbs;
 class PageController extends \Pvtl\VoyagerPages\Http\Controllers\PageController
 {
     use Breadcrumbs;
+
+    protected $viewPath = 'voyager-frontend::modules.pages.default';
 }
