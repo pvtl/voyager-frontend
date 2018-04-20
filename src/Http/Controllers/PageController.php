@@ -11,7 +11,7 @@ class PageController extends \Pvtl\VoyagerPages\Http\Controllers\PageController
 {
     use Breadcrumbs;
 
-    protected $viewPath = 'voyager-frontend::modules.pages.default';
+    protected $viewPath = 'voyager-frontend';
 
     /**
      * Add the layout to the returned page
@@ -26,7 +26,7 @@ class PageController extends \Pvtl\VoyagerPages\Http\Controllers\PageController
         $page = Page::findOrFail((int)$view->page->id);
 
         $view->layout = $page->layout;
-        
+
         return $view;
     }
 
