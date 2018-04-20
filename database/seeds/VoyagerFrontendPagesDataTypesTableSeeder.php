@@ -32,14 +32,6 @@ class VoyagerFrontendPagesDataTypesTableSeeder extends Seeder
         }
     }
 
-    /**
-     * [dataType description].
-     *
-     * @param [type] $field [description]
-     * @param [type] $for   [description]
-     *
-     * @return [type] [description]
-     */
     protected function dataType($field, $for)
     {
         return DataType::firstOrNew([$field => $for]);
