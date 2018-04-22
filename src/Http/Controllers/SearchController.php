@@ -30,11 +30,6 @@ class SearchController extends BaseController
 
             // Add Model Slug Prefix
             foreach ($result as $item) {
-                // Skip pages
-                if ($item->getTable() === 'pages') {
-                    continue;
-                }
-
                 $dataType = \TCG\Voyager\Models\DataType::
                     where('name', $item->getTable())
                     ->first();
