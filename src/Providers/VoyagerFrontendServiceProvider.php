@@ -62,7 +62,7 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
     {
         // When an Eloquent Model is updated, re-generate our indices (could get intense)
         Event::listen(['eloquent.saved: *', 'eloquent.deleted: *'], function () {
-            Artisan::call("search-indices:generate");
+            Artisan::call("voyager-frontend:generate-search-indices");
         });
     }
 
@@ -152,8 +152,8 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
             $schedule = $this->app->make(Schedule::class);
 
             $schedule->command('voyager-frontend:clean-thumbnails')->dailyAt('13:00');
-            $schedule->command('sitemap:generate')->dailyAt('13:15');
-            $schedule->command('search-indices:generate')->dailyAt('13:30');
+            $schedule->command('voyager-frontend:generate-sitemap')->dailyAt('13:15');
+            $schedule->command('voyager-frontend:generate-search-indices')->dailyAt('13:30');
         });
     }
 }

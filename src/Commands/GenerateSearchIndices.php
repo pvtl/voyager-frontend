@@ -13,7 +13,7 @@ class GenerateSearchIndices extends Command
      *
      * @var string
      */
-    protected $signature = 'search-indices:generate';
+    protected $signature = 'voyager-frontend:generate-search-indices';
 
     /**
      * The console command description.

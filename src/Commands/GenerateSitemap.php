@@ -12,7 +12,7 @@ class GenerateSitemap extends Command
      *
      * @var string
      */
-    protected $signature = 'sitemap:generate';
+    protected $signature = 'voyager-frontend:generate-sitemap';
 
     /**
      * The console command description.
