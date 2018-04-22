@@ -77,7 +77,7 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
             'fa-linkedin'
         );
     }
-    
+
     protected function updateAdminMenu()
     {
         // Ensure the admin menu exists
@@ -89,17 +89,17 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
         // Add a top level 'blog' menu item
         $parentItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Blog',
-            'url'     => '#',
-            'route'   => null,
+            'title' => 'Blog',
+            'url' => '#',
+            'route' => null,
         ]);
         if (!$parentItem->exists) {
             $parentItem->fill([
-                'target'     => '_self',
+                'target' => '_self',
                 'icon_class' => 'voyager-news',
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 5,
+                'color' => null,
+                'parent_id' => null,
+                'order' => 5,
             ])->save();
         }
 
@@ -125,17 +125,17 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
     {
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menuId,
-            'title'   => $title,
-            'url'     => $url,
-            'route'   => null,
+            'title' => $title,
+            'url' => $url,
+            'route' => null,
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
-                'target'     => $target,
+                'target' => $target,
                 'icon_class' => $icon,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => $order,
+                'color' => null,
+                'parent_id' => null,
+                'order' => $order,
             ])->save();
         }
 
