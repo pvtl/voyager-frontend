@@ -22,9 +22,9 @@ class Page extends \Pvtl\VoyagerPages\Page
     }
 
     /**
-     * Update the post body
+     * Update the page body
      *
-     * @param  string  $value
+     * @param  string $value
      * @return string
      * @throws \Exception
      */

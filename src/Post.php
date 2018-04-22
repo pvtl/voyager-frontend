@@ -18,15 +18,15 @@ class Post extends \TCG\Voyager\Models\Post
      */
     public function toSearchableArray()
     {
-        $array = $this->toArray();
-        return $array;
+        return $this->toArray();
     }
 
     /**
      * Update the post body
      *
-     * @param  string  $value
+     * @param  string $value
      * @return string
+     * @throws \Exception
      */
     public function getBodyAttribute($value)
     {
