@@ -22,7 +22,7 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
         $menu = Menu::where('name', 'primary')->firstOrFail();
 
         // Fill out that menu
-        $this->createMenuItem($menu->id, 'Home', '/', 1);
+        $this->createMenuItem($menu->id, 'Home', env('APP_URL'), 1);
         $this->createMenuItem($menu->id, 'About', '/about', 2);
         $this->createMenuItem($menu->id, 'Blog', '/posts', 3);
     }
