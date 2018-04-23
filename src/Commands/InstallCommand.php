@@ -12,7 +12,7 @@ class InstallCommand extends Command
 {
     use Seedable;
 
-    protected $seedersPath = __DIR__.'/../../database/seeds/';
+    protected $seedersPath = __DIR__ . '/../../database/seeds/';
 
     /**
      * The console command name.
@@ -35,8 +35,8 @@ class InstallCommand extends Command
      */
     protected function findComposer()
     {
-        if (file_exists(getcwd().'/composer.phar')) {
-            return '"'.PHP_BINARY.'" '.getcwd().'/composer.phar';
+        if (file_exists(getcwd() . '/composer.phar')) {
+            return '"' . PHP_BINARY . '" ' . getcwd() . '/composer.phar';
         }
 
         return 'composer';
@@ -66,7 +66,8 @@ class InstallCommand extends Command
         $this->info('Remove default web route');
         $routes_contents = (new Filesystem)->get(base_path('routes/web.php'));
         if (false !== strpos($routes_contents, "return view('welcome')")) {
-            $routes_contents = str_replace("\n\nRoute::get('/', function () {\n    return view('welcome');\n});", '', $routes_contents);
+            $routes_contents = str_replace("\n\nRoute::get('/', function () {\n    return view('welcome');\n});", '',
+                $routes_contents);
             (new Filesystem)->put(base_path('routes/web.php'), $routes_contents);
         }
 
@@ -74,12 +75,12 @@ class InstallCommand extends Command
         // Use our files
         $this->info('Copying authentication views to main project');
         (new Filesystem)->copyDirectory(
-            __DIR__.'/../stubs/views', resource_path('views')
+            __DIR__ . '/../stubs/views', resource_path('views')
         );
 
         $this->info('Copying our webpack.mix.js to the project root');
         (new Filesystem)->copy(
-            __DIR__.'/../../webpack.mix.js', resource_path('../webpack.mix.js')
+            __DIR__ . '/../../webpack.mix.js', resource_path('../webpack.mix.js')
         );
 
         $this->info('Publishing the Voyager assets, database, and config files');
@@ -97,7 +98,7 @@ class InstallCommand extends Command
 
         $this->info('Dumping the autoloaded files and reloading all new files');
         $composer = $this->findComposer();
-        $process = new Process($composer.' dump-autoload');
+        $process = new Process($composer . ' dump-autoload');
         $process->setTimeout(null); // Setting timeout to null to prevent installation from stopping at a certain point in time
         $process->setWorkingDirectory(base_path())->mustRun();
 
