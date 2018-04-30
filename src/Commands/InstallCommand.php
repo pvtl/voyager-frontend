@@ -75,7 +75,7 @@ class InstallCommand extends Command
         // Use our files
         $this->info('Copying authentication views to main project');
         (new Filesystem)->copyDirectory(
-            __DIR__ . '/../stubs/views', resource_path('views')
+            __DIR__ . '/../../stubs/views', resource_path('views')
         );
 
         $this->info('Copying our webpack.mix.js to the project root');
