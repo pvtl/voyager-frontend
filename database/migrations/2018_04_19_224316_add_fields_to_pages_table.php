@@ -13,9 +13,11 @@ class AddFieldsToPagesTable extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->text('layout')->nullable()->default(null);
-        });
+        if (!Schema::hasColumn('pages', 'layout')) {
+            Schema::table('pages', function (Blueprint $table) {
+                $table->text('layout')->nullable()->default(null);
+            });
+        }
     }
 
     /**
