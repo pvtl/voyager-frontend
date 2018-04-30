@@ -23,7 +23,7 @@ return [
 
         'searchableModels' => [
             '\Pvtl\VoyagerFrontend\Page',
-            '\Pvtl\VoyagerFrontend\Post',
+            '\Pvtl\VoyagerFrontend\BlogPost',
         ],
     ],
 ];
