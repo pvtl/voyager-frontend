@@ -24,7 +24,7 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
         // Fill out that menu
         $this->createMenuItem($menu->id, 'Home', '/home', 1);
         $this->createMenuItem($menu->id, 'About', '/about', 2);
-        $this->createMenuItem($menu->id, 'Blog', '/posts', 3);
+        $this->createMenuItem($menu->id, 'Blog', '/blog', 3);
     }
 
     protected function createSocialMenu()
