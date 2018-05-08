@@ -10,10 +10,10 @@ class VoyagerFrontendBlogDataTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        $dataType = $this->dataType('slug', 'blog');
+        $dataType = $this->dataType('slug', 'blog_posts');
         if (!$dataType->exists) {
             $dataType->fill([
-                'name'                  => 'blog',
+                'name'                  => 'blog_posts',
                 'display_name_singular' => 'Blog Post',
                 'display_name_plural'   => 'Blog Posts',
                 'icon'                  => 'voyager-news',
