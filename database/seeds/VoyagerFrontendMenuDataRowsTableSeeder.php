@@ -10,7 +10,6 @@ class VoyagerFrontendMenuDataRowsTableSeeder extends Seeder
     {
         $this->createMainMenu();
         $this->createSocialMenu();
-        $this->updateAdminMenu();
     }
 
     protected function createMainMenu()
