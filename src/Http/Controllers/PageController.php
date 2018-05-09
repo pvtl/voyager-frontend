@@ -31,6 +31,22 @@ class PageController extends \Pvtl\VoyagerPages\Http\Controllers\PageController
     }
 
     /**
+     * POST B(R)EAD - Create data.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return View
+     */
+    public function create(Request $request)
+    {
+        $view = parent::create($request);
+
+        $view['layouts'] = Layouts::getLayouts('voyager-frontend');
+
+        return $view;
+    }
+
+    /**
      * POST B(R)EAD - Read data.
      *
      * @param \Illuminate\Http\Request $request
