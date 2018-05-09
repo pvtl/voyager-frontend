@@ -17,8 +17,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=7.0",
-        "pvtl/voyager-pages": "~0.1.0",
-        "pvtl/voyager-blog": "~0.1.0",
+        "pvtl/voyager-pages": "~0.2.0",
+        "pvtl/voyager-blog": "~0.2.0",
         "tcg/voyager": "^1.1",
         "spatie/laravel-sitemap": "3.3.1",
         "laravel/scout": "^4.0",
