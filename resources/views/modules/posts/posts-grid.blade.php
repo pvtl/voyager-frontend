@@ -29,4 +29,6 @@
     </div> <!-- /.grid-container -->
 
     <div class="vspace-1"></div>
+@else
+    There are currently no posts.
 @endif
