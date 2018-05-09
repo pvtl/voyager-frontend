@@ -1,4 +1,4 @@
-@if ($posts)
+@if (count($posts) > 0)
     <div class="vspace-2"></div>
 
     <div class="grid-container">
