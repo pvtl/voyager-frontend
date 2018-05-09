@@ -30,5 +30,15 @@
 
     <div class="vspace-1"></div>
 @else
-    There are currently no posts.
+    <div class="vspace-2"></div>
+
+    <div class="grid-container">
+        <div class="cell small-12">
+            <div class="grid-x grid-padding-x">
+                <p>There are currently no posts.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="vspace-1"></div>
 @endif
