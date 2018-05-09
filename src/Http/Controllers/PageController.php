@@ -80,7 +80,7 @@ class PageController extends \Pvtl\VoyagerPages\Http\Controllers\PageController
         return redirect()
             ->back()
             ->with([
-                'message' => __('voyager.generic.successfully_updated') . " Page Layout",
+                'message' => __('voyager::generic.successfully_updated') . " Page Layout",
                 'alert-type' => 'success',
             ]);
     }
