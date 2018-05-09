@@ -32,6 +32,9 @@ composer dump-autoload && php artisan voyager-frontend:install
 
 # 3. Build the front-end theme assets
 npm run dev
+
+# 4. Set the site search driver in your .env
+echo "SCOUT_DRIVER=tntsearch" >> .env
 ```
 
 _Any issues? See [the troubleshooting section](#toubleshooting) below._
