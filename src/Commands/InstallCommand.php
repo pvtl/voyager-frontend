@@ -111,5 +111,8 @@ class InstallCommand extends Command
         $this->seed('VoyagerFrontendDatabaseSeeder');
 
         $this->info('Successfully installed Voyager Frontend! Enjoy');
+
+        $this->call('voyager-blog:install');
+        $this->call('voyager-pages:install');
     }
 }
