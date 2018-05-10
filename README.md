@@ -33,19 +33,16 @@ composer create-project --prefer-dist laravel/laravel $DIR_NAME
 # 1.1 Require Voyager
 cd $DIR_NAME && composer require tcg/voyager
 
-# 1.2 Update the .env file (DB, App URL, Key)
+# 1.2 Copy .env.example to .env and update the DB & App URL config
 cp .env.example .env
-sed -i 's,DB_HOST=127.0.0.1,DB_HOST=$DB_HOST,g' .env
-sed -i 's/DB_DATABASE=homestead/DB_DATABASE=$DB_NAME/g' .env
-sed -i 's/DB_USERNAME=homestead/DB_USERNAME=$DB_USER/g' .env
-sed -i 's/DB_PASSWORD=secret/DB_PASSWORD=$DB_PASS/g' .env
-sed -i 's,APP_URL=http://localhost,APP_URL=$SITE_URL,g' .env
+
+# 1.3 Generate a Laravel key
 php artisan key:generate
 
-# 1.3 Run the Voyager Installer
+# 1.4 Run the Voyager Installer
 php artisan voyager:install
 
-# 1.4 Create a Voyager Admin User
+# 1.5 Create a Voyager Admin User
 php artisan voyager:admin $YOUR_EMAIL --create
 ```
 
