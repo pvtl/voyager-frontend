@@ -14,26 +14,53 @@ Built by [Pivotal Agency](https://pivotal.agency/).
 
 ## Prerequisites
 
-- Node & NPM Installed
-- Composer Installed
-- [Install Laravel](https://laravel.com/docs/installation)
-- [Install Voyager](https://github.com/the-control-group/voyager)
+- PHP >= 7.1.3
+- Node & NPM
+- Composer
+- + [Laravel Requirements](https://laravel.com/docs/installation)
 
 ---
 
 ## Installation
 
+1. Install Laravel + Voyager
+
 ```bash
-# 1. Require this Package in your fresh Laravel/Voyager project
+# 1.0 Install Laravel
+composer create-project --prefer-dist laravel/laravel <DIR_NAME>
+
+# 1.1 Require Voyager
+cd <DIR_NAME> && composer require tcg/voyager
+
+# 1.2 Update the .env file (DB, App URL, Key)
+cp .env.example .env
+sed -i 's,DB_HOST=127.0.0.1,DB_HOST=<DB_HOST>,g' .env
+sed -i 's/DB_DATABASE=homestead/DB_DATABASE=<DB_NAME>/g' .env
+sed -i 's/DB_USERNAME=homestead/DB_USERNAME=<DB_USER>/g' .env
+sed -i 's/DB_PASSWORD=secret/DB_PASSWORD=<DB_PASS>/g' .env
+sed -i 's,APP_URL=http://localhost,APP_URL=<SITE_URL>,g' .env
+php artisan key:generate
+
+# 1.3 Run the Voyager Installer
+php artisan voyager:install
+
+# 1.4 Create a Voyager Admin User
+php artisan voyager:admin <YOUR_EMAIL> --create
+```
+
+2. Install Voyager Frontend
+
+```bash
+# 2.0 Require this Package in your fresh Laravel/Voyager project
 composer require pvtl/voyager-frontend
 
-# 2. Run the Installer
+# 2.1 Run the Installer
 composer dump-autoload && php artisan voyager-frontend:install
 
-# 3. Build the front-end theme assets
+# 2.3 Build the front-end theme assets
 npm run dev
 
-# 4. Set the site search driver in your .env
+# 2.4 Set the Laravel search driver in your .env
 echo "SCOUT_DRIVER=tntsearch" >> .env
 ```
 
