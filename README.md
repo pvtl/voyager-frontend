@@ -17,38 +17,39 @@ Built by [Pivotal Agency](https://pivotal.agency/).
 - PHP >= 7.1.3
 - Node & NPM
 - Composer
-- + [Laravel Requirements](https://laravel.com/docs/installation)
+- [Laravel Requirements](https://laravel.com/docs/installation)
 
 ---
 
 ## Installation
 
-1. Install Laravel + Voyager
+__1. Install Laravel + Voyager__
+_(Replace the $VARs with your own values)_
 
 ```bash
 # 1.0 Install Laravel
-composer create-project --prefer-dist laravel/laravel <DIR_NAME>
+composer create-project --prefer-dist laravel/laravel $DIR_NAME
 
 # 1.1 Require Voyager
-cd <DIR_NAME> && composer require tcg/voyager
+cd $DIR_NAME && composer require tcg/voyager
 
 # 1.2 Update the .env file (DB, App URL, Key)
 cp .env.example .env
-sed -i 's,DB_HOST=127.0.0.1,DB_HOST=<DB_HOST>,g' .env
-sed -i 's/DB_DATABASE=homestead/DB_DATABASE=<DB_NAME>/g' .env
-sed -i 's/DB_USERNAME=homestead/DB_USERNAME=<DB_USER>/g' .env
-sed -i 's/DB_PASSWORD=secret/DB_PASSWORD=<DB_PASS>/g' .env
-sed -i 's,APP_URL=http://localhost,APP_URL=<SITE_URL>,g' .env
+sed -i 's,DB_HOST=127.0.0.1,DB_HOST=$DB_HOST,g' .env
+sed -i 's/DB_DATABASE=homestead/DB_DATABASE=$DB_NAME/g' .env
+sed -i 's/DB_USERNAME=homestead/DB_USERNAME=$DB_USER/g' .env
+sed -i 's/DB_PASSWORD=secret/DB_PASSWORD=$DB_PASS/g' .env
+sed -i 's,APP_URL=http://localhost,APP_URL=$SITE_URL,g' .env
 php artisan key:generate
 
 # 1.3 Run the Voyager Installer
 php artisan voyager:install
 
 # 1.4 Create a Voyager Admin User
-php artisan voyager:admin <YOUR_EMAIL> --create
+php artisan voyager:admin $YOUR_EMAIL --create
 ```
 
-2. Install Voyager Frontend
+__2. Install Voyager Frontend__
 
 ```bash
 # 2.0 Require this Package in your fresh Laravel/Voyager project
