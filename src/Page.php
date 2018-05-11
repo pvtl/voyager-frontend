@@ -20,18 +20,4 @@ class Page extends \Pvtl\VoyagerPages\Page
     {
         return $this->toArray();
     }
-
-    /**
-     * Update the page body
-     *
-     * @param  string $value
-     * @return string
-     * @throws \Exception
-     */
-    public function getBodyAttribute($value)
-    {
-        if (!empty($value)) {
-            return BladeCompiler::getHtmlFromString($value);
-        }
-    }
 }

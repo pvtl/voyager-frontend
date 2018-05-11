@@ -5,6 +5,7 @@ namespace Pvtl\VoyagerFrontend\Http\Controllers;
 use Pvtl\VoyagerPages\Page;
 use Pvtl\VoyagerFrontend\Helpers\Layouts;
 use Pvtl\VoyagerFrontend\Traits\Breadcrumbs;
+use Pvtl\VoyagerFrontend\Helpers\BladeCompiler;
 use Illuminate\Http\Request;
 
 class PageController extends \Pvtl\VoyagerPages\Http\Controllers\PageController
@@ -18,7 +19,7 @@ class PageController extends \Pvtl\VoyagerPages\Http\Controllers\PageController
      *
      * @param string $slug
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return string
      */
     public function getPage($slug = 'home')
     {
@@ -26,6 +27,7 @@ class PageController extends \Pvtl\VoyagerPages\Http\Controllers\PageController
         $page = Page::findOrFail((int)$view->page->id);
 
         $view->layout = $page->layout;
+        $view = BladeCompiler::getHtmlFromString($view);
 
         return $view;
     }

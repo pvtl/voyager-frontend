@@ -13,7 +13,6 @@ class BladeCompiler
      * @param array $args Array of values used in blade
      *
      * @return string
-     * @throws \Exception
      */
     public static function getHtmlFromString($value = '', array $args = array())
     {
@@ -39,7 +38,6 @@ class BladeCompiler
         // to the client and confuse the user with junk.
         } catch (\Exception $e) {
             ob_get_clean();
-            throw $e;
         }
 
         $content = ob_get_clean();
