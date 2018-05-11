@@ -17,40 +17,42 @@
 @section('content')
     <div class="page-content edit-add container-fluid">
         <div class="row">
-            <div class="col-md-3 col-lg-2">
-                <div class="panel panel-bordered panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Page Layout</h3>
-                    </div> <!-- /.panel-heading -->
+            @if (!is_null($dataTypeContent->getKey()))
+                <div class="col-md-3 col-lg-2">
+                    <div class="panel panel-bordered panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Page Layout</h3>
+                        </div> <!-- /.panel-heading -->
 
-                    <div class="panel-body">
-                        <form role="form" action="{{ route('voyager-frontend.pages.layout', $dataTypeContent->getKey()) }}" method="POST"
-                              enctype="multipart/form-data">
-                            {{ csrf_field() }}
+                        <div class="panel-body">
+                            <form role="form" action="{{ route('voyager-frontend.pages.layout', $dataTypeContent->getKey()) }}" method="POST"
+                                  enctype="multipart/form-data">
+                                {{ csrf_field() }}
 
-                            <div class="form-group">
-                                <label for="layout">Change Page Layout</label>
-                                <select class="form-control" name="layout" id="layout">
-                                    <option value="default">-- Select --</option>
-                                    @foreach($layouts as $layout)
-                                        <option
-                                            value="{{ $layout }}"
-                                            @if ($dataTypeContent->layout === $layout)
-                                            selected="selected"
-                                            @endif
-                                        >
-                                            {{ ucwords(str_replace(array('_', '-'), ' ', $layout)) }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div> <!-- /.form-group -->
+                                <div class="form-group">
+                                    <label for="layout">Change Page Layout</label>
+                                    <select class="form-control" name="layout" id="layout">
+                                        <option value="default">-- Select --</option>
+                                        @foreach($layouts as $layout)
+                                            <option
+                                                value="{{ $layout }}"
+                                                @if ($dataTypeContent->layout === $layout)
+                                                selected="selected"
+                                                @endif
+                                            >
+                                                {{ ucwords(str_replace(array('_', '-'), ' ', $layout)) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div> <!-- /.form-group -->
 
-                            <input type="hidden" name="page_id" value="{{ $dataTypeContent->getKey() }}"/>
-                            <button type="submit" class="btn btn-success btn-sm">{{ __('voyager::generic.update') }}</button>
-                        </form>
-                    </div> <!-- /.panel-body -->
+                                <input type="hidden" name="page_id" value="{{ $dataTypeContent->getKey() }}"/>
+                                <button type="submit" class="btn btn-success btn-sm">{{ __('voyager::generic.update') }}</button>
+                            </form>
+                        </div> <!-- /.panel-body -->
+                    </div>
                 </div>
-            </div>
+            @endif
 
             <div class="col-md-9 col-lg-10">
                 <div class="panel panel-bordered">
