@@ -37,7 +37,7 @@ Route::group([
     'middleware' => ['web', 'admin.user'],
     'namespace' => '\Pvtl\VoyagerFrontend\Http\Controllers'
 ], function () {
-    Route::post('layout/{id}', ['uses' => "PageController@changeLayout", 'as' => 'layout']);
+    Route::post('layout/{id?}', ['uses' => "PageController@changeLayout", 'as' => 'layout']);
 });
 
 /**

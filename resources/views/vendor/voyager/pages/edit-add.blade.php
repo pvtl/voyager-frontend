@@ -15,6 +15,7 @@
 @stop
 
 @section('content')
+<?php $layouts = isset($layouts) ? $layouts : array('default'); ?>
     <div class="page-content edit-add container-fluid">
         <div class="row">
             @if (!is_null($dataTypeContent->getKey()))
