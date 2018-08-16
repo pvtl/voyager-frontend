@@ -14,12 +14,14 @@ class BladeCompiler
      *
      * @return string
      */
-    public static function getHtmlFromString($value = '', array $args = array())
+    public static function getHtmlFromString($value = '', array $args = array(), $allowScriptTags = false)
     {
         // Prevent tags like @php, @foreach etc from being compiled by blade
         $value = str_replace('@', '&#64;', $value);
         // Disable scripts from being run
-        $value = str_replace('<script', '&lt;script', $value);
+        if (!$allowScriptTags) {
+            $value = str_replace('<script', '&lt;script', $value);
+        }
 
         // Get Blade to compile the string into PHP
         $generated = Blade::compileString($value);

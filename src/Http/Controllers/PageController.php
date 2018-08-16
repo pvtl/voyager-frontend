@@ -27,7 +27,7 @@ class PageController extends \Pvtl\VoyagerPages\Http\Controllers\PageController
         $page = Page::findOrFail((int)$view->page->id);
 
         $view->layout = $page->layout;
-        $view = BladeCompiler::getHtmlFromString($view);
+        $view = BladeCompiler::getHtmlFromString($view, [], true);
 
         return $view;
     }
