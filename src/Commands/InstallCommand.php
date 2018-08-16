@@ -89,7 +89,7 @@ class InstallCommand extends Command
         $this->info('Updating Root package.json to include dependencies');
 
         $process = new Process('
-            npm i foundation-sites scrollreveal motion-ui jquery --save-dev &&
+            npm i foundation-sites scrollreveal"^3.4.0" motion-ui jquery --save-dev &&
             npm uninstall bootstrap bootstrap-sass --save-dev &&
             npm run dev
         ');
