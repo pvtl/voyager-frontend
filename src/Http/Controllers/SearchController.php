@@ -34,8 +34,14 @@ class SearchController extends BaseController
                     where('name', $item->getTable())
                     ->first();
 
-                if (!empty($item->slug) && !empty($dataType->slug)) {
-                    $item->slug = $dataType->slug . '/' . $item->slug;
+                if ($dataType->name !== 'pages' && !empty($item->slug) && !empty($dataType->slug)) {
+                    
+                    if ($dataType->name === 'blog_posts') {
+                        $item->slug = 'blog/' . $item->slug;
+                    } else {
+                        $item->slug = $dataType->slug . '/' . $item->slug;
+                    }
+
                 }
             }
 
