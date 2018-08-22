@@ -12,18 +12,22 @@ function imageUrl($imagePath = '', $width = null, $height = null, $config = arra
     $cacheTtl = 60; // (app('env') !== 'local') ? 60 : 0;
     $cacheKey = "imageResize/$imagePath/$width/$height/$quality/$crop";
 
-    return Cache::remember($cacheKey, $cacheTtl, function () use ($imagePath, $height, $width, $quality, $crop) {
-        $storage = Storage::disk(config('voyager.storage.disk'));
+    $cachedUrl = Cache::get($cacheKey);
+
+    $storage = Storage::disk(config('voyager.storage.disk'));
+
+    // Setup the image URLs
+    // - You can add ASSET_URL=http://... to your .env to reference images through a CDN
+    $hostname = env('ASSET_URL', env('APP_URL', 'http://localhost'));
+    $urlPrefix = $hostname . '/storage/';
+    $diskPath = str_replace($urlPrefix, '', $cachedUrl);
+
+    if (null === $cachedUrl || !Storage::exists($diskPath)) {
 
         // Don't continue when original file doesn't exist
         if (!($storage->exists($imagePath))) {
             return null;
         }
-
-        // Setup the image URLs
-        // - You can add ASSET_URL=http://... to your .env to reference images through a CDN
-        $hostname = env('ASSET_URL', env('APP_URL', 'http://localhost'));
-        $urlPrefix = $hostname . '/storage/';
 
         // Return original image if height and width are 0
         if ((int)$width === null && (int)$height === null) {
@@ -68,6 +72,8 @@ function imageUrl($imagePath = '', $width = null, $height = null, $config = arra
         // And put it where it needs to go
         $storage->put($resizedImagePath, (string)$resizedImage, 'public');
 
-        return $urlPrefix . $resizedImagePath;
-    });
+        $cachedUrl = $urlPrefix . $resizedImagePath;
+    }
+
+    return $cachedUrl;
 }
