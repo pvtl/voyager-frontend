@@ -49,10 +49,14 @@ php artisan voyager:admin $YOUR_EMAIL --create
 __2. Install Voyager Frontend__
 
 ```bash
-# 2.0 Require this Package in your fresh Laravel/Voyager project
+#2.0 Add Sqlite3 support in your php.ini, you can check with two commands, if no ext-sqlite3, search for it and remove the ;
+php -m
+composer show --platform
+
+# 2.1 Require this Package in your fresh Laravel/Voyager project
 composer require pvtl/voyager-frontend
 
-# 2.1 Run the Installer
+# 2.2 Run the Installer
 composer dump-autoload && php artisan voyager-frontend:install
 
 # 2.3 Build the front-end theme assets
