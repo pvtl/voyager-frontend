@@ -116,8 +116,11 @@ This package comes with an automatic image resize function. When you reference a
 ```html
 {{ imageUrl($pathToImage, $width, $height, $config = ['crop' => false, 'quality' => 100] ) ?: '/default.png' }}
 
-<!-- For example (where $blockData->image = 'blocks/3hkkskd8.jpg'): -->
-<img src="{{ imageUrl($blockData->image, 300) ?: '/default.png' }}" />
+<!-- For example for a 300px wide thumbnail scaled down (i.e. no cropping) -->
+<img src="{{ imageUrl($blockData->image, 300, null, ['crop' => false]) ?: '/default.png' }}" />
+
+<!-- Or a 200px by 100px cropped thumbnail -->
+<img src="{{ imageUrl($blockData->image, 200, 100) ?: '/default.png' }}" />
 ```
 
 ### "CDN" your images
