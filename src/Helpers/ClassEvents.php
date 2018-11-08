@@ -21,7 +21,7 @@ class ClassEvents
             $parameters = explode(',', str_replace(['(', ')'], '', $parameters[0]));
         }
 
-        $class = new $className();
+        $class = resolve($className);
 
         return $class->$methodName($forcedParams, ...$parameters);
     }
