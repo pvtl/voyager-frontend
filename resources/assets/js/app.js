@@ -1,66 +1,62 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+// First we will load all of this project's JavaScript dependencies which
+// includes Vue and other libraries. It is a great starting point when
+// building robust, powerful web applications using Vue and Laravel.
+import './bootstrap';
 
-require("./bootstrap");
-
-/**
- * Now we can write our custom code
- */
-
-/**
- * Init Foundation
- */
+// Initialise Foundation.
 $(document).foundation();
 
-/**
- * Scroll Reveal
- */
-sr.reveal("[data-scrollreveal]", { duration: 1000 });
+// Scroll Reveal.
+ScrollReveal().reveal('[data-scrollreveal]');
 
-/**
- * Toggle Header Search bar
- */
-$(document).on("click", "[data-toggle-search-trigger]", function(e) {
-    e.preventDefault();
-    $("[data-toggle-search]").slideToggle();
+// Toggle the header search bar.
+$(document).on('click', '[data-toggle-search-trigger]', (e) => {
+  e.preventDefault();
+  $('[data-toggle-search]').slideToggle();
 });
 
-/**
- * Prefetch and Transition the next page
- */
-(function($) {
-    // Which links should we prefetch?
-    var $linkElements = $("a");
+// Prefetch and transition to the next page.
+(() => {
+  'use strict';
 
-    // Prefetch on Hover
-    $linkElements.on("mouseover", function() {
-        var link = $(this).attr("href"),
-            prerenderLink = $("#prerenderLink");
-        if (prerenderLink.length) {
-            if (prerenderLink.attr("href") === link) return;
-            prerenderLink.attr("href", link);
-        } else {
-            $(
-                '<link id="prerenderLink" rel="prefetch prerender" href="' +
-                    link +
-                    '" />'
-            ).appendTo("body");
-        }
-    });
+  // Prefetch a url on hover.
+  $(document).on('mouseover', 'a', (e) => {
+    // New prerender url.
+    const url = $(e.currentTarget).attr('href');
 
-    // Transition out the current page
-    $linkElements.on("click", function(e) {
-        e.preventDefault();
-        var link = $(this).attr("href");
-        if (link && link.length > 1) {
-            $("body").addClass("fadeOut");
+    if (url && url.length > 1) {
+      // Prerender <Link> element.
+      const prerender = $('#prerender');
 
-            setTimeout(function() {
-                window.location.href = link;
-            }, 150);
-        }
-    });
-})(jQuery);
+      // Create a new <link> element and apply the prerender url.
+      if (prerender.length === 0) {
+        $('<link id="prerender" rel="prefetch prerender" href="' + url + '">').appendTo('body');
+
+        return;
+      }
+
+      // Prerender already contains the hovered link url.
+      if (prerender.attr('href') === url) {
+        return;
+      }
+
+      prerender.attr('href', url);
+    }
+  });
+
+  // Transition out the current page.
+  $(document).on('click', 'a', (e) => {
+    // Redirect url.
+    const url = $(e.currentTarget).attr('href');
+
+    if (url && url.length > 1) {
+      e.preventDefault();
+
+      $('body').addClass('fadeOut');
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 150);
+    }
+  });
+})();
