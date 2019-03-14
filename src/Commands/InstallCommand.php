@@ -89,7 +89,7 @@ class InstallCommand extends Command
         $this->info('Updating Root package.json to include dependencies');
 
         $process = new Process('
-            npm install jquery foundation-sites scrollreveal motion-ui --save-dev &&
+            npm install jquery what-input foundation-sites scrollreveal motion-ui --save-dev &&
             npm run dev
         ');
         $process->setTimeout(null); // Setting timeout to null to prevent installation from stopping at a certain point in time
