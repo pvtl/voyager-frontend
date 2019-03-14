@@ -90,7 +90,6 @@ class InstallCommand extends Command
 
         $process = new Process('
             npm i foundation-sites scrollreveal@"^3.4.0" motion-ui jquery --save-dev &&
-            npm uninstall bootstrap bootstrap-sass --save-dev &&
             npm run dev
         ');
         $process->setTimeout(null); // Setting timeout to null to prevent installation from stopping at a certain point in time
