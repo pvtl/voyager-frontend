@@ -15,6 +15,7 @@ Built by [Pivotal Agency](https://pivotal.agency/).
 ## Prerequisites
 
 - PHP >= 7.1.3
+    - PHP extension `sqlite3` (required for `teamtnt/tntsearch`)
 - Node & NPM
 - Composer
 - [Laravel Requirements](https://laravel.com/docs/installation)
