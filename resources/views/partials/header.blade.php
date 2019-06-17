@@ -3,17 +3,17 @@
         <span aria-hidden="true">&times;</span>
     </a>
 
-    <ul class="vertical menu">
+    <ul class="vertical menu" data-dropdown-menu>
         {{ menu('primary', 'voyager-frontend::partials.menu-left') }}
     </ul>
 
-    <hr />
+    <hr>
 
     <ul class="vertical menu">
         @include('voyager-frontend::partials.menu-right')
     </ul>
 
-    <hr />
+    <hr>
 
     <ul class="menu social-icons align-center">
         {{ menu('social', 'voyager-frontend::partials.social') }}
@@ -26,10 +26,10 @@
             <div class="grid-x">
                 <div class="cell medium-8 medium-offset-2">
                     @include('voyager-frontend::partials.search-box')
-                </div> <!-- /.cell -->
-            </div> <!-- /.grid -->
-        </div> <!-- /.container -->
-    </div> <!-- /.header-site-search -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="top-bar">
         <div class="top-bar-left">
@@ -45,16 +45,16 @@
                 <a href="{{ url('/') }}">
                     <img src="{{ url('/') }}/images/logo.png" alt="{{ setting('site.title') }}" title="{{ setting('site.title') }}" />
                 </a>
-            </div> <!-- /.header-logo -->
+            </div>
 
-            <ul class="menu show-for-medium">
+            <ul class="dropdown menu show-for-medium" data-dropdown-menu>
                 {{ menu('primary', 'voyager-frontend::partials.menu-left') }}
             </ul> <!-- /.menu -->
-        </div> <!-- /.top-bar-left -->
+        </div>
 
         <div class="top-bar-right show-for-medium">
-            <ul class="menu">
+            <ul class="dropdown menu" data-dropdown-menu>
                 @include('voyager-frontend::partials.menu-right')
-            </ul> <!-- /.menu -->
-        </div> <!-- /.top-bar-right -->
-    </div> <!-- /.top-bar -->
+            </ul>
+        </div>
+    </div>

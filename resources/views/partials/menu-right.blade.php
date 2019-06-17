@@ -1,43 +1,39 @@
-<li class="hide-for-small-only"><a href="#" data-toggle-search-trigger><i class="fas fa-search"></i></a></li>
-
+<li class="hide-for-small-only">
+    <a href="#" data-toggle-search-trigger>
+        <i class="fas fa-search"></i>
+    </a>
+</li>
 @if (Auth::guest())
     <li><a href="{{ route('login') }}">Login</a></li>
     <li><a href="{{ route('register') }}">Register</a></li>
-@endif
-
-@if (!Auth::guest())
-    <ul class="dropdown menu" data-dropdown-menu>
-        <li>
-            <a href="#">My Account</a>
-            <ul class="menu">
-                <li>
-                    <a href="{{ route('voyager-frontend.account') }}">
-                        Update Account
+@else
+    <li>
+        <a href="#">My Account</a>
+        <ul class="menu">
+            <li>
+                <a href="{{ route('voyager-frontend.account') }}">Update Account</a>
+            </li>
+            <li>
+                @if (Session::has('original_user.id'))
+                    <a href="#"
+                       onclick="document.getElementById('impersonate-form').submit();return false;">
+                        Switch back to {{ Session::get('original_user.name') }}
                     </a>
-
-                    @if (Session::has('original_user.id'))
-                        <a href="#"
-                           onclick="event.preventDefault();document.getElementById('impersonate-form').submit();">
-                            Switch back to {{ Session::get('original_user.name') }}
-                        </a>
-
-                        <form id="impersonate-form"
-                              action="{{ route('voyager-frontend.account.impersonate', Session::get('original_user.id')) }}"
-                              method="POST"
-                              style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    @else
-                        <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    @endif
-                </li>
-            </ul> <!-- /.menu -->
-        </li>
-    </ul> <!-- /.dropdown -->
+                    <form id="impersonate-form"
+                          action="{{ route('voyager-frontend.account.impersonate', Session::get('original_user.id')) }}"
+                          method="POST"
+                          style="display: none;">
+                        @csrf
+                    </form>
+                @else
+                    <a href="#" onclick="document.getElementById('logout-form').submit();return false;">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @endif
+            </li>
+        </ul>
+    </li>
 @endif
