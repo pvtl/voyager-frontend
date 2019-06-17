@@ -11,7 +11,7 @@
 
                     @if (!empty($errors) && $errors->has('name'))
                         <div class="callout small alert text-center" id="nameHelpText">
-                            <p>{{ $errors->first('name') }}</strong>
+                            <p>{{ $errors->first('name') }}</p>
                         </div>
                     @endif
 
@@ -33,7 +33,7 @@
 
                     @if (!empty($errors) && $errors->has('password'))
                         <div class="callout small alert text-center" id="passwordHelpText">
-                            <p>{{ $errors->first('password') }}</strong>
+                            <p>{{ $errors->first('password') }}</p>
                         </div>
                     @endif
 

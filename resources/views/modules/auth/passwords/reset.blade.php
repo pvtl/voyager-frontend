@@ -52,7 +52,8 @@
                         <input id="password-confirm" type="password" name="password_confirmation" aria-describedby="passwordConfirmHelpText" required>
                     </label>
 
-                <button type="submit" class="button expanded">Reset Password</button>
+                    <button type="submit" class="button expanded">Reset Password</button>
+                </div>
             </div>
         </div>
     </form>
