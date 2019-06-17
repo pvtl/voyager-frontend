@@ -2,12 +2,12 @@
 
 @section('content')
     <form class="register-form" method="POST" action="{{ route('voyager-frontend.account') }}">
+        @csrf
+
         <div class="grid-container">
             <div class="grid-x grid-padding-y">
                 <div class="medium-6 medium-offset-3 cell email">
                     <h4 class="text-center">Update Account</h4>
-
-                    {{ csrf_field() }}
 
                     @if (!empty(session('alert-type')))
                         <div class="callout small success text-center">

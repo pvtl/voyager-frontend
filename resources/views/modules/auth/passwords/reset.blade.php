@@ -2,6 +2,8 @@
 
 @section('content')
     <form class="password-reset-form" method="POST" action="{{ route('password.request') }}">
+        @csrf
+
         <div class="grid-container">
             <div class="grid-x grid-padding-y">
                 <div class="medium-6 medium-offset-3 cell email">
@@ -14,8 +16,6 @@
                     </div>
                 
                     <h4 class="text-center">Reset Password</h4>
-
-                    {{ csrf_field() }}
 
                     <input type="hidden" name="token" value="{{ $token }}">
 

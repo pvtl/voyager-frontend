@@ -2,12 +2,12 @@
 
 @section('content')
     <form class="login-form" method="POST" action="{{ route('login') }}">
+        @csrf
+
         <div class="grid-container">
             <div class="grid-x grid-padding-y">
                 <div class="medium-6 medium-offset-3 cell email">
                     <h4 class="text-center">Login</h4>
-
-                    {{ csrf_field() }}
 
                     @if (!empty($errors) && $errors->has('email'))
                         <div class="callout small alert text-center" id="emailHelpText">
