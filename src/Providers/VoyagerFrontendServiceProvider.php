@@ -13,6 +13,7 @@ use Laravel\Scout\Console\ImportCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Pvtl\VoyagerFrontend\Exceptions\Handler;
 use Illuminate\Contracts\Debug\ExceptionHandler;
+use Pvtl\VoyagerFrontend\FormFields\FrontendLayout;
 use Pvtl\VoyagerFrontend\Http\Controllers\PageController;
 
 class VoyagerFrontendServiceProvider extends ServiceProvider
@@ -53,6 +54,10 @@ class VoyagerFrontendServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(self::PACKAGE_DIR . 'config/scout.php', 'scout');
 
         $this->app->alias(VoyagerFrontend::class, 'voyager-frontend');
+
+        $this->app->resolving('TCG\\Voyager\\Voyager', function ($voyager, $app) {
+            $voyager->addFormField(FrontendLayout::class);
+        });
     }
 
     /**
