@@ -20,9 +20,9 @@
 
                     <h2 class="text-center">Related Posts</h2>
                 @endif
-            </div> <!-- /.cell -->
-        </div> <!-- /.grid -->
-    </div> <!-- /.grid-container -->
+            </div>
+        </div>
+    </div>
 
     @include('voyager-frontend::modules.posts.posts-grid', ['posts' => $relatedPosts])
 
