@@ -3,6 +3,7 @@
 @section('meta_description', $post->meta_description)
 @section('page_title', $post->title)
 @section('page_subtitle', 'Posted // ' . $post->created_at->format('jS M. Y'))
+@section('page_banner', imageUrl($post->image))
 
 @section('content')
     @include('voyager-frontend::partials.page-title')
