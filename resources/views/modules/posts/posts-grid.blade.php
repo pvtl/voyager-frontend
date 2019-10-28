@@ -1,21 +1,11 @@
-@empty($posts)
-    <div class="vspace-2"></div>
+<div class="vspace-2"></div>
 
-    <div class="grid-container">
-        <div class="cell small-12">
-            <div class="grid-x grid-padding-x">
+<div class="grid-container">
+    <div class="cell small-12">
+        <div class="grid-x grid-padding-x">
+            @empty($posts)
                 <p>There are currently no posts.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="vspace-1"></div>
-@else
-    <div class="vspace-2"></div>
-
-    <div class="grid-container">
-        <div class="cell small-12">
-            <div class="grid-x grid-padding-x">
+            @else
                 @foreach($posts as $post)
                     <div class="cell small-12 medium-4 large-3">
                         <div class="card">
@@ -36,9 +26,9 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
+            @endempty
         </div>
     </div>
+</div>
 
-    <div class="vspace-1"></div>
-@endempty
+<div class="vspace-1"></div>
