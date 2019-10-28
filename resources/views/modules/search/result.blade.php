@@ -6,7 +6,7 @@
     <p class="search-result-url"><a href="/{{ $result->slug }}">{{ URL::to('/') }}/{{ $result->slug }}</a></p>
 
     @if ($result->excerpt)
-        <p>{{ str_limit($result->excerpt, 200, '&hellip;') }}</p>
+        <p>{{ Illuminate\Support\Str::limit($result->excerpt, 200, '&hellip;') }}</p>
     @endif
 </div> <!-- /.cell -->
 

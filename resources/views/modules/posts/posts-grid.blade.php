@@ -20,7 +20,7 @@
                                     <h4>{{ $post->title }}</h4>
                                 </a>
                                 @if ($post->excerpt)
-                                    <p>{{ str_limit($post->excerpt, 50, '&hellip;') }}</p>
+                                    <p>{{ Illuminate\Support\Str::limit($post->excerpt, 50, '&hellip;') }}</p>
                                 @endif
                             </div>
                         </div>
