@@ -16,13 +16,12 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": ">=7.0",
         "pvtl/voyager-pages": "^0.2.9",
         "pvtl/voyager-blog": "^0.2.7",
-        "tcg/voyager": "^1.1.8",
-        "spatie/laravel-sitemap": "~5.2.0",
-        "laravel/scout": "^5.0",
-        "teamtnt/laravel-scout-tntsearch-driver": "^3.0"
+        "tcg/voyager": "^1.3",
+        "spatie/laravel-sitemap": "~5.5.0",
+        "laravel/scout": "^7.0",
+        "teamtnt/laravel-scout-tntsearch-driver": "^7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
