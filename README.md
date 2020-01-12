@@ -57,6 +57,7 @@ composer require pvtl/voyager-frontend
 composer dump-autoload && php artisan voyager-frontend:install
 
 # 2.3 Build the front-end theme assets
+npm install
 npm run dev
 
 # 2.4 Set the Laravel search driver in your .env
