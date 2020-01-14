@@ -42,17 +42,6 @@ class GenerateSearchIndices extends Command
         if (!file_exists(config_path() . '/scout.php')) {
             Artisan::call("vendor:publish", ['--provider' => 'Laravel\Scout\ScoutServiceProvider']);
         }
-
-        $searchableModels = SearchController::getSearchableModels();
-
-        foreach ($searchableModels as $model) {
-            if (!class_exists($model)) {
-                continue;
-            }
-
-            Artisan::call("scout:import", ['model' => $model]);
-        }
-
         return true;
     }
 }
