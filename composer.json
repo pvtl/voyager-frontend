@@ -19,12 +19,11 @@
         "pvtl/voyager-pages": "^0.2.9",
         "pvtl/voyager-blog": "^0.2.7",
         "tcg/voyager": "^1.3",
-        "spatie/laravel-sitemap": "~5.5.0",
-        "laravel/scout": "^7.0",
-        "teamtnt/laravel-scout-tntsearch-driver": "^7.0"
+        "spatie/laravel-sitemap": "^5.7",
+        "teamtnt/laravel-scout-tntsearch-driver": "^8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7",
+        "phpunit/phpunit": "^8.5",
         "orchestra/testbench": "^3.4",
         "illuminated/testing-tools": "^0.5.5"
     },
