@@ -22,8 +22,8 @@ Route::group(['middleware' => ['web']], function () use ($accountController) {
          * User impersonation
          */
         Route::get('/admin/users/impersonate/{userId}', "$accountController@impersonateUser")
-            ->name('.impersonate')
-            ->middleware(['web', 'admin.user'])->name('.admin');
+            ->name('.impersonate.admin')
+            ->middleware(['web', 'admin.user']);
 
         Route::post('/admin/users/impersonate/{originalId}', "$accountController@impersonateUser")
             ->name('.impersonate')
