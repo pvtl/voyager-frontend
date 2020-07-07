@@ -30,7 +30,7 @@ function imageUrl($imagePath = '', $width = null, $height = null, $config = arra
         }
 
         // Return original image if height and width are 0
-        if ((int)$width === null && (int)$height === null) {
+        if ((int)$width === 0 && (int)$height === 0) {
             return $urlPrefix . $imagePath;
         }
 
