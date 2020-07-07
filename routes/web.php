@@ -16,14 +16,14 @@ Route::group(['middleware' => ['web']], function () use ($accountController) {
 
     Route::group(['middleware' => 'auth', 'as' => 'voyager-frontend.account'], function () use ($accountController) {
         Route::get('/account', "$accountController@index");
-        Route::post('/account', "$accountController@updateAccount");
+        Route::post('/account', "$accountController@updateAccount")->name('.update');
 
         /**
          * User impersonation
          */
         Route::get('/admin/users/impersonate/{userId}', "$accountController@impersonateUser")
             ->name('.impersonate')
-            ->middleware(['web', 'admin.user']);
+            ->middleware(['web', 'admin.user'])->name('.admin');
 
         Route::post('/admin/users/impersonate/{originalId}', "$accountController@impersonateUser")
             ->name('.impersonate')
