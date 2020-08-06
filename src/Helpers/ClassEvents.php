@@ -23,6 +23,10 @@ class ClassEvents
 
         $class = resolve($className);
 
-        return $class->$methodName($forcedParams, ...$parameters);
+        if($forcedParams) {
+            array_unshift($parameters, ...$forcedParams);
+        }
+        
+        return $class->$methodName(...$parameters);
     }
 }
