@@ -18,7 +18,7 @@ function imageUrl($imagePath = '', $width = null, $height = null, $config = arra
 
     // Setup the image URLs
     // - You can add ASSET_URL=http://... to your .env to reference images through a CDN
-    $hostname = config('app.asset_url', env('APP_URL', 'http://localhost'));
+    $hostname = config('app.asset_url', config('app.url'));
     $urlPrefix = $hostname . '/storage/';
     $diskPath = str_replace($urlPrefix, '', $cachedUrl);
 
