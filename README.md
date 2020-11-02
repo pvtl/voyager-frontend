@@ -40,10 +40,13 @@ cp .env.example .env
 # 1.3 Generate a Laravel key
 php artisan key:generate
 
-# 1.4 Run the Voyager Installer
+# 1.4 Install Laravel frontend - Only on Laravel 7+
+php artisan ui bootstrap --auth
+
+# 1.5 Run the Voyager Installer
 php artisan voyager:install
 
-# 1.5 Create a Voyager Admin User
+# 1.6 Create a Voyager Admin User
 php artisan voyager:admin $YOUR_EMAIL --create
 ```
 
